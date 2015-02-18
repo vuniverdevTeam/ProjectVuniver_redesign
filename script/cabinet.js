@@ -127,6 +127,9 @@ window.onload = function() {
 
 				td = document.createElement("td");
                 td.className = "del";
+                td.innerText = "X";
+                td.style.cursor = "pointer";
+                td.style.color = "red";
 
 
         td.onclick = function(event)

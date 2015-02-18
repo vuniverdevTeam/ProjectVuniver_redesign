@@ -6,6 +6,7 @@
     <link href="style/bootstrap.css" rel="stylesheet" type="text/css"/>
     <script type="text/javascript" src = "script/To_link_js.js"></script>
     <script type="text/javascript" src = "script/landingModal.js"></script>
+    <script type="text/javascript" src = "script/cabinet.js"></script>
     <link href="style/filters.css" rel = "stylesheet" type ="text/css"/>
     <link href="style/office.css" rel = "stylesheet" type ="text/css"/>
 
@@ -26,7 +27,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li><a href="#" onclick="">Розрахунок ймовірності</a></li>
-                    <li><a href="#">Вихід</a></li>
+                    <li><a href="input2.html">Вихід</a></li>
                     <li><a href ="#" onclick="showSettings()">Налаштування</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
@@ -36,67 +37,25 @@
         </div>
         </nav>
         <div style="height: 50px"></div>
+    <div class = "table">
         <table class="table table-striped table-hover ">
             <thead>
             <tr>
-                <th>#</th>
-                <th>Column heading</th>
-                <th>Column heading</th>
-                <th>Column heading</th>
+                <th rowspan="2">№</th>
+                <th rowspan="2">Університет</th>
+                <th rowspan="2">Факультет</th>
+                <th rowspan="2">Спеціальність</th>
+                <th colspan="2">Ймовірність</th>
+            </tr>
+            <tr>
+                <th class="budget">Бюджет</th>
+                <th class="contract">Контракт</th>
             </tr>
             </thead>
-            <tbody>
-            <tr>
-                <td>1</td>
-                <td>Column content</td>
-                <td>Column content</td>
-                <td>Column content</td>
-                <td class = "del">Х </td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Column content</td>
-                <td>Column content</td>
-                <td>Column content</td>
-                <td class = "del">Х </td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>Column content</td>
-                <td>Column content</td>
-                <td>Column content</td>
-                <td class = "del">Х </td>
-            </tr>
-            <tr>
-                <td>4</td>
-                <td>Column content</td>
-                <td>Column content</td>
-                <td>Column content</td>
-                <td class = "del">Х </td>
-            </tr>
-            <tr>
-                <td>5</td>
-                <td>Column content</td>
-                <td>Column content</td>
-                <td>Column content</td>
-                <td class = "del">Х </td>
-            </tr>
-            <tr>
-                <td>6</td>
-                <td>Column content</td>
-                <td>Column content</td>
-                <td>Column content</td>
-                <td class = "del">Х </td>
-            </tr>
-            <tr>
-                <td>7</td>
-                <td>Column content</td>
-                <td>Column content</td>
-                <td>Column content</td>
-                <td class = "del">Х </td>
-            </tr>
+            <tbody id="tbody">
             </tbody>
         </table>
+    </div>
         <div id = "setTing" class="modal">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -170,5 +129,11 @@
                 </div>
             </div>
         </div>
+        <script type="text/javascript">
+            document.getElementById('name').appendChild(document.createTextNode(res.data));
+            function backPage(){
+                history.back();
+            }
+        </script>
 </body>
 </html>
