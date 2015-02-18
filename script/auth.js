@@ -4,20 +4,20 @@ function enter(event){
     xhr.open('POST', 'http://alex.inet-tech.org.ua/cgi-bin/cookie.cpp.o', false);
     xhr.send('auth=0'+'&'+'login='+document.getElementById('login').value+'&'+'pass='+document.getElementById('pass').value);
     if(xhr.responseText == "-") {
-        showModalDynamic('Невірний email або пароль,<br/> спробуйте ще раз');
-        return false;
+        showModalDynamic("Невірний email або пароль, спробуйте ще раз");
     }
-    if(xhr.responseText == "-noactive") {
-        showModalDynamic('Аккаунт не активовано');
-        return false;
+    else if(xhr.responseText == "-noactive") {
+        showModalDynamic("Аккаунт не активовано");
     }
-    var d = new Date;
-    var prevCookie = document.cookie;
-    d.setTime(d.getTime() + 600*1000);
-    d = d.toUTCString();
-    d = xhr.responseText + '; path=/' + '; expires=' + d;
-    document.cookie = d;
-    document.location.href = "office.html";
+    else {
+        var d = new Date;
+        var prevCookie = document.cookie;
+        d.setTime(d.getTime() + 600 * 1000);
+        d = d.toUTCString();
+        d = xhr.responseText + '; path=/' + '; expires=' + d;
+        document.cookie = d;
+        document.location.href = "office.html";
+    }
 }
 
 function Auth_Menu(options){
