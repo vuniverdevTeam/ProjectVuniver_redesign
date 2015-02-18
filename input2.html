@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="style/bootstrap.css" rel="stylesheet" type="text/css"/>
+    <link href="style/filters.css" rel="stylesheet" type="text/css"/>
+
+    <script src="script/landingModal.js"></script>
+    <script src="script/To_link_js.js"></script>
+</head>
+<body>
+    <nav class="navbar navbar-default" style="position: fixed; width: 100%;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">VUNIVER</a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="#">Розрахунок ймовірності</a></li>
+                    <li><a href="#">Вхід</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#">Інфо</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div style="height: 50px"></div>
+    <a name="start"></a>
+    <table class="table table-bordered table-striped" id = "inp-table">
+        <thead>
+        <tr>
+            <th>№</th>
+            <th class="budg">Бюджет</th>
+            <th class="contr">Контракт</th>
+            <th>Університет</th>
+            <th>Факультет</th>
+            <th>Спеціальність</th>
+        </tr>
+        </thead>
+        <tbody id="myList">
+        ~H~
+        </tbody>
+
+
+    </table>
+    <a name="end"></a>
+    <div style="text-align: center">
+        <a class="btn btn-default" id = "goTop" href = "#start">Вгору</a>
+        <div style="height: 10px"></div>
+        <a class="btn btn-default" id = "loadMore" style="clear:both;">Відобразити ще 10</a>
+    </div>
+</body>
+</html>
