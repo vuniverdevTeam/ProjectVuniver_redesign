@@ -17,6 +17,7 @@ function enter(event){
         d = xhr.responseText + '; path=/' + '; expires=' + d;
         document.cookie = d;
         document.location.href = "office.html";
+
     }
 }
 
