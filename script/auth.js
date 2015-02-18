@@ -17,7 +17,7 @@ function enter(event){
     d = d.toUTCString();
     d = xhr.responseText + '; path=/' + '; expires=' + d;
     document.cookie = d;
-    document.location.href = "cabinet.html";
+    document.location.href = "office.html";
 }
 
 function Auth_Menu(options){
