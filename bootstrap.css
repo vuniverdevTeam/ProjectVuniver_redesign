@@ -4837,7 +4837,7 @@ a.badge:focus {
   padding: 30px 15px;
   margin-bottom: 30px;
   color: inherit;
-  background-color: #eeeeee;
+  background-color: #fff;
 }
 .jumbotron h1,
 .jumbotron .h1 {
@@ -5674,17 +5674,17 @@ a.list-group-item-danger.active:focus {
   font-size: 21px;
   font-weight: bold;
   line-height: 1;
-  color: #000000;
+  color: #d30019;
   text-shadow: 0 1px 0 #ffffff;
-  opacity: 0.2;
+  opacity: 0.3;
   filter: alpha(opacity=20);
 }
 .close:hover,
 .close:focus {
-  color: #000000;
+  color: #d30019;
   text-decoration: none;
   cursor: pointer;
-  opacity: 0.5;
+  opacity: 0.6;
   filter: alpha(opacity=50);
 }
 button.close {
@@ -5698,6 +5698,7 @@ button.close {
   overflow: hidden;
 }
 .modal {
+  background-color: rgba(170, 170, 170, 0.67);
   display: none;
   overflow: hidden;
   position: fixed;
