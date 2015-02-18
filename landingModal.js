@@ -1,11 +1,19 @@
 /**
  * Created by Cheese on 18.02.2015.
  */
-function showModal()
+function showModalTry()
 {
     document.getElementById('try').style.display="block";
 }
-function hideModal()
+function hideModalTry()
 {
     document.getElementById('try').style.display="none";
+}
+function showModalSign()
+{
+    document.getElementById('auth').style.display="block";
+}
+function hideModalSign()
+{
+    document.getElementById('auth').style.display="none";
 }

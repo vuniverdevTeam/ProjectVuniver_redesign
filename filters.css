@@ -8,6 +8,10 @@
         margin-bottom: 0px;
     }
 }
+.input
+{
+    margin: 15px;
+}
 #message
 {
     top: 500px;
@@ -178,6 +182,7 @@ height: auto;
     width: 100%;
     clear: both;
     float: left;
+    padding: 10px;
 }
 #AT-2, .field{
 width: auto;
