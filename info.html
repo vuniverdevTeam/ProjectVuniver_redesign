@@ -7,25 +7,10 @@
     <link href="style/filters.css" rel="stylesheet" type="text/css"/>
 
     <script src="script/landingModal.js"></script>
-    <script src="script/passwordValidation.js"></script>
-    <script src="script/auth.js"></script>
     <script src="script/To_link_js.js"></script>
-    <script src="script/cabinet.js"></script>
+    <script src="script/auth.js"></script>
 </head>
 <body>
-
-    <div id="message" hidden="hidden">
-        <h2 style="color: #faf3b7">Зачекайте, поки будуть готові результати</h2>
-        <h4 style="color: #faf3b7">Середній час обчислення 8с</h4>
-        <div id="facebookG">
-            <div id="blockG_1" class="facebook_blockG">
-            </div>
-            <div id="blockG_2" class="facebook_blockG">
-            </div>
-            <div id="blockG_3" class="facebook_blockG">
-            </div>
-        </div>
-    </div>
 
     <form action="" onsubmit="signUp(); return false;" name="auth">
         <div class="modal" id="reg">
@@ -233,36 +218,129 @@
                     <li><a href="#" onclick="showModalSignUp()">Реєстрація</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="info.html">Інфо</a></li>
+                    <li><a href="javascript:history.back()">Назад</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
     <div style="height: 50px"></div>
-    <a name="start"></a>
-    <table class="table table-bordered table-striped" id = "inp-table">
-        <thead>
-        <tr>
-            <th>№</th>
-            <th class="budg">Бюджет</th>
-            <th class="contr">Контракт</th>
-            <th>Університет</th>
-            <th>Факультет</th>
-            <th>Спеціальність</th>
-        </tr>
-        </thead>
-        <tbody id="myList">
-        ~H~
-        </tbody>
+
+    <div id="betaMethod" style="margin: 0 auto; width: 900px;">
+        <h3>Вступ</h3>
+        <p>Даний ресурс дає змогу розрахувати ймовірність вступу абітурієнта в вищий навчальний заклад України.
+            Розрахунок ймовірності вступу абітурієнта відбувається з врахуванням прохідних балів минулих років на контракт та на бюджет.
+            Дані про прохідні бали при вступі в університети України за минулі роки доступні на сайті <a href="http://abit-poisk.org.ua/score">abit-poisk.org.ua/score</a>.
+            Сам розрахунок ведеться за допомогою методу бета-розподілу.
+        </p>
+        <h3>Приклад розрахунку</h3>
+        <p>Для визначення балу, набраного абітурієнтом у поточному році, слід бали, набрані по різним дисциплінам та середній бал атестату, відобразити на шкалу від 100
+            до 200 з ваговими коефіцієнтами, які встановлюються правилами прийому. Наприклад, бал ЗНО з математики – 153, бал ЗНО з української мови – 167, середній бал атестату – 171.
+            Коефіцієнти, які встановлені правилами прийому – 0.4, 0.4 та 0.2 відповідно. Тоді набраний бал абітурієнта:
+        </p>
+        <p class="left-0">Bal=0.4*153+0.4*167+0.2*171=162.2.</p>
+        <p>Для прикладу візьмемо розрахований вище бал. Нехай за минулі роки прохідний бал в певний вищий навчальний заклад приймав наступні значення:</p>
+        <div class="conteinFormulas">
+            <table class="years" rules="all" style="width: 100%">
+                <tbody><tr class="hat-table">
+                    <td>Рік</td>
+                    <td>2004</td>
+                    <td>2005</td>
+                    <td>2006</td>
+                    <td>2007</td>
+                    <td>2008</td>
+                    <td>2009</td>
+                    <td>2010</td>
+                    <td>2011</td>
+                    <td>2012</td>
+                    <td>2013</td>
+                    <!--<td>2014</td>-->
+                </tr>
+                <tr>
+                    <td>Прохідний бал</td>
+                    <td>161</td>
+                    <td>129</td>
+                    <td>150</td>
+                    <td>137</td>
+                    <td>149</td>
+                    <td>143</td>
+                    <td>157</td>
+                    <td>149</td>
+                    <td>171</td>
+                    <td>161</td>
+                </tr>
+                </tbody></table>
+        </div>
+        <p>Оскільки бета-розподіл визначається для випадкової величини, яка лежить на проміжку від 0 до 1, то дані прохідні бали слід відобразити на відрізок від 0 до 1 за формулою:</p>
+        <p class="left-0">Образ = (бал – 100)/100</p>
+        <p>В результаті маємо:</p>
+        <div class="conteinFormulas">
+            <table class="years" rules="all" style="width: 100%">
+                <tbody><tr class="hat-table">
+                    <td>Рік</td>
+                    <td>2004</td>
+                    <td>2005</td>
+                    <td>2006</td>
+                    <td>2007</td>
+                    <td>2008</td>
+                    <td>2009</td>
+                    <td>2010</td>
+                    <td>2011</td>
+                    <td>2012</td>
+                    <td>2013</td>
+                    <!--<td>2014</td>-->
+                </tr>
+                <tr>
+                    <td>Прохідний бал</td>
+                    <td>0.61</td>
+                    <td>0.29</td>
+                    <td>0.50</td>
+                    <td>0.37</td>
+                    <td>0.49</td>
+                    <td>0.43</td>
+                    <td>0.57</td>
+                    <td>0.49</td>
+                    <td>0.71</td>
+                    <td>0.61</td>
+                </tr>
+                </tbody></table>
+        </div>
+        <p>Тепер обраховуємо оцінку математичного сподівання (середнє значення) та дисперсію:</p>
+        <p class="conteinGrafics"><img style="float: right" src="res/grafics-calculate.png" alt="" width="450px"></p>
+        <p class="left-0">M = 0.507</p>
+        <p class="left-0">D =0.015423</p>
+        <p>Значення параметрів α,β бета-розподілу:</p>
+        <p class="left-0">α= 7.7095</p>
+        <p class="left-0">β= 7.4966</p>
+        <p>Вигляд функції щільності наведено на графіку.</p>
+        <p>Для обрахування визначеного інтегралу переведемо бал абітурієнта 162.2 в шкалу від 0 до 1, бал дорівнюватиме 0,622.
+            Тепер для визначення імовірності вступу слід обрахувати визначений інтеграл від 0 до 0,622 від функції щільності. Приблизне значення цього інтегралу складає 0.76. Тобто ймовірність 76 %.
+        </p>
 
 
-    </table>
-    <a name="end"></a>
-    <div style="text-align: center">
-        <a class="btn btn-default" id = "goTop" href = "#start">Вгору</a>
-        <div style="height: 10px"></div>
-        <a class="btn btn-default" id = "loadMore" style="clear:both;">Відобразити ще 10</a>
+        <h3>Розрахунок ймовірності</h3>
+        <p>Значення прохідного балу при вступі на напрям Х деякого університету Y розглядалося як випадкова величина з бета-розподілом. Бета-розподіл визначений на відрізку [0, 1]
+            та параметризований двома додатніми параметрами, які позначаються α і β. Цей розподіл зручний для моделювання поведінки випадкових величин, які обмежені інтервалом скінченної довжини.
+        </p>
+        <p>Щільність бета-розподілу задається формулою:</p>
+        <p class="conteinFormulas"><img src="res/beta-forms.png" alt="" width="600px"></p>
+        <p>Параметри α и β пов’язані з математичним сподіванням M і дисперсією D за допомогою формул:</p>
+
+
+        <p class="conteinFormulas"><img src="res/alfa&amp;beta.png" alt="" width="470px"></p>
+
+        <p>Оцінюємо математичне сподівання M та дисперсію D як середнє значення прохідного балу протягом минулих вступних
+            кампаній та усереднене значення квадрату відхилення від середнього значення відповідно:</p>
+
+        <p class="conteinFormulas"><img src="res/M&amp;D.png" alt="" width="350px"></p>
+        <p>Де Bal(i) – прохідний бал у i-му році, n – кількість років спостереження прохідних балів.
+            Тоді ймовірність вступу визначається як:
+        </p>
+        <p class="conteinFormulas"><img src="res/bal.png" alt="" width="340px"></p>
+        <p>Де Bal – бал, набраний абітурієнтом у поточному році.</p>
+        <br>
+
     </div>
+
 </body>
 </html>
