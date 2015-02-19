@@ -265,3 +265,10 @@ select{
     width: 332px;
     display: inline-block;
 }
+
+#name
+{
+    margin-left: 160px;
+    line-height: 50px;
+    color: #ffffff;
+}

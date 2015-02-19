@@ -148,7 +148,6 @@ window.onload = function() {
 
 				td = document.createElement("td");
                 td.className = "del btn btn-danger";
-                td.innerText = "X";
                 td.style.cursor = "pointer";
 
 
