@@ -1,23 +1,43 @@
 ﻿"use strict";
 var user;
 var res;
-    if(document.location.search != '') {
-        var location_search = document.location.search.split('?')[1];
-        var xhrConfirm = new XMLHttpRequest();
-        xhrConfirm.open('POST', 'http://alex.inet-tech.org.ua/cgi-bin/confirm.cpp.o', false);
-        xhrConfirm.send(location_search);
-        if(xhrConfirm.responseText.indexOf('auth=') == 0) {
-            var d = new Date;
-            location_search = location_search.split('=')[1];
-            d.setTime(d.getTime() + 180*1000);
-            d = d.toUTCString();
-            document.cookie = xhrConfirm.responseText + '; path=/; expires=' + d;
-            document.location.replace("cabinet.html");
-        }
-        else document.location.replace("index.html");
+if(document.location.search != '') {
+    var location_search = document.location.search.split('?')[1];
+    var xhrConfirm = new XMLHttpRequest();
+    xhrConfirm.open('POST', 'http://alex.inet-tech.org.ua/cgi-bin/confirm.cpp.o', false);
+    xhrConfirm.send(location_search);
+    if(xhrConfirm.responseText.indexOf('auth=') == 0) {
+        var d = new Date;
+        location_search = location_search.split('=')[1];
+        d.setTime(d.getTime() + 180*1000);
+        d = d.toUTCString();
+        document.cookie = xhrConfirm.responseText + '; path=/; expires=' + d;
+        document.location.replace("cabinet.html");
     }
-    res = checkAuth();
-    if (!res.isAuth) document.location.replace("index.html");
+    else document.location.replace("index.html");
+}
+res = checkAuth();
+if (!res.isAuth) document.location.replace("index.html");
+
+function checkAuth() {
+    var xhr = new XMLHttpRequest();
+    if(!document.cookie) return {isAuth: false};
+    else {
+        xhr.open('POST', 'http://alex.inet-tech.org.ua/cgi-bin/cookie.cpp.o', false);
+        xhr.send(document.cookie);
+        if(xhr.responseText[0] != "+") return {isAuth: false, data: '', field: ''};
+        var data = xhr.responseText.split('+');
+        data = data[1].split(')');
+        var d = new Date;
+        d.setTime(d.getTime() + 600*1000);
+        d = d.toUTCString();
+        d = document.cookie + '; path=/; expires=' + d;
+        var date = new Date(0);
+        document.cookie="auth=; path=/; expires="+date.toUTCString();
+        document.cookie = d;
+        return {isAuth: true, data: data[0], field: data[1]};
+    }
+}
 
 window.onload = function() {
     //
