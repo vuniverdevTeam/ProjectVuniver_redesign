@@ -148,10 +148,9 @@ window.onload = function() {
         tr.appendChild(td);
 
 				td = document.createElement("td");
-                td.className = "del";
+                td.className = "del btn btn-danger";
                 td.innerText = "X";
                 td.style.cursor = "pointer";
-                td.style.color = "red";
 
 
         td.onclick = function(event)
@@ -168,8 +167,9 @@ window.onload = function() {
                 xhr.open('POST', 'http://alex.inet-tech.org.ua/cgi-bin/deleteFav.cpp.o', false);
                 xhr.send('Facult='+values[5]+'&Spec='+values[7]+'&userid='+id['field']);
 
-                if(confirm("Ви впевнені, що бажаєте видалити запис?"))
-                {
+                var dontdeleteRow = !confirm("Ви впевнені, що бажаєте видалити запис?");
+                if(dontdeleteRow){return;}
+                else {
                     event.target.parentNode.parentNode.parentNode.deleteRow(this.parentNode.rowIndex);
                 }
 
