@@ -225,7 +225,12 @@ var ch;
 window.onload = function () {
     document.getElementById('message').hidden = "hidden";
 
-
+    id = checkAuth();
+    if(id["isAuth"] == true)
+    {
+        document.getElementById('enter').innerText = "Особистий Кабінет";
+        document.getElementById('enter').href = "office.html";
+    }
 
     auth = new Auth_Menu({
         elem: document.getElementById('auth'),
@@ -245,7 +250,7 @@ window.onload = function () {
     ch = checkAuth();
     if(ch.isAuth) {
         document.getElementById('name').appendChild(document.createTextNode('Ви увійшли як: ' + ch.data));
-        if(document.getElementById('auth_open')) {
+        if(document.getElementById('enter')) {
             document.getElementById('auth_open').firstChild.innerHTML = 'Кабінет';
             document.getElementById('auth_open').href = '../project ISM/cabinet.html';
             document.getElementById('auth_open').id = 'auth_close';

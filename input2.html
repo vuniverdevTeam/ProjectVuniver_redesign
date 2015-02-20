@@ -5,13 +5,12 @@
     <title></title>
     <link href="style/bootstrap.css" rel="stylesheet" type="text/css"/>
     <link href="style/main_style.css" rel="stylesheet" type="text/css"/>
-
     <script src="script/landingModal.js"></script>
     <script src="script/passwordValidation.js"></script>
     <script src="script/auth.js"></script>
     <script src="script/To_link_js.js"></script>
-    <script type="text/javascript" src = "script/cabinet.js"></script>
     <script type="text/javascript" src = "script/check_auth.js"></script>
+
 
 </head>
 <body>
@@ -216,7 +215,7 @@
         </div>
     </div>
 
-    <nav class="navbar navbar-default" style="position: fixed; width: 100%;">
+    <div class="navbar navbar-default" style="position: fixed; width: 100%;">
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -231,16 +230,16 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li><a href="javascript:showModalTry()">Розрахунок ймовірності</a></li>
-                    <li><a href="javascript:showModalSign()">Вхід</a></li>
+                    <li><a href="javascript:showModalSign()" id = "enter">Вхід</a></li>
                     <li><a href="javascript:showModalSignUp()">Реєстрація</a></li>
-                    <li><span id="name">Ви увійшли як: </span></li>
+                    <li><a href = "#" id = "name"></a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="info.html">Інфо</a></li>
                 </ul>
             </div>
         </div>
-    </nav>
+    </div>
 
     <div style="height: 50px"></div>
     <a name="start"></a>

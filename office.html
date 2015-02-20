@@ -61,7 +61,8 @@
             </tbody>
         </table>
     </div>
-        <div id = "setTing" class="modal">
+        <form method="GET" onsubmit="commit();return false">
+           <div id = "setTing" class="modal">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -72,6 +73,7 @@
                         <p><div class="calculation">
                         <div class="pricing-table">
                             <h3>Введіть бали по ЗНО</h3>
+
                             <ul class="Point">
                                 <li id="AT">
                                     <div id="AT-1">
@@ -122,6 +124,7 @@
                                     <!--<a class="but" id="minus2" onClick="show_hideUn('apDiv2'); show_hide('apDiv1'); show_hide('plus2'); show_hide('minus1');"><div class="minus"></div></a>-->
                                 </li>
                             </ul>
+
                         </div>
 
                     </div></p>
@@ -129,11 +132,14 @@
                     <div class="modal-footer">
 
                         <button type="button" class="btn btn-default" onclick="hideSettings()" data-dismiss="modal">Відмінити</button>
-                        <button type="button" class="btn btn-primary" >Зберегти</button>
+                        <input type="submit" class="btn btn-primary" value = "Зберегти"/>
                     </div>
+
                 </div>
+              </div>
+
             </div>
-        </div>
+        </form>
         <script type="text/javascript">
             document.getElementById('name').appendChild(document.createTextNode(res.data));
             function backPage(){
