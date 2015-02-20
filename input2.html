@@ -310,8 +310,7 @@
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li><a href="javascript:return false">Фільтри</a></li>
-                    <li id="cabinet-element"><a href="office.html">Кабінет</a> </li>
+                    <li><a href="javascript:showModalTry()">Фільтри</a></li>
                     <li><a href="info.html">Інфо</a></li>
 
                 </ul>
@@ -319,7 +318,7 @@
                 <ul class="nav navbar-nav navbar-right" style="z-index: 50;">
                     <li id="usr_menu" class="dropdown"><a href="javascript: dropdownToggle(document.getElementById('usr_menu'))" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="padding: 0px"><span id="name">Профіль</span><span class="caret" style="margin-right: 5px"></span></a>
                         <ul id="drop-menu" class="dropdown-menu" role="menu">
-                            <li><a href="javascript:showSettings()">Налаштування</a></li>
+                            <li><a href="office.html">Кабінет</a></li>
                             <li class="divider"></li>
                             <li><a href="#" onclick="logout(); document.location='info.html'">Вихід</a></li>
                         </ul>
@@ -333,11 +332,11 @@
     <a name="start"></a>
 
     <div id="container" onclick="hideDropdown()">
-        <div id="wrapper2" style="float: left; width: 1050px; margin-left: 5px;">
+        <div id="wrapper2" style="text-align: center">
 
             <a name="start"></a>
 
-            <table class="table table-bordered table-striped table-hover" id="inp-table">
+            <table class="table table-bordered table-striped table-hover" id="inp-table" style="width: 100%">
                 <thead>
                 <tr>
                     <th data-type="number">№ <i class="fa"></i></th>
@@ -352,9 +351,9 @@
                 <tbody id="myList">~H~</tbody>
             </table>
             <a name="end"></a>
-            <div class="knopka">
-                <a id="goTop" href="#start" class="knopkaOut" style="float:left;">Вгору</a>
-                <a id="loadMore" class="knopkaOut" style="float:left; clear:both;">Відобразити ще 10</a>
+            <div>
+                <a id="goTop" href="#start" class="btn btn-default">Вгору</a>
+                <a id="loadMore" class="btn btn-default">Відобразити ще 10</a>
             </div>
         </div>
     </div>
@@ -364,7 +363,6 @@
         else
         {
             document.getElementById('drop-menu').innerHTML= '<li><a href="javascript:showModalSign()" id = "enter">Вхід</a></li><li class="divider"></li><li><a href="javascript:showModalSignUp()">Реєстрація</a></li>';
-            document.getElementById('cabinet-element').style.display = 'none';
         }
         document.getElementById('drop-menu').style.width = document.getElementById('usr_menu').style.width;
         function backPage(){
