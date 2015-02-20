@@ -6,12 +6,10 @@ function dropdownToggle(obj)
     if (obj.className == "dropdown")
     {
         obj.className = "dropdown open";
-        return false;
     }
     else
     {
         obj.className = "dropdown";
-        return false;
     }
 }
 

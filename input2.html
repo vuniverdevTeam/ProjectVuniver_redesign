@@ -10,10 +10,91 @@
     <script src="script/auth.js"></script>
     <script src="script/To_link_js.js"></script>
     <script type="text/javascript" src = "script/check_auth.js"></script>
-
+    <script type="text/javascript" src = "script/drop_usr_controller.js"></script>
+    <link href="style/office.css" type="text/css" rel="stylesheet"/>
 
 </head>
 <body>
+
+    <form method="GET" onsubmit="commit();return false">
+        <div id = "setTing" class="modal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" onclick="hideSettings()" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4 class="modal-title">Налаштування</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p><div class="calculation">
+                        <div class="pricing-table">
+                            <h3>Введіть бали по ЗНО</h3>
+
+                            <ul class="Point">
+                                <li id="AT">
+                                    <div id="AT-1">
+                                        <select class="form-control input-sm">
+                                            <option selected="selected" disabled="disabled">Атестат</option>
+                                        </select>
+                                    </div>
+                                    <div id="AT-2">
+                                        <input class="form-control input-sm" type="number" name="mark5" id="save-m5" max="200" min="1" required="required" step="any" placeholder="100...200">
+                                    </div>
+                                </li>
+
+                                <li class="contein-subjects">
+                                    <div  class="inline">
+                                        <select class="form-control input-sm" class="section" size="1" id="save-sub1" onfocus="Retur('save-sub1')"><option value="0">Українська мова і література</option></select>
+                                    </div>
+                                    <div  class="inline">
+                                        <input class="form-control input-sm" type="number" name="mark1" id="save-m1" max="200" min="100" required="required" step="any" placeholder="100...200">
+                                    </div>
+                                </li>
+                                <li class="contein-subjects">
+                                    <div  class="inline">
+                                        <select class="form-control input-sm" name="sub2" id="save-sub2" size="1" onfocus="Retur('save-sub2');" required="required" onchange="show_hide('apDiv1'); clear2();"><option value="" style="display: none;">--виберіть предмет--</option><option value="">--виберіть предмет--</option><option value="0">Українська мова і література</option><option value="1">Математика</option><option value="2">Історія України</option><option value="3">Біологія</option><option value="4">Географія</option><option value="5">Фізика</option><option value="6">Хімія</option><option value="7">Англійська мова</option><option value="8">Іспанська мова</option><option value="9">Німецька мова</option><option value="10">Російська мова</option><option value="11">Французька мова</option></select>
+                                    </div>
+                                    <div class="inline">
+                                        <input class="form-control input-sm" type="number" name="mark2" id="save-m2" max="200" min="100" required="required" step="any" placeholder="100...200">
+                                    </div>
+                                </li>
+                                <li class="contein-subjects" id="apDiv1" visibility:="" hidden="">
+                                    <div  class="inline">
+                                        <!--<label for="sub3">3:</label>-->
+                                        <select class="form-control input-sm" name="sub3" id="save-sub3" size="1" onfocus="Retur('save-sub3'); " onchange="show_hide('apDiv2'); clear2();"><option value="" style="display: none;">--виберіть предмет--</option><option value="">--виберіть предмет--</option><option value="0">Українська мова і література</option><option value="1">Математика</option><option value="2">Історія України</option><option value="3">Біологія</option><option value="4">Географія</option><option value="5">Фізика</option><option value="6">Хімія</option><option value="7">Англійська мова</option><option value="8">Іспанська мова</option><option value="9">Німецька мова</option><option value="10">Російська мова</option><option value="11">Французька мова</option></select>
+                                    </div>
+                                    <div class="inline">
+                                        <input class="form-control input-sm" type="number" name="mark3" id="save-m3" max="200" min="100" step="any" placeholder="100...200">
+                                    </div>
+                                    <!--<a class="but" id="plus2" onClick=" show_hide('apDiv2'); show_hideUn('plus2'); show_hideUn('minus1');"><div class="plus"></div></a>
+                                    <a class="but" id="minus1" onClick="show_hide('plus1'); show_hideUn('apDiv1');"><div class="minus" ></div></a>-->
+                                </li>
+                                <li class="contein-subjects" id="apDiv2" visibility:="" hidden="">
+                                    <div  class="inline">
+                                        <!--<label for="sub4">4:</label>-->
+                                        <select class="form-control input-sm" name="sub4" id="save-sub4" size="1" onfocus="Retur('save-sub4')"><option value="" style="display: none;">--виберіть предмет--</option><option value="">--виберіть предмет--</option><option value="0">Українська мова і література</option><option value="1">Математика</option><option value="2">Історія України</option><option value="3">Біологія</option><option value="4">Географія</option><option value="5">Фізика</option><option value="6">Хімія</option><option value="7">Англійська мова</option><option value="8">Іспанська мова</option><option value="9">Німецька мова</option><option value="10">Російська мова</option><option value="11">Французька мова</option></select>
+                                    </div>
+                                    <div class="inline">
+                                        <input class="form-control input-sm" type="number" name="mark4" id="save-m4" max="200" min="100" step="any" placeholder="100...200">
+                                    </div>
+                                    <!--<a class="but" id="minus2" onClick="show_hideUn('apDiv2'); show_hide('apDiv1'); show_hide('plus2'); show_hide('minus1');"><div class="minus"></div></a>-->
+                                </li>
+                            </ul>
+
+                        </div>
+
+                    </div></p>
+                    </div>
+                    <div class="modal-footer">
+
+                        <button type="button" class="btn btn-default" onclick="hideSettings()" data-dismiss="modal">Відмінити</button>
+                        <input type="submit" class="btn btn-primary" value = "Зберегти"/>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </form>
 
     <div id="message" hidden="hidden">
         <h2 style="color: #faf3b7">Зачекайте, поки будуть готові результати</h2>
@@ -46,11 +127,11 @@
                         <div class="input">
                             <input placeholder="Підтвердіть пароль" class="form-control" id="password2" required="required" name="password2" type="password" oninput="validatePassword()">
                         </div>
-                        <div class="alert alert-danger" id="validationmessage" style="display: none; font-size: 12px;"></div>
+                        <div class="alert alert-danger" id="validationmessage" style="display: none; font-size: 12px; margin: 15px;"></div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" id="button-register" data-dismiss="modal" onclick="hideModalSignUp()">Назад</button>
-                        <button type="submit" class="btn btn-primary">Зареєструватися</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal" onclick="hideModalSignUp()">Назад</button>
+                        <button type="submit" class="btn btn-primary"  id="button-register">Зареєструватися</button>
                     </div>
                 </div>
             </div>
@@ -215,7 +296,7 @@
         </div>
     </div>
 
-    <div class="navbar navbar-default" style="position: fixed; width: 100%;">
+    <nav class="navbar navbar-default" style="position: fixed; width: 100%;">
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -229,42 +310,66 @@
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li><a href="javascript:showModalTry()">Розрахунок ймовірності</a></li>
-                    <li><a href="javascript:showModalSign()" id = "enter">Вхід</a></li>
-                    <li><a href="javascript:showModalSignUp()">Реєстрація</a></li>
-                    <li><a href = "#" id = "name"></a></li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="javascript:return false">Фільтри</a></li>
+                    <li id="cabinet-element"><a href="office.html">Кабінет</a> </li>
                     <li><a href="info.html">Інфо</a></li>
+
                 </ul>
+
+                <ul class="nav navbar-nav navbar-right" style="z-index: 50;">
+                    <li id="usr_menu" class="dropdown"><a href="javascript: dropdownToggle(document.getElementById('usr_menu'))" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="padding: 0px"><span id="name">Профіль</span><span class="caret" style="margin-right: 5px"></span></a>
+                        <ul id="drop-menu" class="dropdown-menu" role="menu">
+                            <li><a href="javascript:showSettings()">Налаштування</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#" onclick="logout(); document.location='info.html'">Вихід</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div style="height: 50px"></div>
+
+    <a name="start"></a>
+
+    <div id="container" onclick="hideDropdown()">
+        <div id="wrapper2" style="float: left; width: 1050px; margin-left: 5px;">
+
+            <a name="start"></a>
+
+            <table class="table table-bordered table-striped table-hover" id="inp-table">
+                <thead>
+                <tr>
+                    <th data-type="number">№ <i class="fa"></i></th>
+                    <th data-type="number" id="fa-sort-down">Бюджет <i class="fa"></i></th>
+                    <th data-type="number">Контракт <i class="fa"></i></th>
+                    <th data-type="string">Університет <i class="fa"></i></th>
+                    <th data-type="string">Факультет <i class="fa"></i></th>
+                    <th data-type="string">Спеціальність <i class="fa"></i></th>
+                </tr>
+                </thead>
+
+                <tbody id="myList">~H~</tbody>
+            </table>
+            <a name="end"></a>
+            <div class="knopka">
+                <a id="goTop" href="#start" class="knopkaOut" style="float:left;">Вгору</a>
+                <a id="loadMore" class="knopkaOut" style="float:left; clear:both;">Відобразити ще 10</a>
             </div>
         </div>
     </div>
 
-    <div style="height: 50px"></div>
-    <a name="start"></a>
-    <table class="table table-bordered table-striped" id = "inp-table">
-        <thead>
-        <tr>
-            <th>№</th>
-            <th class="budg">Бюджет</th>
-            <th class="contr">Контракт</th>
-            <th>Університет</th>
-            <th>Факультет</th>
-            <th>Спеціальність</th>
-        </tr>
-        </thead>
-        <tbody id="myList">
-        ~H~
-        </tbody>
-
-
-    </table>
-    <a name="end"></a>
-    <div style="text-align: center">
-        <a class="btn btn-default" id = "goTop" href = "#start">Вгору</a>
-        <div style="height: 10px"></div>
-        <a class="btn btn-default" id = "loadMore" style="clear:both;">Відобразити ще 10</a>
-    </div>
+    <script type="text/javascript">
+        if(checkAuth().isAuth) document.getElementById('name').innerHTML = checkAuth().data;
+        else
+        {
+            document.getElementById('drop-menu').innerHTML= '<li><a href="javascript:showModalSign()" id = "enter">Вхід</a></li><li class="divider"></li><li><a href="javascript:showModalSignUp()">Реєстрація</a></li>';
+            document.getElementById('cabinet-element').style.display = 'none';
+        }
+        document.getElementById('drop-menu').style.width = document.getElementById('usr_menu').style.width;
+        function backPage(){
+            history.back();
+        }
+    </script>
 </body>
 </html>

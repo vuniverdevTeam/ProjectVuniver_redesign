@@ -29,7 +29,7 @@ window.onload = function () {
 				document.getElementById('name').appendChild(document.createTextNode('Ви увійшли як: ' + ch.data));
         if(document.getElementById('auth_open')) {
             document.getElementById('auth_open').firstChild.innerHTML = 'Кабінет';
-            document.getElementById('auth_open').href = '../project ISM/cabinet.html';
+            document.getElementById('auth_open').href = '../project ISM/office.html';
             document.getElementById('auth_open').id = 'auth_close';
         }
         if(document.getElementById('registration')) {

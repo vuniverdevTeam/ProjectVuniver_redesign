@@ -12,12 +12,10 @@ if(document.location.search != '') {
         d.setTime(d.getTime() + 180*1000);
         d = d.toUTCString();
         document.cookie = xhrConfirm.responseText + '; path=/; expires=' + d;
-        document.location.replace("cabinet.html");
+        document.location.replace("office.html");
     }
-    else document.location.replace("index.html");
 }
-res = checkAuth();
-if (!res.isAuth) document.location.replace("index.html");
+
 
 function checkAuth() {
     var xhr = new XMLHttpRequest();
@@ -41,22 +39,21 @@ function checkAuth() {
 
 window.onload = function() {
     //
-
     var xhr5 = new XMLHttpRequest();
     xhr5.open('POST', 'http://alex.inet-tech.org.ua/cgi-bin/SELECT_objects.cpp.o', false);
     var id = checkAuth();
     xhr5.send(id['field']);
     var date = eval('('+xhr5.responseText+')');//Вот тут лежат оценки и предметы в таком порядке: атестат(оценка), укр мова(оценка), предмет2, оценка2, предмет3,оценка3, предмет4, оценка4.
     clear();
-    var subj1 = document.getElementById('sub1');
-    var numb1 = document.getElementById('m1');
-    var subj2 = document.getElementById('sub2');
-    var numb2 = document.getElementById('m2');
-    var subj3 = document.getElementById('sub3');
-    var numb3 = document.getElementById('m3');
-    var subj4 = document.getElementById('sub4');
-    var numb4 = document.getElementById('m4');
-    var numb5 = document.getElementById('m5');
+    var subj1 = document.getElementById('save-sub1');
+    var numb1 = document.getElementById('save-m1');
+    var subj2 = document.getElementById('save-sub2');
+    var numb2 = document.getElementById('save-m2');
+    var subj3 = document.getElementById('save-sub3');
+    var numb3 = document.getElementById('save-m3');
+    var subj4 = document.getElementById('save-sub4');
+    var numb4 = document.getElementById('save-m4');
+    var numb5 = document.getElementById('save-m5');
     while(subj1.childNodes.length > 0){
         subj1.removeChild(subj1.childNodes[subj1.childNodes.length-1]);
     }
@@ -73,7 +70,7 @@ window.onload = function() {
     {
         if(date.marks[4] == '' || date.marks[4] == 0)
         {
-            getElements('sub4');
+            getElements('save-sub4');
             show_hide('apDiv1');
             show_hide('apDiv2');
         }
@@ -211,17 +208,17 @@ window.onload = function() {
 
 var commit = function()
 {
-    var subj1 = document.getElementById('sub1').value;
-    var numb1 = document.getElementById('m1').value;
-    var subj2 = document.getElementById('sub2').value;
-    var numb2 = document.getElementById('m2').value;
-    var subj3 = document.getElementById('sub3').value;
-    var numb3 = document.getElementById('m3').value;
-    var subj4 = document.getElementById('sub4').value;
-    var numb4 = document.getElementById('m4').value;
+    var subj1 = document.getElementById('save-sub1').value;
+    var numb1 = document.getElementById('save-m1').value;
+    var subj2 = document.getElementById('save-sub2').value;
+    var numb2 = document.getElementById('save-m2').value;
+    var subj3 = document.getElementById('save-sub3').value;
+    var numb3 = document.getElementById('save-m3').value;
+    var subj4 = document.getElementById('save-sub4').value;
+    var numb4 = document.getElementById('save-m4').value;
 		if(subj3 == '') numb3='0';		
 		if(subj4 == '') numb4='0';
-    var numb5 = document.getElementById('m5').value;
+    var numb5 = document.getElementById('save-m5').value;
     var xhr5 = new XMLHttpRequest();
     xhr5.open('POST', 'http://alex.inet-tech.org.ua/cgi-bin/saveMarks.cpp.o', false);
     var id = checkAuth();

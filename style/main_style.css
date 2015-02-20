@@ -16,7 +16,7 @@
 {
     top: 500px;
     margin-top: -500px;
-    padding-top: 400px;
+    padding-top: 20%;
     text-align: center;
     width: 100%;
     height: 100%;
@@ -264,4 +264,17 @@ select{
 #selected div select{
     width: 332px;
     display: inline-block;
+}
+.fa {
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+}
+#inp-table thead {
+    cursor: pointer;
+    white-space: pre;
+}
+#container
+{
+    min-height: 80vh;
 }

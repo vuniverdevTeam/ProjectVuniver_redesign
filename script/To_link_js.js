@@ -67,13 +67,13 @@ function clear2(){
     if(el2.value == ""){
         show_hideUn('apDiv1');
         show_hideUn('apDiv2');
-        getElements('sub3');
-        getElements('sub4');
+        getElements('save-sub3');
+        getElements('save-sub4');
     }
     else
     if(el3.value== ""){
         show_hideUn('apDiv2');
-        getElements('sub4');
+        getElements('save-sub4');
     }
 
 }
@@ -155,15 +155,15 @@ function labelClick(r) {
 
 function getElementsSave()
 {
-    var subj1 = document.getElementById('sub1');
-    var numb1 = document.getElementById('m1');
-    var subj2 = document.getElementById('sub2');
-    var numb2 = document.getElementById('m2');
-    var subj3 = document.getElementById('sub3');
-    var numb3 = document.getElementById('m3');
-    var subj4 = document.getElementById('sub4');
-    var numb4 = document.getElementById('m4');
-    var numb5 = document.getElementById('m5');
+    var subj1 = document.getElementById('save-sub1');
+    var numb1 = document.getElementById('save-m1');
+    var subj2 = document.getElementById('save-sub2');
+    var numb2 = document.getElementById('save-m2');
+    var subj3 = document.getElementById('save-sub3');
+    var numb3 = document.getElementById('save-m3');
+    var subj4 = document.getElementById('save-sub4');
+    var numb4 = document.getElementById('save-m4');
+    var numb5 = document.getElementById('save-m5');
     while(subj1.childNodes.length > 0){
         subj1.removeChild(subj1.childNodes[subj1.childNodes.length-1]);
     }
@@ -181,7 +181,7 @@ function getElementsSave()
     {
         if(restoreData.marks[4] == '')
         {
-            getElements('sub4');
+            getElements('save-sub4');
             show_hide('apDiv1');
             show_hide('apDiv2');
         }
@@ -252,7 +252,7 @@ window.onload = function () {
         document.getElementById('name').appendChild(document.createTextNode(ch.data));
         if(document.getElementById('enter')) {
             document.getElementById('auth_open').firstChild.innerHTML = 'Кабінет';
-            document.getElementById('auth_open').href = '../project ISM/cabinet.html';
+            document.getElementById('auth_open').href = '../project ISM/office.html';
             document.getElementById('auth_open').id = 'auth_close';
         }
         if(document.getElementById('registration')) {
@@ -269,10 +269,10 @@ window.onload = function () {
     }
     else
     {
-        getElements('sub1');
-        getElements('sub2');
-        getElements('sub3');
-        getElements('sub4');
+        getElements('save-sub1');
+        getElements('save-sub2');
+        getElements('save-sub3');
+        getElements('save-sub4');
     }
     labelClick('Label');
     //області:
@@ -652,15 +652,15 @@ function restoreCabinetData(){
         xhr5.send(id['field']);
         var date = eval('('+xhr5.responseText+')');//Вот тут лежат оценки и предметы в таком порядке: атестат(оценка), укр мова(оценка), предмет2, оценка2, предмет3,оценка3, предмет4, оценка4.
         clear();
-        var subj1 = document.getElementById('sub1');
-        var numb1 = document.getElementById('m1');
-        var subj2 = document.getElementById('sub2');
-        var numb2 = document.getElementById('m2');
-        var subj3 = document.getElementById('sub3');
-        var numb3 = document.getElementById('m3');
-        var subj4 = document.getElementById('sub4');
-        var numb4 = document.getElementById('m4');
-        var numb5 = document.getElementById('m5');
+        var subj1 = document.getElementById('save-sub1');
+        var numb1 = document.getElementById('save-m1');
+        var subj2 = document.getElementById('save-sub2');
+        var numb2 = document.getElementById('save-m2');
+        var subj3 = document.getElementById('save-sub3');
+        var numb3 = document.getElementById('save-m3');
+        var subj4 = document.getElementById('save-sub4');
+        var numb4 = document.getElementById('save-m4');
+        var numb5 = document.getElementById('save-m5');
         while(subj1.childNodes.length > 0){
             subj1.removeChild(subj1.childNodes[subj1.childNodes.length-1]);
         }
@@ -677,7 +677,7 @@ function restoreCabinetData(){
         {
             if(date.marks[4] == '' || date.marks[4] == 0)
             {
-                getElements('sub4');
+                getElements('save-sub4');
                 show_hide('apDiv1');
                 show_hide('apDiv2');
             }

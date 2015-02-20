@@ -41,7 +41,7 @@ function showAlert(message, field)
         }
     }
     document.getElementById('validationmessage').style.display="block";
-    document.getElementById('button-register').style.visibility="hidden";
+    document.getElementById('button-register').className="btn btn-primary disabled";
     return false;
 }
 
@@ -57,7 +57,7 @@ function isPasswordsNotEqualZero()
 
 function validatePassword()
 {
-    document.getElementById('button-register').style.visibility = "visible";
+    document.getElementById('button-register').className="btn btn-primary";
     document.getElementById('validationmessage').style.display="none";
     passwordfield(1).style.borderColor = "lightgray";
     passwordfield(2).style.borderColor = "lightgray";
