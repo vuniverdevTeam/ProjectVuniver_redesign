@@ -13,6 +13,13 @@
 </head>
 <body style="background-color: #fff">
 
+    <script type="text/javascript">
+        if (checkAuth().isAuth)
+        {
+            document.location="office.html";
+        }
+    </script>
+
     <div id="message" hidden="hidden">
         <h2 style="color: #faf3b7">Зачекайте, поки будуть готові результати</h2>
         <h4 style="color: #faf3b7">Середній час обчислення 8с</h4>
