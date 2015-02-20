@@ -1,13 +1,13 @@
 @-moz-document url-prefix() {
-    select {
-        position: relative;
-        top: -11px;
-    }
-    #moz-fix-h3
-    {
-        margin-bottom: 0px;
-    }
-}
+     select {
+         position: relative;
+         top: -11px;
+     }
+     #moz-fix-h3
+     {
+         margin-bottom: 0px;
+     }
+ }
 .input
 {
     margin: 15px;
@@ -169,7 +169,7 @@ padding: 0;
 list-style: none;
 }
 .pricing-table li {
-padding: 5px 2px;
+padding: 2px;
 }
 
 .conteinFormulas
@@ -192,7 +192,7 @@ height: auto;
     width: 100%;
     clear: both;
     float: left;
-    padding: 10px;
+    padding: 4px;
 }
 #AT-2, .field{
 width: auto;
@@ -264,11 +264,4 @@ select{
 #selected div select{
     width: 332px;
     display: inline-block;
-}
-
-#name
-{
-    margin-left: 250px;
-    line-height: 50px;
-    color: #ffffff;
 }
