@@ -5,10 +5,11 @@
     <title></title>
     <link href="style/bootstrap.css" rel="stylesheet" type="text/css"/>
     <link href="style/main_style.css" rel="stylesheet" type="text/css"/>
-
-    <script src="script/landingModal.js"></script>
-    <script src="script/To_link_js.js"></script>
-    <script src="script/auth.js"></script>
+    <link href="style/office.css" rel = "stylesheet" type ="text/css"/>
+    <script type="text/javascript" src = "script/drop_usr_controller.js"></script>
+    <script type="text/javascript" src="script/landingModal.js"></script>
+    <script type="text/javascript" src="script/To_link_js.js"></script>
+    <script type="text/javascript" src="script/auth.js"></script>
     <script type="text/javascript" src = "script/check_auth.js"></script>
 </head>
 <body>
@@ -214,101 +215,116 @@
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li><a href="javascript:showModalTry()" >Розрахунок ймовірності</a></li>
-                    <li><a href="javascript:showModalSign()" >Вхід</a></li>
-                    <li><a href="javascript:showModalSignUp()" >Реєстрація</a></li>
-                    <li><span id = "name">Ви увійшли як: </span></li>
+                    <li><a href="javascript:return false">Розрахунок ймовірності</a></li>
+                    <li><a href="office.html">Кабінет</a> </li>
+                    <li class="active"><a href="info.html">Інфо</a></li>
+
                 </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="javascript:history.back()">Назад</a></li>
+
+                <ul class="nav navbar-nav navbar-right" style="z-index: 50;">
+                    <li id="usr_menu" class="dropdown" onclick="dropdownToggle(document.getElementById('usr_menu'))"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="padding: 0px"><span id="name">Профіль</span><span class="caret" style="margin-right: 5px"></span></a>
+                        <ul id="drop-menu" class="dropdown-menu" role="menu">
+                            <li><a href="javascript:showSettings()">Налаштування</a></li>
+                            <li class="divider"></li>
+                            <li><a href="input2.html" onclick = "logout()">Вихід</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </div>
     </nav>
-
     <div style="height: 50px"></div>
 
-    <div id="betaMethod" style="margin: 0 auto; width: 900px;">
-        <h3>Вступ</h3>
-        <p>Даний ресурс дає змогу розрахувати ймовірність вступу абітурієнта в вищий навчальний заклад України.
-            Розрахунок ймовірності вступу абітурієнта відбувається з врахуванням прохідних балів минулих років на контракт та на бюджет.
-            Дані про прохідні бали при вступі в університети України за минулі роки доступні на сайті <a href="http://abit-poisk.org.ua/score">abit-poisk.org.ua/score</a>.
-            Сам розрахунок ведеться за допомогою методу бета-розподілу.
-        </p>
-        <h3>Приклад розрахунку</h3>
-        <p>Наприклад, в цьому році абітурієнт отримав за ЗНО з математики – 153 бали, з української мови – 167 балів , а середній бал його атестату – 171.
-            Коефіцієнти, які встановлені правилами прийому у певний університет – 0.4, 0.4 та 0.2 відповідно.
-            Тоді набраний бал абітурієнта при вступі до цього університету:
-        </p>
-        <p class="left-0">Середній бал = 0.4*153+0.4*167+0.2*171=<strong>162.2</strong>.</p>
-        <p>Нехай за минулі роки прохідний бал в цей університет мав наступні значення:</p>
-        <div class="conteinFormulas">
-            <table class="years" rules="all" style="width: 100%">
-                <tbody><tr class="hat-table">
-                    <td>Рік</td>
-                    <td>2004</td>
-                    <td>2005</td>
-                    <td>2006</td>
-                    <td>2007</td>
-                    <td>2008</td>
-                    <td>2009</td>
-                    <td>2010</td>
-                    <td>2011</td>
-                    <td>2012</td>
-                    <td>2013</td>
-                    <!--<td>2014</td>-->
-                </tr>
-                <tr>
-                    <td>Прохідний бал</td>
-                    <td>161</td>
-                    <td>129</td>
-                    <td>150</td>
-                    <td>137</td>
-                    <td>149</td>
-                    <td>143</td>
-                    <td>157</td>
-                    <td>149</td>
-                    <td>171</td>
-                    <td>161</td>
-                </tr>
-                </tbody></table>
+    <div id="container"  onclick="hideDropdown()">
+
+        <div id="betaMethod" style="margin: 0 auto; width: 900px;">
+            <h3>Вступ</h3>
+            <p>Даний ресурс дає змогу розрахувати ймовірність вступу абітурієнта в вищий навчальний заклад України.
+                Розрахунок ймовірності вступу абітурієнта відбувається з врахуванням прохідних балів минулих років на контракт та на бюджет.
+                Дані про прохідні бали при вступі в університети України за минулі роки доступні на сайті <a href="http://abit-poisk.org.ua/score">abit-poisk.org.ua/score</a>.
+                Сам розрахунок ведеться за допомогою методу бета-розподілу.
+            </p>
+            <h3>Приклад розрахунку</h3>
+            <p>Наприклад, в цьому році абітурієнт отримав за ЗНО з математики – 153 бали, з української мови – 167 балів , а середній бал його атестату – 171.
+                Коефіцієнти, які встановлені правилами прийому у певний університет – 0.4, 0.4 та 0.2 відповідно.
+                Тоді набраний бал абітурієнта при вступі до цього університету:
+            </p>
+            <p class="left-0">Середній бал = 0.4*153+0.4*167+0.2*171=<strong>162.2</strong>.</p>
+            <p>Нехай за минулі роки прохідний бал в цей університет мав наступні значення:</p>
+            <div class="conteinFormulas">
+                <table class="years" rules="all" style="width: 100%">
+                    <tbody><tr class="hat-table">
+                        <td>Рік</td>
+                        <td>2004</td>
+                        <td>2005</td>
+                        <td>2006</td>
+                        <td>2007</td>
+                        <td>2008</td>
+                        <td>2009</td>
+                        <td>2010</td>
+                        <td>2011</td>
+                        <td>2012</td>
+                        <td>2013</td>
+                        <!--<td>2014</td>-->
+                    </tr>
+                    <tr>
+                        <td>Прохідний бал</td>
+                        <td>161</td>
+                        <td>129</td>
+                        <td>150</td>
+                        <td>137</td>
+                        <td>149</td>
+                        <td>143</td>
+                        <td>157</td>
+                        <td>149</td>
+                        <td>171</td>
+                        <td>161</td>
+                    </tr>
+                    </tbody></table>
+            </div>
+            <br/>
+            <p>Давайте порахуємо, яка ймовірність того, що наш абітурієнт вступить до цього університету.</p>
+            <p>З таблиці видно, що прохідний бал є певною випадковою величиною.
+                Для того, щоб обрахувати ймовірність вступу, треба побудувати функцію розподілу ймовірностей для цієї випадкової величини.
+                Ми обрали для цього бета-розподіл, який відрізняється більшою гнучкістю порівняно з традиційним нормальним розподілом, і краще підходить для нашого випадку.
+                Детальніше про бета-розподіл можна почитати за цим посиланням: <a href="http://habrahabr.ru/post/172101/">habrahabr.ru</a></p>
+            <p class="conteinGrafics"><img style="float: right" src="res/grafics-calculate.png" alt="" width="450px"></p>
+            <p class="left-0">Порахувавши коефіцієнти бета-розподілу (для нашого випадку α= 7.7095, β= 7.4966), будуємо графік розподілу та рахуємо ймовірність вступу нашого абітурієнта
+                (для цього візьмемо  визначений інтеграл функції розподілу на проміжку від 100 до 162,2 (набраний бал нашого абітурієнта)).
+                Отримаємо 0,76 – тобто ймовірність поступити з таким балом у цей вуз складає 76 відсотків.
+            </p>
+            <br/>
+
+            <h3>Розрахунок ймовірності</h3>
+            <p>Значення прохідного балу при вступі на напрям Х деякого університету Y розглядалося як випадкова величина з бета-розподілом. Бета-розподіл визначений на відрізку [0, 1]
+                та параметризований двома додатніми параметрами, які позначаються α і β. Цей розподіл зручний для моделювання поведінки випадкових величин, які обмежені інтервалом скінченної довжини.
+            </p>
+            <p>Щільність бета-розподілу задається формулою:</p>
+            <p class="conteinFormulas"><img src="res/beta-forms.png" alt="" width="600px"></p>
+            <p>Параметри α и β пов’язані з математичним сподіванням M і дисперсією D за допомогою формул:</p>
+
+
+            <p class="conteinFormulas"><img src="res/alfa&amp;beta.png" alt="" width="470px"></p>
+
+            <p>Оцінюємо математичне сподівання M та дисперсію D як середнє значення прохідного балу протягом минулих вступних
+                кампаній та усереднене значення квадрату відхилення від середнього значення відповідно:</p>
+
+            <p class="conteinFormulas"><img src="res/M&amp;D.png" alt="" width="350px"></p>
+            <p>Де Bal(i) – прохідний бал у i-му році, n – кількість років спостереження прохідних балів.
+                Тоді ймовірність вступу визначається як:
+            </p>
+            <p class="conteinFormulas"><img src="res/bal.png" alt="" width="340px"></p>
+            <p>Де Bal – бал, набраний абітурієнтом у поточному році.</p>
+            <br>
+
         </div>
-        <br/>
-        <p>Давайте порахуємо, яка ймовірність того, що наш абітурієнт вступить до цього університету.</p>
-        <p>З таблиці видно, що прохідний бал є певною випадковою величиною.
-            Для того, щоб обрахувати ймовірність вступу, треба побудувати функцію розподілу ймовірностей для цієї випадкової величини.
-            Ми обрали для цього бета-розподіл, який відрізняється більшою гнучкістю порівняно з традиційним нормальним розподілом, і краще підходить для нашого випадку.
-            Детальніше про бета-розподіл можна почитати за цим посиланням: <a href="http://habrahabr.ru/post/172101/">habrahabr.ru</a></p>
-        <p class="conteinGrafics"><img style="float: right" src="res/grafics-calculate.png" alt="" width="450px"></p>
-        <p class="left-0">Порахувавши коефіцієнти бета-розподілу (для нашого випадку α= 7.7095, β= 7.4966), будуємо графік розподілу та рахуємо ймовірність вступу нашого абітурієнта
-            (для цього візьмемо  визначений інтеграл функції розподілу на проміжку від 100 до 162,2 (набраний бал нашого абітурієнта)).
-            Отримаємо 0,76 – тобто ймовірність поступити з таким балом у цей вуз складає 76 відсотків.
-        </p>
-        <br/>
-
-        <h3>Розрахунок ймовірності</h3>
-        <p>Значення прохідного балу при вступі на напрям Х деякого університету Y розглядалося як випадкова величина з бета-розподілом. Бета-розподіл визначений на відрізку [0, 1]
-            та параметризований двома додатніми параметрами, які позначаються α і β. Цей розподіл зручний для моделювання поведінки випадкових величин, які обмежені інтервалом скінченної довжини.
-        </p>
-        <p>Щільність бета-розподілу задається формулою:</p>
-        <p class="conteinFormulas"><img src="res/beta-forms.png" alt="" width="600px"></p>
-        <p>Параметри α и β пов’язані з математичним сподіванням M і дисперсією D за допомогою формул:</p>
-
-
-        <p class="conteinFormulas"><img src="res/alfa&amp;beta.png" alt="" width="470px"></p>
-
-        <p>Оцінюємо математичне сподівання M та дисперсію D як середнє значення прохідного балу протягом минулих вступних
-            кампаній та усереднене значення квадрату відхилення від середнього значення відповідно:</p>
-
-        <p class="conteinFormulas"><img src="res/M&amp;D.png" alt="" width="350px"></p>
-        <p>Де Bal(i) – прохідний бал у i-му році, n – кількість років спостереження прохідних балів.
-            Тоді ймовірність вступу визначається як:
-        </p>
-        <p class="conteinFormulas"><img src="res/bal.png" alt="" width="340px"></p>
-        <p>Де Bal – бал, набраний абітурієнтом у поточному році.</p>
-        <br>
-
     </div>
-
+    <script type="text/javascript">
+        document.getElementById('name').innerHTML = checkAuth().data;
+        document.getElementById('drop-menu').style.width = document.getElementById('usr_menu').style.width;
+        function backPage(){
+            history.back();
+        }
+    </script>
 </body>
 </html>

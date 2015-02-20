@@ -249,7 +249,7 @@ window.onload = function () {
 
     ch = checkAuth();
     if(ch.isAuth) {
-        document.getElementById('name').appendChild(document.createTextNode('Ви увійшли як: ' + ch.data));
+        document.getElementById('name').appendChild(document.createTextNode(ch.data));
         if(document.getElementById('enter')) {
             document.getElementById('auth_open').firstChild.innerHTML = 'Кабінет';
             document.getElementById('auth_open').href = '../project ISM/cabinet.html';
