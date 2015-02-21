@@ -157,16 +157,15 @@ window.onload = function() {
             var str1 = str.replace(new RegExp("</td>",'g'),'~');
             values = str1.split('~');
             var id = checkAuth();
+            var xhr = new XMLHttpRequest();
             if(id["isAuth"] != false)
             {
-                var xhr = new XMLHttpRequest();
-                xhr.open('POST', 'http://alex.inet-tech.org.ua/cgi-bin/deleteFav.cpp.o', false);
-                xhr.send('Facult='+values[5]+'&Spec='+values[7]+'&userid='+id['field']);
-
-                var dontdeleteRow = !confirm("Ви впевнені, що бажаєте видалити запис?");
-                if(dontdeleteRow){return;}
-                else {
+                var deleteRow = confirm("Ви впевнені, що бажаєте видалити запис?");
+                if(deleteRow)
+                {
                     event.target.parentNode.parentNode.parentNode.deleteRow(this.parentNode.rowIndex);
+                    xhr.open('POST', 'http://alex.inet-tech.org.ua/cgi-bin/deleteFav.cpp.o', false);
+                    xhr.send('Facult='+values[5]+'&Spec='+values[7]+'&userid='+id['field']);
                 }
 
             }
