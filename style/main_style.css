@@ -278,3 +278,47 @@ select{
 {
     min-height: 80vh;
 }
+
+#main
+{
+    margin: 0 auto;
+    text-align: center;
+    padding-top: 50px;
+}
+
+#U
+{
+    font-size: 40px;
+}
+
+#F
+{
+    font-size: 30px;
+}
+
+#S
+{
+    font-size: 20px;
+}
+
+#main
+{
+    list-style-type: none;
+    text-underline: single;
+    text-underline-color: red;
+}
+
+#main a:hover
+{
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
