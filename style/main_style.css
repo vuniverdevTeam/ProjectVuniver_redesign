@@ -288,12 +288,12 @@ select{
 
 #U
 {
-    font-size: 40px;
+    font-size: 25px;
 }
 
 #F
 {
-    font-size: 30px;
+    font-size: 20px;
 }
 
 #S
@@ -304,13 +304,14 @@ select{
 #main
 {
     list-style-type: none;
-    text-underline: single;
-    text-underline-color: red;
+    margin: 0 auto;
+    text-align: center;
 }
 
 #main a:hover
 {
     cursor: pointer;
+
 }
 
 #chance
