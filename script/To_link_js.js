@@ -209,7 +209,7 @@ function getElementsSave()
     }
     if(restoreData.marks[3] == '')
     {
-        clear2();
+        clearFinder();
         show_hide('apDiv1');
     }
     if(restoreData.marks[4] != '')
