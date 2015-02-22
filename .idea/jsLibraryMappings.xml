@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="JavaScriptLibraryMappings">
-    <file url="PROJECT" libraries="{To_link_js, auth, check_auth, drop_usr_controller, landingModal, passwordValidation, plusF}" />
+    <file url="PROJECT" libraries="{To_link_js, auth, check_auth, drop_usr_controller, jquery-1.7.1, landingModal, modalController, passwordValidation, plusF}" />
   </component>
 </project>

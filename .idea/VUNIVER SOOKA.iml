@@ -11,5 +11,7 @@
     <orderEntry type="library" name="passwordValidation" level="application" />
     <orderEntry type="library" name="landingModal" level="application" />
     <orderEntry type="library" name="plusF" level="application" />
+    <orderEntry type="library" name="jquery-1.7.1" level="application" />
+    <orderEntry type="library" name="modalController" level="application" />
   </component>
 </module>

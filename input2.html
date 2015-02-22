@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <link href="http://alex.inet-tech.org.ua/project%20ISMfdskuhfgdjg/style/bootstrap.css" rel="stylesheet" type="text/css"/>
     <link href="http://alex.inet-tech.org.ua/project%20ISMfdskuhfgdjg/style/main_style.css" rel="stylesheet" type="text/css"/>
-    <script src="http://alex.inet-tech.org.ua/project%20ISMfdskuhfgdjg/script/landingModal.js"></script>
+    <script src="http://alex.inet-tech.org.ua/project%20ISMfdskuhfgdjg/script/modalController.js"></script>
     <script src="http://alex.inet-tech.org.ua/project%20ISMfdskuhfgdjg/script/passwordValidation.js"></script>
     <script src="http://alex.inet-tech.org.ua/project%20ISMfdskuhfgdjg/script/auth.js"></script>
     <script src="http://alex.inet-tech.org.ua/project%20ISMfdskuhfgdjg/script/To_link_js.js"></script>
@@ -16,6 +16,7 @@
     <title>Пошук</title>
     <link rel="icon" href="http://alex.inet-tech.org.ua/project%20ISMfdskuhfgdjg/favicon.ico" type="image/x-icon">
     <link rel="shortcut icon" href="http://alex.inet-tech.org.ua/project%20ISMfdskuhfgdjg/favicon.ico" type="image/x-icon">
+    <script type = "text/javascript" src = "http://alex.inet-tech.org.ua/project%20ISMfdskuhfgdjg/script/jquery-1.7.1.min.js"></script>
 </head>
 <body>
     <div id="message" hidden="hidden">
@@ -37,7 +38,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="hideModalSignUp()">×</button>
-                        <h4 class="modal-title">Введіть ваші дані</h4>
+                        <h4 class="modal-title">Реєстрація</h4>
                     </div>
                     <div class="modal-body">
                         <div class="input">
@@ -52,7 +53,7 @@
                         <div class="alert alert-danger" id="validationmessage" style="display: none; font-size: 12px; margin: 15px;"></div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal" onclick="hideModalSignUp()">Назад</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal" onclick="hideModalSignUp()">Відмінити</button>
                         <button type="submit" class="btn btn-primary"  id="button-register">Зареєструватися</button>
                     </div>
                 </div>
@@ -115,7 +116,13 @@
                                 <li class="contein-subjects" id="apDiv2" visibility:="" hidden="">
                                     <div  class="inline">
                                         <!--<label for="sub4">4:</label>-->
-                                        <select class="form-control input-sm" name="sub4" id="sub4" size="1" onfocus="Retur('sub4')"><option value="" style="display: none;">--виберіть предмет--</option><option value="">--виберіть предмет--</option><option value="0">Українська мова і література</option><option value="1">Математика</option><option value="2">Історія України</option><option value="3">Біологія</option><option value="4">Географія</option><option value="5">Фізика</option><option value="6">Хімія</option><option value="7">Англійська мова</option><option value="8">Іспанська мова</option><option value="9">Німецька мова</option><option value="10">Російська мова</option><option value="11">Французька мова</option></select>
+                                        <select class="form-control input-sm" name="sub4" id="sub4" size="1" onfocus="Retur('sub4')">
+<option value="" style="display: none;">--виберіть предмет--</option>
+<option value="">--виберіть предмет--</option><option value="0">Українська мова і література</option>
+<option value="1">Математика</option><option value="2">Історія України</option><option value="3">Біологія</option>
+<option value="4">Географія</option><option value="5">Фізика</option><option value="6">Хімія</option><option value="7">Англійська мова</option>
+<option value="8">Іспанська мова</option><option value="9">Німецька мова</option><option value="10">Російська мова</option>
+<option value="11">Французька мова</option></select>
                                     </div>
                                     <div class="inline">
                                         <input class="form-control input-sm" type="number" name="mark4" id="m4" max="200" min="100" step="any" placeholder="100...200">
@@ -135,7 +142,7 @@
                                 <li class="contein-subjects">
                                     <!--<label style="width: 100px;" class="input-style" for="option">Область:</label>-->
                                     <div>
-                                        <select class="form-control input-sm" id="option" class="level sel" name="reg" onchange=" clearForm(5); showNames(this.value)"><option selected="selected" value="">--виберіть область--</option><option value="1">Київ</option><option value="2">Севастополь</option><option value="3">АР Крим</option><option value="4">Вінницька область</option><option value="5">Волинська область</option><option value="6">Дніпропетровська область</option><option value="7">Донецька область</option><option value="8">Житомирська область</option><option value="9">Закарпатська область</option><option value="10">Запорізька область</option><option value="11">Івано-Франківська област</option><option value="12">Київська область</option><option value="13">Кіровоградська область</option><option value="14">Луганська область</option><option value="15">Львівська область</option><option value="16">Миколаївська область</option><option value="17">Одеська область</option><option value="18">Полтавська область</option><option value="19">Рівненська область</option><option value="20">Сумська область</option><option value="21">Тернопільська область</option><option value="22">Харківська область</option><option value="23">Херсонська область</option><option value="24">Хмельницька область</option><option value="25">Черкаська область</option><option value="26">Чернівецька область</option><option value="27">Чернігівська область</option><option value="28">Область невідома</option></select>
+                                        <select style=" border-radius: 8px;" id="option" class="level sel" name="reg" onchange=" clearForm(5); showNames(this.value)"><option selected="selected" value="">--виберіть область--</option></select>
                                     </div>
                                 </li>
                                 <li class="contein-subjects">
@@ -159,7 +166,7 @@
                                 <li class="contein-subjects">
                                     <!--<label style="width: 100px;" class="input-style" for="option4">Спеціальність:</label>-->
                                     <div>
-                                        <select class="form-control input-sm" id="option4" class="sel" name="Spec"><option selected="selected" value="">--виберіть спеціальність--</option><option value="1">авіа- та ракетобудування</option><option value="2">авіоніка</option><option value="3">двигуни та енергетичні установки літальних апаратів</option><option value="4">автоматизація та комп’ютерно-інтегровані технології</option><option value="5">системна інженерія</option><option value="6">біомедична інженерія</option><option value="7">біотехнологія</option><option value="8">архітектура</option><option value="9">будівництво</option><option value="10">гідротехніка</option><option value="11">ветеринарна медицина</option><option value="12">видавничо-поліграфічна справа</option><option value="15">охорона та захист державного кордону</option><option value="17">богослов’я</option><option value="18">історія</option><option value="19">філологія</option><option value="20">філософія</option><option value="21">економіка підприємства</option><option value="22">економічна кібернетика</option><option value="23">економічна теорія</option><option value="24">маркетинг</option><option value="25">міжнародна економіка</option><option value="26">облік і аудит</option><option value="27">прикладна статистика</option><option value="28">товарознавство і торговельне підприємництво</option><option value="29">управління персоналом та економіка праці</option><option value="30">фінанси і кредит</option><option value="31">акустотехніка</option><option value="32">електронні пристрої та системи</option><option value="33">мікро- та наноелектроніка</option><option value="34">електромеханіка</option><option value="35">електротехніка та електротехнології</option><option value="36">атомна енергетика</option><option value="37">гідроенергетика</option><option value="38">енергомашинобудування</option><option value="39">теплоенергетика</option><option value="40">видавнича справа та редагування</option><option value="41">журналістика</option><option value="42">реклама і зв’язки з громадськістю</option><option value="43">комп’ютерна інженерія</option><option value="44">комп’ютерні науки</option><option value="45">програмна інженерія</option><option value="46">безпека інформаційних і комунікаційних систем</option><option value="47">системи технічного захисту інформації</option><option value="48">управління інформаційною безпекою</option><option value="49">документознавство та інформаційна діяльність</option><option value="51">культурологія</option><option value="52">менеджмент соціокультурної діяльності</option><option value="53">музейна справа та охорона пам’яток історії та культури</option><option value="54">народна художня творчість</option><option value="55">зварювання</option><option value="56">інженерна механіка</option><option value="57">машинобудування</option><option value="58">прикладна механіка</option><option value="59">лабораторна діагностика</option><option value="60">сестринська справа</option><option value="61">менеджмент</option><option value="62">інженерне матеріалознавство</option><option value="63">ливарне виробництво</option><option value="64">металургія</option><option value="65">метрологія та інформаційно-вимірювальні технології</option><option value="67">оптотехніка</option><option value="68">приладобудування</option><option value="69">декоративно-прикладне мистецтво</option><option value="70">дизайн</option><option value="73">музичне мистецтво</option><option value="74">образотворче мистецтво</option><option value="75">реставрація творів мистецтва</option><option value="76">театральне мистецтво</option><option value="77">фотомистецтво</option><option value="78">хореографія</option><option value="79">країнознавство</option><option value="80">міжнародна інформація</option><option value="81">міжнародне право</option><option value="82">міжнародний бізнес</option><option value="83">міжнародні відносини</option><option value="84">міжнародні економічні відносини</option><option value="85">суднобудування та океанотехніка</option><option value="86">деревооброблювальні технології</option><option value="87">дошкільна освіта</option><option value="88">корекційна освіта</option><option value="89">початкова освіта</option><option value="90">професійна освіта</option><option value="91">соціальна педагогіка</option><option value="92">технологічна освіта</option><option value="93">правознавство</option><option value="94">правоохоронна діяльність</option><option value="95">біологія</option><option value="96">географія</option><option value="97">геологія</option><option value="98">гідрометеорологія</option><option value="100">хімія</option><option value="101">мережі та системи поштового зв’язку</option><option value="102">радіоелектронні апарати</option><option value="103">радіотехніка</option><option value="104">телекомунікації</option><option value="105">водні біоресурси та аквакультура</option><option value="107">гірництво</option><option value="108">нафтогазова справа</option><option value="109">переробка корисних копалин</option><option value="110">інформатика</option><option value="111">прикладна математика</option><option value="112">системний аналіз</option><option value="113">агрономія</option><option value="114">захист рослин</option><option value="115">лісове і садово-паркове господарство</option><option value="116">лісозаготівля</option><option value="117">технологія виробництва і переробки продукції тваринництва</option><option value="118">соціальна допомога</option><option value="119">соціальна робота</option><option value="120">політологія</option><option value="121">практична психологія</option><option value="122">психологія</option><option value="123">соціологія</option><option value="124">готельно-ресторанна справа</option><option value="125">побутове обслуговування</option><option value="126">туризм</option><option value="127">технологія виробів легкої промисловості</option><option value="128">технологія та дизайн текстильних матеріалів</option><option value="129">енергетика та електротехнічні системи в агропромисловому комплексі</option><option value="131">автомобільний транспорт</option><option value="132">аеронавігація</option><option value="133">залізничні споруди та колійне господарство</option><option value="134">морський та річковий транспорт</option><option value="135">обслуговування повітряних суден</option><option value="136">рухомий склад залізниць</option><option value="137">системи забезпечення руху поїздів</option><option value="138">транспортні технології</option><option value="139">фармація</option><option value="140">астрономія</option><option value="141">математика</option><option value="142">механіка</option><option value="143">прикладна фізика</option><option value="144">статистика</option><option value="145">фізика</option><option value="146">здоров’я людини</option><option value="147">спорт</option><option value="148">фізичне виховання</option><option value="149">технологічна експертиза та безпека харчової продукції</option><option value="150">харчові технології та інженерія</option><option value="151">хімічна інженерія</option><option value="152">хімічна технологія</option><option value="153">охорона праці</option><option value="154">пожежна безпека</option><option value="155">цивільний захист</option><option value="311">філологія (англійська)</option><option value="312">філологія (німецька)</option><option value="313">філологія (французька)</option><option value="314">філологія (російська)</option><option value="315">геодезія</option><option value="316">екологія</option></select>
+                                        <select style="border-radius: 8px;" id="option4" class="sel" name="Spec"><option selected="selected" value="">--виберіть спеціальність--</option></select>
                                     </div>
                                 </li>
                             </ul>
@@ -181,7 +188,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="hideModalSign()">×</button>
-                        <h4 class="modal-title">Введіть ваші дані</h4>
+                        <h4 class="modal-title">Вхід</h4>
                     </div>
                     <div class="modal-body">
                         <div class="input">
@@ -194,7 +201,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal" onclick="hideModalSign()">Назад</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal" onclick="hideModalSign()">Відмінити</button>
                         <input class="btn btn-primary" type="submit" value="Вхід">
                     </div>
                 </div>
@@ -207,8 +214,12 @@
             <div class="modal-content">
                 <div style="height: 30px"></div>
                 <div class="modal-body" >
-                    <div class="alert alert-dismissible alert-danger" style="text-align: center">
-                        <span id="dynamic-text"></span>
+                    <div class="alert alert-dismissible alert-danger" id="alert-msg" style="display: none;text-align: center">
+                        <span id="dynamic-text-alert"></span>
+
+                    </div>
+                    <div class="alert alert-dismissible alert-success" id="success-msg" style="display: none;text-align: center">
+                        <span id="dynamic-text-success"></span>
 
                     </div>
                 </div>
@@ -243,7 +254,7 @@
                         <ul id="drop-menu" class="dropdown-menu" role="menu">
                             <li><a href="office.html">Кабінет</a></li>
                             <li class="divider"></li>
-                            <li><a href="#" onclick="logout(); document.location='info.html'">Вихід</a></li>
+                            <li><a href="index.html" onclick="logout();refreshSelf()">Вихід</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -258,7 +269,7 @@
             <table class="table table-bordered table-striped table-hover" id="inp-table" style="width: 100%">
                 <thead>
                 <tr>
-                    <th data-type="number">№ <i class="fa"></i></th>
+                    <th data-type="number">Рейтинг ВНЗ <i class="fa"></i></th>
                     <th data-type="number" id="fa-sort-down">Бюджет <i class="fa"></i></th>
                     <th data-type="number">Контракт <i class="fa"></i></th>
                     <th data-type="string">Університет <i class="fa"></i></th>
@@ -313,11 +324,12 @@
 
 
     <script type="text/javascript">
-        if(checkAuth().isAuth) document.getElementById('name').innerHTML = checkAuth().data;
-        else
+        res = checkAuth();
+        if (!res.isAuth)
         {
-            document.getElementById('drop-menu').innerHTML= '<li><a href="javascript:showModalSign()" id = "enter">Вхід</a></li><li class="divider"></li><li><a href="javascript:showModalSignUp()">Реєстрація</a></li>';
+            document.getElementById('drop-menu').innerHTML= '<li><a href="javascript:showModalSign();hideDropdown()" id = "enter">Вхід</a></li><li class="divider"></li><li><a href="javascript:showModalSignUp();hideDropdown()">Реєстрація</a></li>';
         }
+        else document.getElementById('name').innerHTML = res.data;
         document.getElementById('drop-menu').style.width = document.getElementById('usr_menu').style.width;
         function backPage(){
             history.back();
