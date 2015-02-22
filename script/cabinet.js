@@ -71,11 +71,11 @@ window.onload = function() {
         if(date.marks[4] == '' || date.marks[4] == 0)
         {
             getElements('save-sub4');
-            show_hide('apDiv1');
-            show_hide('apDiv2');
+            show_hide('save-apDiv1');
+            show_hide('save-apDiv2');
         }
         else
-            show_hide('apDiv1');
+            show_hide('save-apDiv1');
         var rt2=document.createElement("option");
         rt2.innerHTML = arr[date.subjs[2]];
         rt2.value = date.subjs[2];
@@ -84,11 +84,11 @@ window.onload = function() {
     if(date.marks[3] == ''  || date.marks[3] == 0)
     {
         clear2();
-        show_hide('apDiv1');
+        show_hide('sace-apDiv1');
     }
     if(date.marks[4] != '' && date.marks[4] != 0)
     {
-        show_hide('apDiv2');
+        show_hide('save-apDiv2');
         var rt3=document.createElement("option");
         rt3.innerHTML = arr[date.subjs[3]];
         rt3.value = date.subjs[3];

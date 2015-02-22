@@ -60,22 +60,37 @@ function getElements(c)
     }
 
 }
-function clear2(){
+function clearFinder(){
     //alert(1);
     var el2 = document.getElementById('sub2');
     var el3 = document.getElementById('sub3');
     if(el2.value == ""){
         show_hideUn('apDiv1');
         show_hideUn('apDiv2');
+        getElements('sub3');
+        getElements('sub4');
+    }
+    else
+    if(el3.value== ""){
+        show_hideUn('apDiv2');
+        getElements('sub4');
+    }
+}
+function clear2(){
+    //alert(1);
+    var el2 = document.getElementById('save-sub2');
+    var el3 = document.getElementById('save-sub3');
+    if(el2.value == ""){
+        show_hideUn('save-apDiv1');
+        show_hideUn('save-apDiv2');
         getElements('save-sub3');
         getElements('save-sub4');
     }
     else
     if(el3.value== ""){
-        show_hideUn('apDiv2');
+        show_hideUn('save-apDiv2');
         getElements('save-sub4');
     }
-
 }
 function clear() {
     var el1 = document.getElementById('sub1');
