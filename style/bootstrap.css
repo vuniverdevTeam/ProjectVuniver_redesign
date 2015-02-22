@@ -6655,6 +6655,7 @@ button.close {
   -webkit-filter: none;
           filter: none;
   border-bottom: 1px solid #59822c;
+  margin: 10px 5px;
 }
 .btn-info {
   background-image: -webkit-linear-gradient(#04519b, #033c73 60%, #02325f);

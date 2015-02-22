@@ -16,7 +16,7 @@ function getInfo(event)
         xhr.open('POST', 'http://alex.inet-tech.org.ua/cgi-bin/plusFavourite.cpp.o', false);
         xhr.send('Facult='+values[7].toString()+'&Spec='+values[9].toString()+'&userid='+id['field']);
         event.target.innerHTML = "Збережено";
-
+        event.target.className = "btn btn-success disabled";
     }
 		else {
         document.getElementById('auth').classList.toggle('auth_open');

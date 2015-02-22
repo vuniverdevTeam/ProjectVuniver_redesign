@@ -8,9 +8,17 @@
          margin-bottom: 0px;
      }
  }
+nav
+{
+    z-index: 50;
+}
 .input
 {
     margin: 15px;
+}
+#goTop, #loadMore
+{
+    margin-bottom: 15px;
 }
 #message
 {
@@ -24,12 +32,16 @@
     z-index: 5000;
     background: rgba(73, 73, 73, 0.77);
 }
+#message>h2, #message>h4
+{
+    color: #B7F8FA;
+}
 #facebookG{
     display: inline-block;
     width:128px;}
 
 .facebook_blockG{
-    background-color:#faf3b7;
+    background-color:#B7F8FA;
     border:3px solid #FFFFFF;
     float:left;
     height:91px;
