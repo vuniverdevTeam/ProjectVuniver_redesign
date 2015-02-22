@@ -25,10 +25,21 @@ function hideModalSignUp()
 {
     document.getElementById('reg').style.display="none";
 }
-function showModalDynamic(text)
+function showModalDynamic(text, mode)
 {
     document.getElementById('dynamic').style.display="block";
-    document.getElementById('dynamic-text').innerHTML=text;
+    if (mode == "alert")
+    {
+        document.getElementById('success-msg').style.display = 'none';
+        document.getElementById('alert-msg').style.display = 'block';
+        document.getElementById('dynamic-text-alert').innerHTML=text;
+    }
+    else if (mode == "success")
+    {
+        document.getElementById('alert-msg').style.display = 'none';
+        document.getElementById('success-msg').style.display = 'block';
+        document.getElementById('dynamic-text-success').innerHTML=text;
+    }
 }
 function hideModalDynamic()
 {

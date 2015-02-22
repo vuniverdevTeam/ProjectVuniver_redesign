@@ -60,22 +60,37 @@ function getElements(c)
     }
 
 }
-function clear2(){
+function clearFinder(){
     //alert(1);
     var el2 = document.getElementById('sub2');
     var el3 = document.getElementById('sub3');
     if(el2.value == ""){
         show_hideUn('apDiv1');
         show_hideUn('apDiv2');
+        getElements('sub3');
+        getElements('sub4');
+    }
+    else
+    if(el3.value== ""){
+        show_hideUn('apDiv2');
+        getElements('sub4');
+    }
+}
+function clear2(){
+    //alert(1);
+    var el2 = document.getElementById('save-sub2');
+    var el3 = document.getElementById('save-sub3');
+    if(el2.value == ""){
+        show_hideUn('save-apDiv1');
+        show_hideUn('save-apDiv2');
         getElements('save-sub3');
         getElements('save-sub4');
     }
     else
     if(el3.value== ""){
-        show_hideUn('apDiv2');
+        show_hideUn('save-apDiv2');
         getElements('save-sub4');
     }
-
 }
 function clear() {
     var el1 = document.getElementById('sub1');
@@ -224,7 +239,17 @@ function getElementsSave()
 var ch;
 window.onload = function () {
     document.getElementById('message').hidden = "hidden";
-
+    if(window.restoreData !== undefined && window.restoreData.subjs[0] !== undefined){
+        clear();
+        getElementsSave();
+    }
+    else
+    {
+        getElements('sub1');
+        getElements('sub2');
+        getElements('sub3');
+        getElements('sub4');
+    }
     id = checkAuth();
     if(id["isAuth"] == true)
     {
@@ -232,48 +257,6 @@ window.onload = function () {
         document.getElementById('enter').href = "office.html";
     }
 
-    auth = new Auth_Menu({
-        elem: document.getElementById('auth'),
-        id1: document.getElementById('login'),
-        id2: document.getElementById('pass'),
-        button: 'auth_open',
-        class: 'auth_open'
-    });
-    reg = new Auth_Menu({
-        elem: document.getElementById('reg'),
-        id1: document.getElementById('login'),
-        id2: document.getElementById('pass'),
-        button: 'registration',
-        class: 'reg_open'
-    });
-
-    ch = checkAuth();
-    if(ch.isAuth) {
-        document.getElementById('name').appendChild(document.createTextNode(ch.data));
-        if(document.getElementById('enter')) {
-            document.getElementById('auth_open').firstChild.innerHTML = 'Кабінет';
-            document.getElementById('auth_open').href = '../project ISM/office.html';
-            document.getElementById('auth_open').id = 'auth_close';
-        }
-        if(document.getElementById('registration')) {
-            document.getElementById('registration').firstChild.innerHTML = 'Вихід';
-            document.getElementById('registration').id = 'logout';
-            restoreRegistrationData = document.getElementById('logout').onclick;
-            document.getElementById('logout').onclick = logout;
-        }
-    }
-
-		if(window.restoreData !== undefined && window.restoreData.subjs[0] !== undefined){
-        clear();
-        getElementsSave();
-    }
-    else
-    {
-        getElements('save-sub1');
-        getElements('save-sub2');
-        getElements('save-sub3');
-        getElements('save-sub4');
-    }
     labelClick('Label');
     //області:
     var arr1;
@@ -716,4 +699,9 @@ function restoreCabinetData(){
         if(date.marks[4]!=0)numb4.value = date.marks[4];
         numb5.value = date.marks[0];
     }
+}
+
+function refreshSelf()
+{
+    document.location = document.URL;
 }

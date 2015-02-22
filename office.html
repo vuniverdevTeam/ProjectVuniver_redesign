@@ -5,7 +5,7 @@
     <title>Особистий кабінет</title>
     <link href="style/bootstrap.css" rel="stylesheet" type="text/css"/>
     <script type="text/javascript" src = "script/To_link_js.js"></script>
-    <script type="text/javascript" src = "script/landingModal.js"></script>
+    <script type="text/javascript" src = "script/modalController.js"></script>
     <script type="text/javascript" src = "script/cabinet.js"></script>
     <script type="text/javascript" src = "script/auth.js"></script>
     <script type="text/javascript" src = "script/check_auth.js"></script>
@@ -67,16 +67,16 @@
                                 </li>
                                 <li class="contein-subjects">
                                     <div  class="inline">
-                                        <select class="form-control input-sm" name="sub2" id="sub2" size="1" onfocus="Retur('sub2');" required="required" onchange="show_hide('apDiv1'); clear2();"><option value="" style="display: none;">--виберіть предмет--</option><option value="">--виберіть предмет--</option><option value="0">Українська мова і література</option><option value="1">Математика</option><option value="2">Історія України</option><option value="3">Біологія</option><option value="4">Географія</option><option value="5">Фізика</option><option value="6">Хімія</option><option value="7">Англійська мова</option><option value="8">Іспанська мова</option><option value="9">Німецька мова</option><option value="10">Російська мова</option><option value="11">Французька мова</option></select>
+                                        <select class="form-control input-sm" name="sub2" id="sub2" size="1" onfocus="Retur('sub2');" required="required" onchange="show_hide('apDiv1'); clearFinder();"><option value="" style="display: none;">--виберіть предмет--</option><option value="">--виберіть предмет--</option><option value="0">Українська мова і література</option><option value="1">Математика</option><option value="2">Історія України</option><option value="3">Біологія</option><option value="4">Географія</option><option value="5">Фізика</option><option value="6">Хімія</option><option value="7">Англійська мова</option><option value="8">Іспанська мова</option><option value="9">Німецька мова</option><option value="10">Російська мова</option><option value="11">Французька мова</option></select>
                                     </div>
                                     <div class="inline">
                                         <input class="form-control input-sm" type="number" name="mark2" id="m2" max="200" min="100" required="required" step="any" placeholder="100...200">
                                     </div>
                                 </li>
-                                <li class="contein-subjects" visibility:="" hidden="">
+                                <li class="contein-subjects" id="apDiv1" visibility:="" hidden="">
                                     <div  class="inline">
                                         <!--<label for="sub3">3:</label>-->
-                                        <select class="form-control input-sm" name="sub3" id="sub3" size="1" onfocus="Retur('sub3'); " onchange="show_hide('apDiv2'); clear2();"><option value="" style="display: none;">--виберіть предмет--</option><option value="">--виберіть предмет--</option><option value="0">Українська мова і література</option><option value="1">Математика</option><option value="2">Історія України</option><option value="3">Біологія</option><option value="4">Географія</option><option value="5">Фізика</option><option value="6">Хімія</option><option value="7">Англійська мова</option><option value="8">Іспанська мова</option><option value="9">Німецька мова</option><option value="10">Російська мова</option><option value="11">Французька мова</option></select>
+                                        <select class="form-control input-sm" name="sub3" id="sub3" size="1" onfocus="Retur('sub3'); " onchange="show_hide('apDiv2'); clearFinder();"><option value="" style="display: none;">--виберіть предмет--</option><option value="">--виберіть предмет--</option><option value="0">Українська мова і література</option><option value="1">Математика</option><option value="2">Історія України</option><option value="3">Біологія</option><option value="4">Географія</option><option value="5">Фізика</option><option value="6">Хімія</option><option value="7">Англійська мова</option><option value="8">Іспанська мова</option><option value="9">Німецька мова</option><option value="10">Російська мова</option><option value="11">Французька мова</option></select>
                                     </div>
                                     <div class="inline">
                                         <input class="form-control input-sm" type="number" name="mark3" id="m3" max="200" min="100" step="any" placeholder="100...200">
@@ -84,7 +84,7 @@
                                     <!--<a class="but" id="plus2" onClick=" show_hide('apDiv2'); show_hideUn('plus2'); show_hideUn('minus1');"><div class="plus"></div></a>
                                     <a class="but" id="minus1" onClick="show_hide('plus1'); show_hideUn('apDiv1');"><div class="minus" ></div></a>-->
                                 </li>
-                                <li class="contein-subjects" visibility:="" hidden="">
+                                <li class="contein-subjects" id="apDiv2" visibility:="" hidden="">
                                     <div  class="inline">
                                         <!--<label for="sub4">4:</label>-->
                                         <select class="form-control input-sm" name="sub4" id="sub4" size="1" onfocus="Retur('sub4')"><option value="" style="display: none;">--виберіть предмет--</option><option value="">--виберіть предмет--</option><option value="0">Українська мова і література</option><option value="1">Математика</option><option value="2">Історія України</option><option value="3">Біологія</option><option value="4">Географія</option><option value="5">Фізика</option><option value="6">Хімія</option><option value="7">Англійська мова</option><option value="8">Іспанська мова</option><option value="9">Німецька мова</option><option value="10">Російська мова</option><option value="11">Французька мова</option></select>
@@ -148,12 +148,12 @@
     </form>
 
         <form id="form-enter" onsubmit="enter(); return false" name="auth2">
-            <div class="modal" id="auth">
+            <div class="modal" id="auth" style="background-color: whitesmoke">
                 <div class="modal-dialog" style="width: 300px">
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="document.location='index.html'">×</button>
-                            <h4 class="modal-title">Введіть ваші дані</h4>
+                            <h4 class="modal-title">Вхід</h4>
                         </div>
                         <div class="modal-body">
                             <div class="input">
@@ -166,7 +166,7 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal" onclick="document.location='index.html'">Назад</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal" onclick="document.location='index.html'">Відмінити</button>
                             <input class="btn btn-primary" type="submit" value="Вхід">
                         </div>
                     </div>
@@ -209,16 +209,16 @@
                                     </li>
                                     <li class="contein-subjects">
                                         <div  class="inline">
-                                            <select class="form-control input-sm" name="sub2" id="save-sub2" size="1" onfocus="Retur('save-sub2');" required="required" onchange="show_hide('apDiv1'); clear2();"><option value="" style="display: none;">--виберіть предмет--</option><option value="">--виберіть предмет--</option><option value="0">Українська мова і література</option><option value="1">Математика</option><option value="2">Історія України</option><option value="3">Біологія</option><option value="4">Географія</option><option value="5">Фізика</option><option value="6">Хімія</option><option value="7">Англійська мова</option><option value="8">Іспанська мова</option><option value="9">Німецька мова</option><option value="10">Російська мова</option><option value="11">Французька мова</option></select>
+                                            <select class="form-control input-sm" name="sub2" id="save-sub2" size="1" onfocus="Retur('save-sub2');" required="required" onchange="show_hide('save-apDiv1'); clear2();"><option value="" style="display: none;">--виберіть предмет--</option><option value="">--виберіть предмет--</option><option value="0">Українська мова і література</option><option value="1">Математика</option><option value="2">Історія України</option><option value="3">Біологія</option><option value="4">Географія</option><option value="5">Фізика</option><option value="6">Хімія</option><option value="7">Англійська мова</option><option value="8">Іспанська мова</option><option value="9">Німецька мова</option><option value="10">Російська мова</option><option value="11">Французька мова</option></select>
                                         </div>
                                         <div class="inline">
                                             <input class="form-control input-sm" type="number" name="mark2" id="save-m2" max="200" min="100" required="required" step="any" placeholder="100...200">
                                         </div>
                                     </li>
-                                    <li class="contein-subjects" id="apDiv1" visibility:="" hidden="">
+                                    <li class="contein-subjects" id="save-apDiv1" visibility:="" hidden="">
                                         <div  class="inline">
                                             <!--<label for="sub3">3:</label>-->
-                                            <select class="form-control input-sm" name="sub3" id="save-sub3" size="1" onfocus="Retur('save-sub3'); " onchange="show_hide('apDiv2'); clear2();"><option value="" style="display: none;">--виберіть предмет--</option><option value="">--виберіть предмет--</option><option value="0">Українська мова і література</option><option value="1">Математика</option><option value="2">Історія України</option><option value="3">Біологія</option><option value="4">Географія</option><option value="5">Фізика</option><option value="6">Хімія</option><option value="7">Англійська мова</option><option value="8">Іспанська мова</option><option value="9">Німецька мова</option><option value="10">Російська мова</option><option value="11">Французька мова</option></select>
+                                            <select class="form-control input-sm" name="sub3" id="save-sub3" size="1" onfocus="Retur('save-sub3'); " onchange="show_hide('save-apDiv2'); clear2();"><option value="" style="display: none;">--виберіть предмет--</option><option value="">--виберіть предмет--</option><option value="0">Українська мова і література</option><option value="1">Математика</option><option value="2">Історія України</option><option value="3">Біологія</option><option value="4">Географія</option><option value="5">Фізика</option><option value="6">Хімія</option><option value="7">Англійська мова</option><option value="8">Іспанська мова</option><option value="9">Німецька мова</option><option value="10">Російська мова</option><option value="11">Французька мова</option></select>
                                         </div>
                                         <div class="inline">
                                             <input class="form-control input-sm" type="number" name="mark3" id="save-m3" max="200" min="100" step="any" placeholder="100...200">
@@ -226,7 +226,7 @@
                                         <!--<a class="but" id="plus2" onClick=" show_hide('apDiv2'); show_hideUn('plus2'); show_hideUn('minus1');"><div class="plus"></div></a>
                                         <a class="but" id="minus1" onClick="show_hide('plus1'); show_hideUn('apDiv1');"><div class="minus" ></div></a>-->
                                     </li>
-                                    <li class="contein-subjects" id="apDiv2" visibility:="" hidden="">
+                                    <li class="contein-subjects" id="save-apDiv2" visibility:="" hidden="">
                                         <div  class="inline">
                                             <!--<label for="sub4">4:</label>-->
                                             <select class="form-control input-sm" name="sub4" id="save-sub4" size="1" onfocus="Retur('save-sub4')"><option value="" style="display: none;">--виберіть предмет--</option><option value="">--виберіть предмет--</option><option value="0">Українська мова і література</option><option value="1">Математика</option><option value="2">Історія України</option><option value="3">Біологія</option><option value="4">Географія</option><option value="5">Фізика</option><option value="6">Хімія</option><option value="7">Англійська мова</option><option value="8">Іспанська мова</option><option value="9">Німецька мова</option><option value="10">Російська мова</option><option value="11">Французька мова</option></select>
@@ -277,9 +277,9 @@
                 <ul class="nav navbar-nav navbar-right" style="z-index: 50;">
                     <li id="usr_menu" class="dropdown"><a href="javascript: dropdownToggle(document.getElementById('usr_menu'))" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="padding: 0px"><span id="name">Профіль</span><span class="caret" style="margin-right: 5px"></span></a>
                         <ul id="drop-menu" class="dropdown-menu" role="menu">
-                            <li><a href="javascript:showSettings()">Налаштування</a></li>
+                            <li><a href="javascript:showSettings();hideDropdown()">Налаштування</a></li>
                             <li class="divider"></li>
-                            <li><a href="index.html" onclick="logout()">Вихід</a></li>
+                            <li><a href="index.html" onclick="logout();refreshSelf()">Вихід</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -289,6 +289,7 @@
         <div style="height: 50px"></div>
 
         <div id="container"  onclick="hideDropdown()">
+            <div style="text-align: center"><h2>Збережені ВНЗ</h2></div>
             <div class = "table">
                 <table class="table table-striped">
                     <thead>
@@ -316,7 +317,7 @@
             if (!res.isAuth)
             {
                 showModalSign();
-                document.getElementById('drop-menu').innerHTML= '<li><a href="javascript:showModalSign()" id = "enter">Вхід</a></li><li class="divider"></li><li><a href="javascript:showModalSignUp()">Реєстрація</a></li>';
+                document.getElementById('drop-menu').innerHTML= '<li><a href="javascript:showModalSign();hideDropdown()" id = "enter">Вхід</a></li><li class="divider"></li><li><a href="javascript:showModalSignUp();hideDropdown()">Реєстрація</a></li>';
             }
             else document.getElementById('name').innerHTML = res.data;
             document.getElementById('drop-menu').style.width = document.getElementById('usr_menu').style.width;

@@ -4,10 +4,10 @@ function enter(event){
     xhr.open('POST', 'http://alex.inet-tech.org.ua/cgi-bin/cookie.cpp.o', false);
     xhr.send('auth=0'+'&'+'login='+document.getElementById('login').value+'&'+'pass='+document.getElementById('pass').value);
     if(xhr.responseText == "-") {
-        showModalDynamic("Невірний email або пароль, спробуйте ще раз");
+        showModalDynamic("Невірний email або пароль, спробуйте ще раз", 'alert');
     }
     else if(xhr.responseText == "-noactive") {
-        showModalDynamic("Аккаунт не активовано");
+        showModalDynamic("Аккаунт не активовано", 'alert');
     }
     else {
         var d = new Date;
@@ -16,7 +16,8 @@ function enter(event){
         d = d.toUTCString();
         d = xhr.responseText + '; path=/' + '; expires=' + d;
         document.cookie = d;
-        document.location.href = "office.html";
+        if (document.URL.indexOf("index.html") == -1) refreshSelf();
+        else document.location = "office.html";
 
     }
 }
@@ -107,12 +108,12 @@ var signUp = function()
     xhr.send("mail="+mail+"&pass1="+pass1+"&pass2="+pass2);
     if(xhr.responseText == 228)
     {
-        showModalDynamic("<strong>Помилка!</strong> Данна электронна адреса вже використовуеться.");
+        showModalDynamic("<strong>Помилка!</strong> Данна электронна адреса вже використовуеться.", 'alert');
         return false;
     }
     else
     {
-        window.location.replace("http://alex.inet-tech.org.ua/project%20ISM/success.html");
+        showModalDynamic("<strong>Дякуємо за реєстрацію</strong><div></div>Реєстрація успішно завершена.Протягом 5 хвилин на вашу електронну адресу прийде лист з посиланням для активації аккаунту.", 'success');
         return false;
     }
 };
