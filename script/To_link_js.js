@@ -170,15 +170,15 @@ function labelClick(r) {
 
 function getElementsSave()
 {
-    var subj1 = document.getElementById('save-sub1');
-    var numb1 = document.getElementById('save-m1');
-    var subj2 = document.getElementById('save-sub2');
-    var numb2 = document.getElementById('save-m2');
-    var subj3 = document.getElementById('save-sub3');
-    var numb3 = document.getElementById('save-m3');
-    var subj4 = document.getElementById('save-sub4');
-    var numb4 = document.getElementById('save-m4');
-    var numb5 = document.getElementById('save-m5');
+    var subj1 = document.getElementById('sub1');
+    var numb1 = document.getElementById('m1');
+    var subj2 = document.getElementById('sub2');
+    var numb2 = document.getElementById('m2');
+    var subj3 = document.getElementById('sub3');
+    var numb3 = document.getElementById('m3');
+    var subj4 = document.getElementById('sub4');
+    var numb4 = document.getElementById('m4');
+    var numb5 = document.getElementById('m5');
     while(subj1.childNodes.length > 0){
         subj1.removeChild(subj1.childNodes[subj1.childNodes.length-1]);
     }
@@ -196,7 +196,7 @@ function getElementsSave()
     {
         if(restoreData.marks[4] == '')
         {
-            getElements('save-sub4');
+            getElements('sub4');
             show_hide('apDiv1');
             show_hide('apDiv2');
         }
