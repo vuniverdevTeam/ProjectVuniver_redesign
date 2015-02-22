@@ -256,8 +256,6 @@ window.onload = function () {
         document.getElementById('enter').innerText = "Особистий Кабінет";
         document.getElementById('enter').href = "office.html";
     }
-
-    labelClick('Label');
     //області:
     var arr1;
     var xhr = new XMLHttpRequest();
