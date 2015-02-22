@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <link href="style/bootstrap.css" rel="stylesheet" type="text/css"/>
     <script type="text/javascript" src = "script/To_link_js.js"></script>
-    <script type="text/javascript" src = "script/landingModal.js"></script>
+    <script type="text/javascript" src = "script/modalController.js"></script>
     <script type="text/javascript" src = "script/auth.js"></script>
     <script type="text/javascript" src = "script/check_auth.js"></script>
     <script type="text/javascript" src = "script/drop_usr_controller.js"></script>
@@ -151,7 +151,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="hideModalSignUp()">×</button>
-                        <h4 class="modal-title">Введіть ваші дані</h4>
+                        <h4 class="modal-title">Реєстрація</h4>
                     </div>
                     <div class="modal-body">
                         <div class="input">
@@ -166,7 +166,7 @@
                         <div class="alert alert-danger" id="validationmessage" style="display: none; font-size: 12px; margin: 15px;"></div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal" onclick="hideModalSignUp()">Назад</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal" onclick="hideModalSignUp()">Відмінити</button>
                         <button type="submit" class="btn btn-primary" id="button-register">Зареєструватися</button>
                     </div>
                 </div>
@@ -180,7 +180,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="hideModalSign()">×</button>
-                        <h4 class="modal-title">Введіть ваші дані</h4>
+                        <h4 class="modal-title">Вхід</h4>
                     </div>
                     <div class="modal-body">
                         <div class="input">
@@ -193,7 +193,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal" onclick="hideModalSign()">Назад</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal" onclick="hideModalSign()">Відмінити</button>
                         <input class="btn btn-primary" type="submit" value="Вхід">
                     </div>
                 </div>
@@ -206,8 +206,12 @@
             <div class="modal-content">
                 <div style="height: 30px"></div>
                 <div class="modal-body" >
-                    <div class="alert alert-dismissible alert-danger" style="text-align: center">
-                        <span id="dynamic-text"></span>
+                    <div class="alert alert-dismissible alert-danger" id="alert-msg" style="display: none;text-align: center">
+                        <span id="dynamic-text-alert"></span>
+
+                    </div>
+                    <div class="alert alert-dismissible alert-success" id="success-msg" style="display: none;text-align: center">
+                        <span id="dynamic-text-success"></span>
 
                     </div>
                 </div>
@@ -242,7 +246,7 @@
                         <ul id="drop-menu" class="dropdown-menu" role="menu">
                             <li><a href="office.html">Кабінет</a></li>
                             <li class="divider"></li>
-                            <li><a href="#" onclick="logout(); document.location='info.html'">Вихід</a></li>
+                            <li><a href="index.html" onclick="logout();refreshSelf()">Вихід</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -337,11 +341,12 @@
         </div>
     </div>
     <script type="text/javascript">
-        if(checkAuth().isAuth) document.getElementById('name').innerHTML = checkAuth().data;
-        else
+        res = checkAuth();
+        if (!res.isAuth)
         {
-            document.getElementById('drop-menu').innerHTML= '<li><a href="javascript:showModalSign()" id = "enter">Вхід</a></li><li class="divider"></li><li><a href="javascript:showModalSignUp()">Реєстрація</a></li>';
+            document.getElementById('drop-menu').innerHTML= '<li><a href="javascript:showModalSign();hideDropdown()" id = "enter">Вхід</a></li><li class="divider"></li><li><a href="javascript:showModalSignUp();hideDropdown()">Реєстрація</a></li>';
         }
+        else document.getElementById('name').innerHTML = res.data;
         document.getElementById('drop-menu').style.width = document.getElementById('usr_menu').style.width;
         function backPage(){
             history.back();

@@ -5,7 +5,7 @@
     <title>Особистий кабінет</title>
     <link href="style/bootstrap.css" rel="stylesheet" type="text/css"/>
     <script type="text/javascript" src = "script/To_link_js.js"></script>
-    <script type="text/javascript" src = "script/landingModal.js"></script>
+    <script type="text/javascript" src = "script/modalController.js"></script>
     <script type="text/javascript" src = "script/cabinet.js"></script>
     <script type="text/javascript" src = "script/auth.js"></script>
     <script type="text/javascript" src = "script/check_auth.js"></script>
@@ -153,7 +153,7 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="document.location='index.html'">×</button>
-                            <h4 class="modal-title">Введіть ваші дані</h4>
+                            <h4 class="modal-title">Вхід</h4>
                         </div>
                         <div class="modal-body">
                             <div class="input">
@@ -166,7 +166,7 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal" onclick="document.location='index.html'">Назад</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal" onclick="document.location='index.html'">Відмінити</button>
                             <input class="btn btn-primary" type="submit" value="Вхід">
                         </div>
                     </div>
@@ -277,9 +277,9 @@
                 <ul class="nav navbar-nav navbar-right" style="z-index: 50;">
                     <li id="usr_menu" class="dropdown"><a href="javascript: dropdownToggle(document.getElementById('usr_menu'))" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="padding: 0px"><span id="name">Профіль</span><span class="caret" style="margin-right: 5px"></span></a>
                         <ul id="drop-menu" class="dropdown-menu" role="menu">
-                            <li><a href="javascript:showSettings()">Налаштування</a></li>
+                            <li><a href="javascript:showSettings();hideDropdown()">Налаштування</a></li>
                             <li class="divider"></li>
-                            <li><a href="index.html" onclick="logout()">Вихід</a></li>
+                            <li><a href="index.html" onclick="logout();refreshSelf()">Вихід</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -317,7 +317,7 @@
             if (!res.isAuth)
             {
                 showModalSign();
-                document.getElementById('drop-menu').innerHTML= '<li><a href="javascript:showModalSign()" id = "enter">Вхід</a></li><li class="divider"></li><li><a href="javascript:showModalSignUp()">Реєстрація</a></li>';
+                document.getElementById('drop-menu').innerHTML= '<li><a href="javascript:showModalSign();hideDropdown()" id = "enter">Вхід</a></li><li class="divider"></li><li><a href="javascript:showModalSignUp();hideDropdown()">Реєстрація</a></li>';
             }
             else document.getElementById('name').innerHTML = res.data;
             document.getElementById('drop-menu').style.width = document.getElementById('usr_menu').style.width;

@@ -5,7 +5,7 @@
     <link href="style/bootstrap.css" rel="stylesheet" type="text/css"/>
     <link href="style/main_style.css" rel="stylesheet" type="text/css"/>
 
-    <script src="script/landingModal.js"></script>
+    <script src="script/modalController.js"></script>
     <script src="script/To_link_js.js"></script>
     <script src="script/auth.js"></script>
     <script type="text/javascript" src = "script/check_auth.js"></script>
@@ -155,7 +155,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="hideModalSign()">×</button>
-                        <h4 class="modal-title">Введіть ваші дані</h4>
+                        <h4 class="modal-title">Вхід</h4>
                     </div>
                     <div class="modal-body">
                         <div class="input">
@@ -168,7 +168,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal" onclick="hideModalSign()">Назад</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal" onclick="hideModalSign()">Відмінити</button>
                         <input class="btn btn-primary" type="submit" value="Вхід">
                     </div>
                 </div>
@@ -181,8 +181,12 @@
             <div class="modal-content">
                 <div style="height: 30px"></div>
                 <div class="modal-body" >
-                    <div class="alert alert-dismissible alert-danger" style="text-align: center">
-                        <span id="dynamic-text"></span>
+                    <div class="alert alert-dismissible alert-danger" id="alert-msg" style="display: none;text-align: center">
+                        <span id="dynamic-text-alert"></span>
+
+                    </div>
+                    <div class="alert alert-dismissible alert-success" id="success-msg" style="display: none;text-align: center">
+                        <span id="dynamic-text-success"></span>
 
                     </div>
                 </div>

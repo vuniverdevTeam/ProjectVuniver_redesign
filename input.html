@@ -5,7 +5,7 @@
     <title>Пошук</title>
     <link href="http://alex.inet-tech.org.ua/project%20ISMfdskuhfgdjg/style/bootstrap.css" rel="stylesheet" type="text/css"/>
     <link href="http://alex.inet-tech.org.ua/project%20ISMfdskuhfgdjg/style/main_style.css" rel="stylesheet" type="text/css"/>
-    <script src="http://alex.inet-tech.org.ua/project%20ISMfdskuhfgdjg/script/landingModal.js"></script>
+    <script src="http://alex.inet-tech.org.ua/project%20ISMfdskuhfgdjg/script/modalController.js"></script>
     <script src="http://alex.inet-tech.org.ua/project%20ISMfdskuhfgdjg/script/passwordValidation.js"></script>
     <script src="http://alex.inet-tech.org.ua/project%20ISMfdskuhfgdjg/script/auth.js"></script>
     <script src="http://alex.inet-tech.org.ua/project%20ISMfdskuhfgdjg/script/To_link_js.js"></script>
@@ -35,7 +35,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="hideModalSignUp()">×</button>
-                        <h4 class="modal-title">Введіть ваші дані</h4>
+                        <h4 class="modal-title">Реєстрація</h4>
                     </div>
                     <div class="modal-body">
                         <div class="input">
@@ -50,7 +50,7 @@
                         <div class="alert alert-danger" id="validationmessage" style="display: none; font-size: 12px; margin: 15px;"></div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal" onclick="hideModalSignUp()">Назад</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal" onclick="hideModalSignUp()">Відмінити</button>
                         <button type="submit" class="btn btn-primary"  id="button-register">Зареєструватися</button>
                     </div>
                 </div>
@@ -177,7 +177,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="hideModalSign()">×</button>
-                        <h4 class="modal-title">Введіть ваші дані</h4>
+                        <h4 class="modal-title">Вхід</h4>
                     </div>
                     <div class="modal-body">
                         <div class="input">
@@ -190,7 +190,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal" onclick="hideModalSign()">Назад</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal" onclick="hideModalSign()">Відмінити</button>
                         <input class="btn btn-primary" type="submit" value="Вхід">
                     </div>
                 </div>
@@ -202,8 +202,12 @@
             <div class="modal-content">
                 <div style="height: 30px"></div>
                 <div class="modal-body" >
-                    <div class="alert alert-dismissible alert-danger" style="text-align: center">
-                        <span id="dynamic-text"></span>
+                    <div class="alert alert-dismissible alert-danger" id="alert-msg" style="display: none;text-align: center">
+                        <span id="dynamic-text-alert"></span>
+
+                    </div>
+                    <div class="alert alert-dismissible alert-success" id="success-msg" style="display: none;text-align: center">
+                        <span id="dynamic-text-success"></span>
 
                     </div>
                 </div>
@@ -237,7 +241,7 @@
                         <ul id="drop-menu" class="dropdown-menu" role="menu">
                             <li><a href="office.html">Кабінет</a></li>
                             <li class="divider"></li>
-                            <li><a href="#" onclick="logout(); document.location='info.html'">Вихід</a></li>
+                            <li><a href="index.html" onclick="logout();refreshSelf()">Вихід</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -248,29 +252,30 @@
 
     <div id = "main">
         <h3>Шанс вступу до:</h3>
-        <li><a id = "U">Житомирський Державний Технологічний Университет</a></li>
-        <li><a id = "F">Факультет Інформаційно компьютених технологій</a></li>
-        <li><a id = "S">Програмна інженерія</a></li>
+        <li><a id = "U">~U~</a></li>
+        <li><a id = "F">~F~</a></li>
+        <li><a id = "S">~S~</a></li>
     </div>
 
     <div id = "chance" style="text-align: center">
         <h3>БЮДЖЕТ</h3>
         <div class="progress" style="width: 80%;margin: 0 auto; height: 50px;">
-            <div style="position: absolute;z-index: 50;width: 80%;font-size: 40px;">50%</div>
-            <div class="progress-bar" style="width:50%;background-color: rgba(160, 168, 255, 0.77)"></div>
+            <div style="position: absolute;z-index: 50;width: 80%;font-size: 40px;">~B~</div>
+            <div class="progress-bar" style="width:~B~;background-color: rgba(160, 168, 255, 0.77)"></div>
         </div>
         <h3>КОНТРАКТ</h3>
         <div class="progress" style="width: 80%;margin: 0 auto; height: 50px;font-size: 40px;">
-            <div style="position: absolute;z-index: 50;width: 80%;">75%</div>
-            <div class="progress-bar progress-bar-success" style="width: 75%;background-color: rgba(126, 212, 255, 0.77)"></div>
+            <div style="position: absolute;z-index: 50;width: 80%;">~C~</div>
+            <div class="progress-bar progress-bar-success" style="width: ~C~;background-color: rgba(126, 212, 255, 0.77)"></div>
         </div>
     </div>
     <script type="text/javascript">
-        if(checkAuth().isAuth) document.getElementById('name').innerHTML = checkAuth().data;
-        else
+        res = checkAuth();
+        if (!res.isAuth)
         {
-            document.getElementById('drop-menu').innerHTML= '<li><a href="javascript:showModalSign()" id = "enter">Вхід</a></li><li class="divider"></li><li><a href="javascript:showModalSignUp()">Реєстрація</a></li>';
+            document.getElementById('drop-menu').innerHTML= '<li><a href="javascript:showModalSign();hideDropdown()" id = "enter">Вхід</a></li><li class="divider"></li><li><a href="javascript:showModalSignUp();hideDropdown()">Реєстрація</a></li>';
         }
+        else document.getElementById('name').innerHTML = res.data;
         document.getElementById('drop-menu').style.width = document.getElementById('usr_menu').style.width;
         function backPage(){
             history.back();
