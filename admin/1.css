@@ -1,0 +1,137 @@
+﻿body{
+    margin: 0;
+    z-index: 0;
+}
+hr{
+    height: 3px;
+    background-color: black;
+}
+input[type=submit], input[type=button], #button-1, #button-2{
+    color: #05002b;
+    border: 2px outset dimgray;
+    margin: 0 auto;
+    background-color: #afafaf;
+    padding: 7px;
+}
+input[type=submit]:hover, input[type=button]:hover, #button-1:hover, #button-2:hover{
+    box-shadow: 0px 0px 5px #667391;
+}
+input[type=submit]:hover:active, input[type=button]:hover:active, #button-1:hover:active, #button-2:hover:active{
+    border-style: inset;
+}
+input[type=text],input[type=password]{
+    padding: 5px;
+    margin: 10px 0;
+}
+img {
+    width: 100%;
+}
+table{
+    border-collapse: collapse;
+}
+td>img{
+    width: auto;
+}
+#hist_table>table td{
+    border: 1px solid;
+    padding: 5px;
+}
+.hist{
+    width: 0.6vw;
+    display: inline-block;
+    position: relative;
+}
+.hist-wrap{
+    width: 0.6vw;
+    display: inline-block;
+    position: relative;
+    margin: 1px;
+}
+#head {
+    position: fixed;
+    width:500px;
+    left: 50%;
+    margin-left: -250px;
+    z-index: 500;
+    border: 1px solid #536979; /* Параметры рамки */
+    background: rgba(0, 0, 0, 0.55); /* Полупрозрачный цвет фона */
+    padding-top: 10px;
+
+}
+
+.hist:hover::after {
+    content: attr(data-title); /* Выводим текст */
+    position: absolute; /* Абсолютное позиционирование */
+    z-index: 2; /* Отображаем подсказку поверх других элементов */
+    background: rgba(0, 0, 0, 0.84); /* Полупрозрачный цвет фона */
+    font-size: 16px; /* Размер текста подсказки */
+    padding: 5px 10px; /* Поля */
+    border: 1px solid #00ff20; /* Параметры рамки */
+    color: #d6e5ff;
+}
+
+.text{
+    display: inline;
+    font-size: 0.9vw;
+}
+.label{
+    font-size: x-small;
+}
+label {
+            display: inline-block;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+.moda{
+    width: 0.6vw;
+    display: inline-block;
+    margin: 1px;
+    padding: 0px;
+    box-shadow: 0px 0px 10px #05002b;
+}
+.wrapper{
+    display: inline-block;
+    padding: 0px;
+    margin: 1px;
+    width: 0.8%;
+}
+.box{
+    height: 12px;
+    width: 12px;
+    display: inline-block;
+    box-shadow: 0px 0px 10px #6e6e6e;
+}
+#hist_table {
+	float: right;
+	margin-right: 55px;
+	margin-top: 10px;
+}
+#histogram
+ {
+    text-align: center;
+ }
+.points{
+	 -moz-transform: rotate(90deg);
+	 -webkit-transform: rotate(90deg);
+	 -o-transform: rotate(90deg);
+	 writing-mode: tb-rl;
+	 float: left;
+	 position: absolute;
+	 bottom: -1vw;
+	 left: -3px;
+	 font-size: 0.7vw;
+	 font-weight: bold;
+}
+.histo-form{
+	display: inline-block;
+	margin-top: 25px;
+	padding-left: 25px;
+}
+#control{
+	width: 99.9%;
+	position: fixed;
+    height: 85px;
+	border: 1px solid black;
+	z-index: 10000;
+	background: whitesmoke;
+}
