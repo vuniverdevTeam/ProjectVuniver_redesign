@@ -18,19 +18,8 @@ function getInfo(event)
         event.target.innerHTML = "Збережено";
         event.target.className = "btn btn-success disabled";
     }
-		else {
-        document.getElementById('auth').classList.toggle('auth_open');
-        if (document.getElementById('auth_close')) {
-            document.getElementById('auth_close').firstChild.innerHTML = 'Вхід';
-            document.getElementById('auth_close').removeAttribute('href');
-            document.getElementById('auth_close').id = 'auth_open';
-        }
-        if(document.getElementById('logout')) {
-            document.getElementById('logout').firstChild.innerHTML = 'Зареєструватись';
-            //document.getElementById('logout').removeAttribute('onclick');
-						document.getElementById('logout').onclick = restoreRegistrationData;
-            document.getElementById('logout').id = 'registration';
-        }
+	else {
+        showModalDynamic('<strong>Помилка!</strong><br/>Для того щоб мати можливість відслідковувати ВНЗ<br/><a href="javascript:showModalSign(); hideModalDynamic()">увійдіть</a> або <a href="javascript:showModalSignUp(); hideModalDynamic()">зареєструйтесь.</a>','alert')
     }
 }
 
