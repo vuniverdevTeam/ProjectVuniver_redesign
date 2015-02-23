@@ -91,12 +91,6 @@ document.onchange = function(){
         }
     }
 };
-window.onresize = function(){
-    if(screen.width < 400 || window.innerWidth < 390){
-        center.style.maxWidth = '204px';
-    }
-    else center.style.maxWidth = '';
-};
 
 var signUp = function()
 {
