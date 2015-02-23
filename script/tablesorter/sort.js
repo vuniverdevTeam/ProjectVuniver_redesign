@@ -4,8 +4,8 @@
         var target = e && e.target || window.event.srcElement;
 
         if (target.tagName != 'TH') return;
+					$('#myList').find('tr:lt('+x+')').attr('hidden', 'hidden');
         sortGrid(target.cellIndex, target.getAttribute('data-type'));
-          $('#myList').find('tr:lt('+x+')').attr('hidden', 'hidden');
           $('#myList').find('tr:lt('+x+')').removeAttr('hidden');
       };
 
@@ -33,7 +33,7 @@
                     if (b.charAt(b.length - 1) == '%') {
                         b = b.substring(0, b.length - 1);
                     }
-                    return b - a;
+                    return a - b;
                 };
                 document.getElementById('fa-sort-down').id = 'fa-sort-up';
             } else {
@@ -46,7 +46,7 @@
                     if (b.charAt(b.length - 1) == '%') {
                         b = b.substring(0, b.length - 1);
                     }
-                    return a - b;
+                    return b - a;
                 };
                 if (document.getElementById('fa-sort-down') !== null)document.getElementById('fa-sort-down').removeAttribute('id');
                 else if (document.getElementById('fa-sort-up') !== null)document.getElementById('fa-sort-up').removeAttribute('id');
