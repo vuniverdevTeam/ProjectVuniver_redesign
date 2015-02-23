@@ -84,7 +84,7 @@ window.onload = function() {
     if(date.marks[3] == ''  || date.marks[3] == 0)
     {
         clear2();
-        show_hide('sace-apDiv1');
+        show_hide('save-apDiv1');
     }
     if(date.marks[4] != '' && date.marks[4] != 0)
     {
@@ -184,6 +184,8 @@ window.onload = function() {
         i += 2;
 
         xhr2.send(str);
+        Savesubject();
+
     };
     xhr.open('POST', 'http://alex.inet-tech.org.ua/cgi-bin/cabinet.cpp.o', true);
     xhr.onreadystatechange = function() {
@@ -202,7 +204,43 @@ window.onload = function() {
     };
     xhr.send(')))=' + res.field);
 };
-
+var restoreData = new Object();
+function Savesubject()
+{
+    var subj1 = document.getElementById('save-sub1');
+    var numb1 = document.getElementById('save-m1');
+    var subj2 = document.getElementById('save-sub2');
+    var numb2 = document.getElementById('save-m2');
+    var subj3 = document.getElementById('save-sub3');
+    var numb3 = document.getElementById('save-m3');
+    var subj4 = document.getElementById('save-sub4');
+    var numb4 = document.getElementById('save-m4');
+    var numb5 = document.getElementById('save-m5');
+    var n1,n2,n3,n4,n5;
+    if(numb1.value != '')n1 = numb1.value;
+    else
+        n1 = '';
+    if(numb2.value != '')n2 = numb2.value;
+    else
+        n2='';
+    if(numb3.value != '')n3 = numb3.value;
+    else
+        n3='';
+    if(numb4.value != '')n4 = numb4.value;
+    else
+        n4='';
+    if(numb5.value != '')n5 = numb5.value;
+    else
+        n5='';
+    restoreData.marks = [n5,n1,n2,n3,n4];
+    restoreData.subjs = ['',subj2.value,subj3.value,subj4.value];
+    restoreData.reg = '';
+    restoreData.city = '';
+    restoreData.Univer = '';
+    restoreData.Fac = '';
+    restoreData.Spec = '';
+    getElementsSave();
+}
 
 
 var commit = function()
