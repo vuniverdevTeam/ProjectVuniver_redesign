@@ -1,3 +1,5 @@
+var specialities;
+
 function show_hide(id) {
     clear();
     document.getElementById(id).style.display = 'block';
@@ -238,6 +240,8 @@ function getElementsSave()
 
 var ch;
 window.onload = function () {
+    document.getElementById('message').hidden = "hidden";
+    var xhr = new XMLHttpRequest();
     if(window.restoreData !== undefined && window.restoreData.subjs[0] !== undefined){
         clear();
         getElementsSave();
@@ -255,28 +259,7 @@ window.onload = function () {
         //document.getElementById('enter').innerText = "Особистий Кабінет";
         document.getElementById('enter').href = "office.html";
     }*/
-    //області:
-    var arr1;
-    var xhr = new XMLHttpRequest();
-    xhr.open('POST', 'http://alex.inet-tech.org.ua/cgi-bin/ajax.cpp.o', false);
-    xhr.send('reg=0');
-    arr1 = eval('(' + xhr.responseText + ')');
-    var obj = document.getElementById('option');
-    var flag = 0;
-    if(window.restoreData !== undefined && restoreData.reg != '')
-    {
-        var el = document.getElementById('return-radio');
-        el.checked = true;
-        labelClick('Label');
-        flag=1;
-        var el2 = document.getElementById('Label');
-        el2.innerHTML='Прибрати фільтри';
-        show_hide('selected');
-        createOptionsSave(obj, arr1, restoreData.reg);
-        if(restoreData.city == '')showNames(restoreData.reg);
-    }
-    else
-        createOptions(obj, arr1);
+
 
     //спеціальності
     xhr.open('POST', 'http://alex.inet-tech.org.ua/cgi-bin/ajax.cpp.o', false);
@@ -302,10 +285,33 @@ window.onload = function () {
         }
         show_hide('selected');
         createOptionsSave(obj, specialities, restoreData.Spec);
-        if(restoreData.city == '')showNames(restoreData.reg);
+        if(restoreData.Spec == '')showNames(restoreData.reg);
     }
     else
         createOptions(obj, specialities);
+
+    //області:
+    var arr1;
+
+    xhr.open('POST', 'http://alex.inet-tech.org.ua/cgi-bin/ajax.cpp.o', false);
+    xhr.send('reg=0');
+    arr1 = eval('(' + xhr.responseText + ')');
+    var obj = document.getElementById('option');
+    var flag = 0;
+    if(window.restoreData !== undefined && restoreData.reg != '')
+    {
+        var el = document.getElementById('return-radio');
+        el.checked = true;
+        labelClick('Label');
+        flag=1;
+        var el2 = document.getElementById('Label');
+        el2.innerHTML='Прибрати фільтри';
+        show_hide('selected');
+        createOptionsSave(obj, arr1, restoreData.reg);
+        if(restoreData.city == '')showNames(restoreData.reg);
+    }
+    else
+        createOptions(obj, arr1);
 
 
     center = document.getElementsByClassName('auth_center')[0];
@@ -330,7 +336,7 @@ window.onload = function () {
     if(obj.value != '' && obj1.value != '' && obj2.value != '' && obj3.value != '' && obj4.value != ''){cabPlus();}
     if(obj.value == '' || obj1.value == '' || obj2.value == '' || obj3.value == '' || obj4.value == '')checkAsAdded();
     //
-		document.getElementById('message').hidden = "hidden";
+
 };
 
 function checkAsAdded()
@@ -376,7 +382,7 @@ var restoreVisible = [0,0,0,0,0];
 /*xhr.onreadystatechange = function() {
  if (xhr.readyState != 4) return;
  };*/
-var specialities;
+
 function showNames(v){
     if(+v >= 1) {
         var arr;
