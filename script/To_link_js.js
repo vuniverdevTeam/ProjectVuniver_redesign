@@ -238,7 +238,6 @@ function getElementsSave()
 
 var ch;
 window.onload = function () {
-    document.getElementById('message').hidden = "hidden";
     if(window.restoreData !== undefined && window.restoreData.subjs[0] !== undefined){
         clear();
         getElementsSave();
@@ -250,12 +249,12 @@ window.onload = function () {
         getElements('sub3');
         getElements('sub4');
     }
-    id = checkAuth();
-    if(id["isAuth"] == true)
+    ch = checkAuth();
+    /*if(id["isAuth"] == true)
     {
-        document.getElementById('enter').innerText = "Особистий Кабінет";
+        //document.getElementById('enter').innerText = "Особистий Кабінет";
         document.getElementById('enter').href = "office.html";
-    }
+    }*/
     //області:
     var arr1;
     var xhr = new XMLHttpRequest();
@@ -331,11 +330,13 @@ window.onload = function () {
     if(obj.value != '' && obj1.value != '' && obj2.value != '' && obj3.value != '' && obj4.value != ''){cabPlus();}
     if(obj.value == '' || obj1.value == '' || obj2.value == '' || obj3.value == '' || obj4.value == '')checkAsAdded();
     //
+		document.getElementById('message').hidden = "hidden";
 };
 
 function checkAsAdded()
 {
     var id = ch;
+		if(!id.isAuth)return;
     var xhrC = new XMLHttpRequest();
     xhrC.open('POST', 'http://alex.inet-tech.org.ua/cgi-bin/checkAsAdded.cpp.o', false);
     xhrC.send("id="+id['field']);
