@@ -13,7 +13,7 @@
     <link rel="icon" href="http://alex.inet-tech.org.ua/VUNIVER/favicon.ico" type="image/x-icon">
     <link rel="shortcut icon" href="http://alex.inet-tech.org.ua/VUNIVER/favicon.ico" type="image/x-icon">
 </head>
-<body style="background-color: #fff">
+<body style="background-color: #fff;">
 
     <script type="text/javascript">
         if (checkAuth().isAuth)
@@ -35,119 +35,7 @@
         </div>
     </div>
 
-    <form action="http://alex.inet-tech.org.ua/cgi-bin/inpNew.cpp.o" method="GET" onsubmit="hideModalTry(); document.getElementById('message').removeAttribute('hidden')">
-        <div class="modal" id="try">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="hideModalTry();">×</button>
-                        <h4 class="modal-title">Розрахунок ймовірності</h4>
-                    </div>
-                    <div class="modal-body">
-                        <p><div class="calculation">
-                        <div class="pricing-table">
-                                <h3>Введіть бали по ЗНО</h3>
-                                <ul class="Point">
-                                    <li id="AT">
-                                        <div id="AT-1">
-                                            <select class="form-control input-sm">
-                                                <option selected="selected" disabled="disabled">Атестат</option>
-                                            </select>
-                                        </div>
-                                        <div id="AT-2">
-                                            <input class="form-control input-sm" type="number" name="mark5" id="m5" max="200" min="1" required="required" step="any" placeholder="100...200">
-                                        </div>
-                                    </li>
 
-                                    <li class="contein-subjects">
-                                        <div  class="inline">
-                                            <select class="form-control input-sm" class="section" size="1" id="sub1" onfocus="Retur('sub1')"></select>
-                                        </div>
-                                        <div  class="inline">
-                                            <input class="form-control input-sm" type="number" name="mark1" id="m1" max="200" min="100" required="required" step="any" placeholder="100...200">
-                                        </div>
-                                    </li>
-                                    <li class="contein-subjects">
-                                        <div  class="inline">
-                                            <select class="form-control input-sm" name="sub2" id="sub2" size="1" onfocus="Retur('sub2');" required="required" onchange="show_hide('apDiv1'); clear2();"></select>
-                                        </div>
-                                        <div class="inline">
-                                            <input class="form-control input-sm" type="number" name="mark2" id="m2" max="200" min="100" required="required" step="any" placeholder="100...200">
-                                        </div>
-                                    </li>
-                                    <li class="contein-subjects" id="apDiv1" visibility:="" hidden="">
-                                        <div  class="inline">
-                                            <!--<label for="sub3">3:</label>-->
-                                            <select class="form-control input-sm" name="sub3" id="sub3" size="1" onfocus="Retur('sub3'); " onchange="show_hide('apDiv2'); clear2();"></select>
-                                        </div>
-                                        <div class="inline">
-                                            <input class="form-control input-sm" type="number" name="mark3" id="m3" max="200" min="100" step="any" placeholder="100...200">
-                                        </div>
-                                        <!--<a class="but" id="plus2" onClick=" show_hide('apDiv2'); show_hideUn('plus2'); show_hideUn('minus1');"><div class="plus"></div></a>
-                                        <a class="but" id="minus1" onClick="show_hide('plus1'); show_hideUn('apDiv1');"><div class="minus" ></div></a>-->
-                                    </li>
-                                    <li class="contein-subjects" id="apDiv2" visibility:="" hidden="">
-                                        <div  class="inline">
-                                            <!--<label for="sub4">4:</label>-->
-                                            <select class="form-control input-sm" name="sub4" id="sub4" size="1" onfocus="Retur('sub4')"></select>
-                                        </div>
-                                        <div class="inline">
-                                            <input class="form-control input-sm" type="number" name="mark4" id="m4" max="200" min="100" step="any" placeholder="100...200">
-                                        </div>
-                                        <!--<a class="but" id="minus2" onClick="show_hideUn('apDiv2'); show_hide('apDiv1'); show_hide('plus2'); show_hide('minus1');"><div class="minus"></div></a>-->
-                                    </li>
-
-                                    <div>
-                                        <label id="Label" for="return-radio" style="color: rgb(99, 99, 99);">Додати фільтри</label><input style="visibility: hidden; font-size: 12px;" type="checkbox" id="return-radio" onclick="labelClick('Label')" \="">
-                                    </div>
-                                </ul>
-                            </div>
-
-                            <div class="pricing-table" id="selected" visibility:="" hidden="" style="display: none;">
-                                <h3 id="moz-fix-h3"> Виберіть ВНЗ</h3>
-                                <ul>
-                                    <li class="contein-subjects">
-                                        <!--<label style="width: 100px;" class="input-style" for="option">Область:</label>-->
-                                        <div>
-                                            <select class="form-control input-sm" id="option" class="level sel" name="reg" onchange=" clearForm(5); showNames(this.value)"><option selected="selected" value="">--виберіть область--</option></select>
-                                        </div>
-                                    </li>
-                                    <li class="contein-subjects">
-                                        <!--<label style="width: 100px;" class="input-style" for="option1">Місто:</label>-->
-                                        <div>
-                                            <select class="form-control input-sm" id="option1" class="sel" name="city" onchange=" clearForm(4); showNames1(this.value)"><option selected="selected" value="">--виберіть місто--</option></select>
-                                        </div>
-                                    </li>
-                                    <li class="contein-subjects">
-                                        <!--<label style="width: 100px;" class="input-style" for="option2">Університет:</label>-->
-                                        <div>
-                                            <select class="form-control input-sm" id="option2" class="sel" name="Univer" onchange=" clearForm(3); showNames2(this.value)"><option selected="selected" value="">--виберіть університет--</option></select>
-                                        </div>
-                                    </li>
-                                    <li class="contein-subjects">
-                                        <!--<label style="width: 100px;" class="input-style" for="option3">Факультет:</label>-->
-                                        <div>
-                                            <select class="form-control input-sm" id="option3" class="sel" name="Fac" onchange="clearForm(2); showNames3(this.value)"><option selected="selected" value="">--виберіть факультет--</option></select>
-                                        </div>
-                                    </li>
-                                    <li class="contein-subjects">
-                                        <!--<label style="width: 100px;" class="input-style" for="option4">Спеціальність:</label>-->
-                                        <div>
-                                            <select class="form-control input-sm" id="option4" class="sel" name="Spec"><option selected="selected" value="">--виберіть спеціальність--</option></select>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                    </div></p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal" onclick="hideModalTry()">Назад</button>
-                        <button type="submit" class="btn btn-primary">Розрахувати</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </form>
 
     <form id="form-enter" onsubmit="enter(); return false" name="auth2">
         <div class="modal" id="auth">
@@ -197,12 +85,113 @@
         </div>
     </div>
 
-    <div class="jumbotron" style="width: 460px; padding-top: 10%; margin: 0 auto; text-align: center">
+    <div id="container" class="jumbotron" style="width: 460px; margin: -15px auto; text-align: center">
         <img src="res/logo.png" alt="logo"/>
-        <p style="font-size: 18px">Ресурс для швидкого разрахунку ймовірності вступу</p>
-        <p style="display: inline-block;"><a class="btn btn-primary btn-lg"  onclick="showModalTry()">Спробувати без реестраціі</a></p>
+        <p style="font-size: 18px">Ресурс для швидкого <a href = "info.html">розрахунку ймовірності вступу</a></p>
+        <form action="http://alex.inet-tech.org.ua/cgi-bin/inpNew.cpp.o" method="GET" onsubmit="document.getElementById('message').removeAttribute('hidden')">
+            <div class="calculation">
+            <div class="pricing-table">
+                <h3>Введіть бали по ЗНО</h3>
+                <ul class="Point">
+                    <li id="AT">
+                        <div id="AT-1">
+                            <select class="form-control input-sm">
+                                <option selected="selected" disabled="disabled">Атестат</option>
+                            </select>
+                        </div>
+                        <div id="AT-2">
+                            <input class="form-control input-sm" type="number" name="mark5" id="m5" max="200" min="1" required="required" step="any" placeholder="100...200">
+                        </div>
+                    </li>
+
+                    <li class="contein-subjects">
+                        <div  class="inline">
+                            <select class="form-control input-sm" class="section" size="1" id="sub1" onfocus="Retur('sub1')"></select>
+                        </div>
+                        <div  class="inline">
+                            <input class="form-control input-sm" type="number" name="mark1" id="m1" max="200" min="100" required="required" step="any" placeholder="100...200">
+                        </div>
+                    </li>
+                    <li class="contein-subjects">
+                        <div  class="inline">
+                            <select class="form-control input-sm" name="sub2" id="sub2" size="1" onfocus="Retur('sub2');" required="required" onchange="show_hide('apDiv1'); clear2();"></select>
+                        </div>
+                        <div class="inline">
+                            <input class="form-control input-sm" type="number" name="mark2" id="m2" max="200" min="100" required="required" step="any" placeholder="100...200">
+                        </div>
+                    </li>
+                    <li class="contein-subjects" id="apDiv1" visibility:="" hidden="">
+                        <div  class="inline">
+                            <!--<label for="sub3">3:</label>-->
+                            <select class="form-control input-sm" name="sub3" id="sub3" size="1" onfocus="Retur('sub3'); " onchange="show_hide('apDiv2'); clear2();"></select>
+                        </div>
+                        <div class="inline">
+                            <input class="form-control input-sm" type="number" name="mark3" id="m3" max="200" min="100" step="any" placeholder="100...200">
+                        </div>
+                        <!--<a class="but" id="plus2" onClick=" show_hide('apDiv2'); show_hideUn('plus2'); show_hideUn('minus1');"><div class="plus"></div></a>
+                        <a class="but" id="minus1" onClick="show_hide('plus1'); show_hideUn('apDiv1');"><div class="minus" ></div></a>-->
+                    </li>
+                    <li class="contein-subjects" id="apDiv2" visibility:="" hidden="">
+                        <div  class="inline">
+                            <!--<label for="sub4">4:</label>-->
+                            <select class="form-control input-sm" name="sub4" id="sub4" size="1" onfocus="Retur('sub4')"></select>
+                        </div>
+                        <div class="inline">
+                            <input class="form-control input-sm" type="number" name="mark4" id="m4" max="200" min="100" step="any" placeholder="100...200">
+                        </div>
+                        <!--<a class="but" id="minus2" onClick="show_hideUn('apDiv2'); show_hide('apDiv1'); show_hide('plus2'); show_hide('minus1');"><div class="minus"></div></a>-->
+                    </li>
+
+
+                </ul>
+                <div>
+                    <label id="Label" for="return-radio" style="color: rgb(99, 99, 99); cursor: pointer">Додати фільтри</label><input style="visibility: hidden; font-size: 12px;" type="checkbox" id="return-radio" onclick="labelClick('Label')" \="">
+                </div>
+            </div>
+
+            <div class="pricing-table" id="selected" visibility:="" hidden="" style="display: none;">
+                <h3 id="moz-fix-h3"> Виберіть ВНЗ</h3>
+                <ul>
+                    <li class="contein-subjects">
+                        <!--<label style="width: 100px;" class="input-style" for="option">Область:</label>-->
+                        <div>
+                            <select class="form-control input-sm" id="option" class="level sel" name="reg" onchange=" clearForm(5); showNames(this.value)"><option selected="selected" value="">--виберіть область--</option></select>
+                        </div>
+                    </li>
+                    <li class="contein-subjects">
+                        <!--<label style="width: 100px;" class="input-style" for="option1">Місто:</label>-->
+                        <div>
+                            <select class="form-control input-sm" id="option1" class="sel" name="city" onchange=" clearForm(4); showNames1(this.value)"><option selected="selected" value="">--виберіть місто--</option></select>
+                        </div>
+                    </li>
+                    <li class="contein-subjects">
+                        <!--<label style="width: 100px;" class="input-style" for="option2">Університет:</label>-->
+                        <div>
+                            <select class="form-control input-sm" id="option2" class="sel" name="Univer" onchange=" clearForm(3); showNames2(this.value)"><option selected="selected" value="">--виберіть університет--</option></select>
+                        </div>
+                    </li>
+                    <li class="contein-subjects">
+                        <!--<label style="width: 100px;" class="input-style" for="option3">Факультет:</label>-->
+                        <div>
+                            <select class="form-control input-sm" id="option3" class="sel" name="Fac" onchange="clearForm(2); showNames3(this.value)"><option selected="selected" value="">--виберіть факультет--</option></select>
+                        </div>
+                    </li>
+                    <li class="contein-subjects">
+                        <!--<label style="width: 100px;" class="input-style" for="option4">Спеціальність:</label>-->
+                        <div>
+                            <select class="form-control input-sm" id="option4" class="sel" name="Spec"><option selected="selected" value="">--виберіть спеціальність--</option></select>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+            <p style="display: inline-block;"><button class="btn btn-primary btn-lg" type="submit">Спробувати без реестраціі</button></p>
+        </form>
+        <div></div>
         <a class="btn btn-link" href="javascript:showModalSign()">або увійти у кабінет</a>
     </div>
-
+    <script>
+        document.getElementById('message').hidden = 'hidden';
+    </script>
 </body>
 </html>
