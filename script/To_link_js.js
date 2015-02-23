@@ -40,7 +40,7 @@ var arr_1 = [1,1,1,1,1,1,1,1,1,1,1,1];
 function getElements(c)
 {
     var el = document.getElementById(c);
-    if(c=='sub1') {
+    if(c=='sub1' || c=='save-sub1') {
         var opt = document.createElement("option");
         if(arr_1[0]==1) {
             opt.innerHTML = arr[0];
@@ -120,8 +120,38 @@ function clear() {
         inp2.value = '';
     }
 }
+function clearSave() {
+    var el1 = document.getElementById('save-sub1');
+    var el2 = document.getElementById('save-sub2');
+    var el3 = document.getElementById('save-sub3');
+    var el4 = document.getElementById('save-sub4');
+    var block1 = document.getElementById('save-apDiv1');
+    var block2 = document.getElementById('save-apDiv2');
+    var inp1 = document.getElementById('save-m3');
+    var inp2 = document.getElementById('save-m4');
+    for(var i = 0; i<arr_1.length; i++)
+    {
+        arr_1[i] = 1;
+    }
+    arr_1[el1.value] = 0;
+    arr_1[el2.value] = 0;
+    if(block1.style.display == 'block')arr_1[el3.value] = 0;
+    else{
+        el3.selectedIndex = 0;
+        inp1.value = '';
+    }
+    if(block2.style.display == 'block')arr_1[el4.value] = 0;
+    else{
+        el4.selectedIndex = 0;
+        inp2.value = '';
+    }
+}
 function Retur(v) {
     clear();
+    getElements(v);
+}
+function ReturSave(v) {
+    clearSave();
     getElements(v);
 }
 
