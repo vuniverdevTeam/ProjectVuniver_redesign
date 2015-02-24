@@ -61,8 +61,8 @@
        	if ($isBetaActive) echo '<div class="switch inline active" id="left">Бета-алгоритм</div><div class="switch inline notactive" id="right">Нормальний алгоритм</div><br>';
         else echo '<div class="switch inline notactive" id="left">Бета-алгоритм</div><div class="switch inline active" id="right">Нормальний алгоритм</div><br>';
         echo '<form action="1.php" method="post"><input name="hash" value="' . $key .'" style="visibility: hidden; position: absolute; top: 0px; left: 0px;"><br/><input type="submit" value="Гісторамма"></form>';
-        echo '<a href="http://alex.inet-tech.org.ua/cgi-bin/dump-page.cpp.o"><input type="button" value="Завантаження або збереження бази"/></a><br><br>
-		<div id="last-gen">'. $currentFill .'</div><div class="inline-table"><form class="cell border" method="" action="">
+        echo '<a href="http://alex.inet-tech.org.ua/cgi-bin/dump-page.cpp.o"><input type="button" value="Завантаження або збереження бази" style="display: none"/></a><br><br>
+		<div id="last-gen" style="display: none">'. $currentFill .'</div><div class="inline-table" style="display: none"><form class="cell border" method="" action="">
 	        <h4>Нормальний розподіл</h4>
 	        <table cellpadding=0>
 	            <tr>

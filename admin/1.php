@@ -1,6 +1,6 @@
 ﻿<?php
    //header('Content-Type: text/html; charset=utf-8');
-    $coeff = 6;
+    $coeff = 30;
 
     function getMax($arr)
     {
@@ -89,7 +89,7 @@
                 $counter += 1;
             }			
 			
-			$query = "select avg_budget_mark, avg_contract_mark from vuniver.facult_spec";
+			$query = "select avg_budget_mark, avg_contract_mark from vuniver.facult_spec_abit";
             $result = mysql_query ( $query );
             if (!$result) {
 				$message  = '<h2>Error:</h2> ' . mysql_error() . "\n";
@@ -111,7 +111,7 @@
                     $tmp = $arr_total[$counter];
                     $tmpPercent = $tmp/$total_b;
                     $tmpPercent *= 100;
-                    $arr_total[$counter] = $arr_total[$counter] / 50;
+                    $arr_total[$counter] = $arr_total[$counter] / 15;
                     if ($arr_total[$counter] < 1) $arr_total[$counter]=1;
                     if ($tmp == $max) echo '<div class="moda">';
                     else echo '<div class="hist-wrap">';
@@ -143,7 +143,7 @@
                     
                      
 		    //get rand
-		    $query = "select s_id, f_id from vuniver.facult_spec order by RAND() limit 1";
+		    $query = "select s_id, f_id from vuniver.facult_spec_abit order by RAND() limit 1";
                     $result = mysql_query ( $query );
                     if (!$result) {
                         $message  = '<h2>Error:</h2> ' . mysql_error() . "\n";
@@ -190,7 +190,7 @@
                     }
 
 
-                    $query = "select avg_contract_mark from vuniver.facult_spec where vuniver.facult_spec.f_id=" . $f . " and vuniver.facult_spec.s_id=" . $s;
+                    $query = "select avg_contract_mark from vuniver.facult_spec_abit where vuniver.facult_spec_abit.f_id=" . $f . " and vuniver.facult_spec_abit.s_id=" . $s;
                     $result = mysql_query ( $query );
                     if (!$result) {
                         $message  = '<h2>Error:</h2> ' . mysql_error() . "\n";
@@ -202,7 +202,7 @@
                         $total_c += 1;
                     }
                     echo "<div class='histogram'>";
-                    $query = "select avg_budget_mark from vuniver.facult_spec where vuniver.facult_spec.f_id=" . $f . " and vuniver.facult_spec.s_id=" . $s;
+                    $query = "select avg_budget_mark from vuniver.facult_spec_abit where vuniver.facult_spec_abit.f_id=" . $f . " and vuniver.facult_spec_abit.s_id=" . $s;
                     $result = mysql_query ( $query );
                     if (!$result) {
                         $message  = '<h2>Error:</h2> ' . mysql_error() . "\n";
