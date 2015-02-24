@@ -354,3 +354,6 @@ thead tr th:hover {
     content: "";
     box-sizing: border-box;
 }
+#validationmessage, #validationmessage2{
+    text-align: center;
+}

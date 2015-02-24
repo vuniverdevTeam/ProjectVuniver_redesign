@@ -191,6 +191,7 @@
                         <div class="input">
                             <!--<label for="pass">Пароль:</label>-->
                             <input placeholder="Пароль" id="pass" type="password" maxlength="16" class="form-control"/>
+                            <div class="alert alert-danger" id="validationmessage2" style="display: none; font-size: 12px; margin: 15px;"></div>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -259,7 +260,7 @@
     <div id="container" onclick="hideDropdown()">
         <div id="wrapper2" style="text-align: center">
 
-            <table class="table table-bordered table-striped table-hover" id="inp-table" style="width: 100%">
+            <table class="table table-bordered table-striped" id="inp-table" style="width: 100%">
                 <thead>
                 <tr>
                     <th data-type="number">Рейтинг ВНЗ <i class="fa"></i> </th>
@@ -272,7 +273,7 @@
                 </thead>
 
                 <a name="start"></a>
-                <tbody id="myList">
+                <tbody id="myList" class="table-hover">
                 ~H~
                 </tbody>
             </table>

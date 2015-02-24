@@ -12,6 +12,7 @@ function hideModalTry()
 function showModalSign()
 {
     document.getElementById('auth').style.display="block";
+    hideSignInAlert();
 }
 function hideModalSign()
 {
@@ -54,4 +55,14 @@ function showSettings()
 function hideSettings()
 {
     document.getElementById('setTing').style.display ="none";
+}
+function showSignInAlert(text)
+{
+    document.getElementById('validationmessage2').style.display = 'block';
+    document.getElementById('validationmessage2').innerHTML = text;
+}
+function hideSignInAlert()
+{
+    document.getElementById('validationmessage2').style.display = 'none';
+    document.getElementById('validationmessage2').innerHTML = '';
 }

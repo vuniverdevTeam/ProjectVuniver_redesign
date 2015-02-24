@@ -1,14 +1,15 @@
 ﻿"use strict";
 function enter(event){
+    hideSignInAlert()
     var xhr = new XMLHttpRequest();
     xhr.open('POST', 'http://alex.inet-tech.org.ua/cgi-bin/cookie.cpp.o', false);
     xhr.send('auth=0'+'&'+'login='+document.getElementById('login').value+'&'+'pass='+document.getElementById('pass').value);
     if(xhr.responseText == "-") {
-        showModalDynamic("Невірний email або пароль, спробуйте ще раз", 'alert');
+        showSignInAlert("Невірний email або пароль, спробуйте ще раз");
     }
     else if(xhr.responseText == "-noactive") {
-        showModalDynamic("Аккаунт не активовано", 'alert');
-    }
+        showSignInAlert("Аккаунт не активовано");
+}
     else {
         var d = new Date;
         var prevCookie = document.cookie;
