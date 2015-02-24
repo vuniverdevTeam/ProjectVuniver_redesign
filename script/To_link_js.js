@@ -387,11 +387,31 @@ function checkAsAdded()
             if(table.rows[r].cells[4].innerText == arr[z] && table.rows[r].cells[5].innerText == arr[numb+z])
             {
                 table.rows[r].cells[6].innerText = "Збережено";
+                table.rows[r].cells[6].className += ' disabled';
             }
         }
     }
 }
 
+function checkAsAdded_input()
+{
+    var id = checkAuth();
+    if(!id.isAuth)return;
+    var xhrC = new XMLHttpRequest();
+    xhrC.open('POST', 'http://alex.inet-tech.org.ua/cgi-bin/checkAsAdded.cpp.o', false);
+    xhrC.send("id="+id['field']);
+    var arr = xhrC.responseText.split("~");
+    var button_text = document.getElementById('save_button_input');
+    var numb = parseInt(arr[0]);
+        for(var z = 1; z<=arr[0]; z++)
+        {
+            if(document.getElementById('F').innerText == arr[z] && document.getElementById('S').innerText == arr[numb+z])
+            {
+                button_text.innerHTML = "Збережено";
+                button_text.className += ' disabled';
+            }
+        }
+}
 
 function createOptionsSave(el, arr1, index)
 {

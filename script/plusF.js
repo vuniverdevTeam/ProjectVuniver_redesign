@@ -1,6 +1,11 @@
 "use strict";
 function getInfo(event)
 {
+    lessfilters_addFacultSpecToCabinet(event);
+}
+
+function lessfilters_addFacultSpecToCabinet(event)
+{
     var values = [];
     var myRow = event.target.parentNode.innerHTML;
     var str = myRow.replace(/<td>/g,'~');
@@ -18,10 +23,30 @@ function getInfo(event)
         event.target.innerHTML = "Збережено";
         event.target.className = "btn btn-success disabled";
     }
-	else {
+    else {
         showModalDynamic('<strong>Помилка!</strong><br/>Для того щоб мати можливість відслідковувати ВНЗ<br/><a href="javascript:showModalSign(); hideModalDynamic()">увійдіть</a> або <a href="javascript:showModalSignUp(); hideModalDynamic()">зареєструйтесь.</a>','alert')
     }
 }
+
+function fullfilters_addFacultSpecToCabinet()
+{
+    var facult = document.getElementById('F').innerHTML;
+    var spec = document.getElementById('S').innerHTML;
+    var id = checkAuth();
+    if(id["isAuth"] != false)
+    {
+
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', 'http://alex.inet-tech.org.ua/cgi-bin/plusFavourite.cpp.o', false);
+        xhr.send('Facult='+facult+'&Spec='+spec+'&userid='+id['field']);
+        event.target.innerHTML = "Збережено";
+        event.target.className = "btn btn-success disabled";
+    }
+    else {
+        showModalDynamic('<strong>Помилка!</strong><br/>Для того щоб мати можливість відслідковувати ВНЗ<br/><a href="javascript:showModalSign(); hideModalDynamic()">увійдіть</a> або <a href="javascript:showModalSignUp(); hideModalDynamic()">зареєструйтесь.</a>','alert')
+    }
+}
+
 
 
 

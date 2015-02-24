@@ -94,14 +94,10 @@
                                     </div>
                                     <!--<a class="but" id="minus2" onClick="show_hideUn('apDiv2'); show_hide('apDiv1'); show_hide('plus2'); show_hide('minus1');"><div class="minus"></div></a>-->
                                 </li>
-
-                                <div>
-                                    <label id="Label" for="return-radio" style="color: rgb(99, 99, 99);">Додати фільтри</label><input style="visibility: hidden; font-size: 12px;" type="checkbox" id="return-radio" onclick="labelClick('Label')" \="">
-                                </div>
                             </ul>
                         </div>
 
-                        <div class="pricing-table" id="selected" visibility:="" hidden="" style="display: none;">
+                        <div class="pricing-table" id="selected">
                             <h3 id="moz-fix-h3"> Виберіть ВНЗ</h3>
                             <ul>
                                 <li class="contein-subjects">
@@ -318,8 +314,7 @@
             res = checkAuth();
             if (!res.isAuth)
             {
-                showModalSign();
-                document.getElementById('drop-menu').innerHTML= '<li><a href="javascript:showModalSign();hideDropdown()" id = "enter">Вхід</a></li><li class="divider"></li><li><a href="javascript:showModalSignUp();hideDropdown()">Реєстрація</a></li>';
+                document.location = 'index.html';
             }
             else document.getElementById('name').innerHTML = res.data;
             document.getElementById('drop-menu').style.width = document.getElementById('usr_menu').style.width;

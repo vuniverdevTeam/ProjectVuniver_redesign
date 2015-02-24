@@ -8,6 +8,7 @@
     <script src="http://alex.inet-tech.org.ua/VUNIVER/script/modalController.js"></script>
     <script src="http://alex.inet-tech.org.ua/VUNIVER/script/passwordValidation.js"></script>
     <script src="http://alex.inet-tech.org.ua/VUNIVER/script/auth.js"></script>
+    <script src="http://alex.inet-tech.org.ua/VUNIVER/script/plusF.js"></script>
     <script src="http://alex.inet-tech.org.ua/VUNIVER/script/To_link_js.js"></script>
     <script type="text/javascript" src = "http://alex.inet-tech.org.ua/VUNIVER/script/check_auth.js"></script>
     <script type="text/javascript" src = "http://alex.inet-tech.org.ua/VUNIVER/script/drop_usr_controller.js"></script>
@@ -234,7 +235,7 @@
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li><a href="javascript:showModalTry()">Фільтри</a></li>
+                    <li><a href="javascript:showModalTry()">Розрахувати ймовірність</a></li>
                     <li><a href="http://alex.inet-tech.org.ua/VUNIVER/info.html">Інфо</a></li>
 
                 </ul>
@@ -268,8 +269,11 @@
             <div style="position: absolute;z-index: 50;width: 80%;">~C~</div>
             <div class="progress-bar progress-bar-success" style="width: ~C~ ;background-color: rgba(126, 212, 255, 0.77)"></div>
         </div>
+
+        <button class="btn btn-success" id="save_button_input" onclick="fullfilters_addFacultSpecToCabinet()" style="margin-top: 20px">Зберегти в кабінет</button>
     </div>
     <script type="text/javascript">
+        checkAsAdded_input();
         res = checkAuth();
         if (!res.isAuth)
         {
