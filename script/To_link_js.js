@@ -270,7 +270,10 @@ function getElementsSave()
 
 var ch;
 window.onload = function () {
+    //document.getElementById('sub1').disabled="disabled";
     document.getElementById('message').hidden = "hidden";
+    document.getElementById('sub1').disabled="disabled";
+    document.getElementById('AT-1').getElementsByTagName("select")[0].disabled="disabled";
     var xhr = new XMLHttpRequest();
     if(window.restoreData !== undefined && window.restoreData.subjs[0] !== undefined){
         clear();

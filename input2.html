@@ -307,7 +307,9 @@
             $('#myList tr').not(':lt('+x+')').attr("hidden", "hidden");
             $('#loadMore').click(function () {
                 x= (x+10 <= size_li) ? x+10 : size_li;
+                if(x+10>=size_li)document.getElementById('loadMore').style.display = 'none';
                 $('#myList tr:lt('+x+')').removeAttr("hidden");
+
             });
             $('#showLess').click(function () {
                 x=(x-10<0) ? 10 : x-10;
