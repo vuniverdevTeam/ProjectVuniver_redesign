@@ -36,9 +36,24 @@ function checkAuth() {
         return {isAuth: true, data: data[0], field: data[1]};
     }
 }
-
+function setCookie()
+{
+    var cookieStr = document.cookie, cookieArray = cookieStr.split(';'), i;
+    for(i = 0; i<cookieArray.length; i++)
+    {
+        var cookieName = cookieArray[i].split('=');
+        if(cookieName[0]!="auth")deleteCookie(cookieName[0]);
+    }
+}
+function deleteCookie (cook)
+{
+    var cookie_date = new Date ( );
+    cookie_date.setTime ( cookie_date.getTime() - 1 );
+    document.cookie = cook += "=; expires=" + cookie_date.toGMTString();
+}
 window.onload = function() {
     //
+    setCookie();
     var xhr5 = new XMLHttpRequest();
     xhr5.open('POST', 'http://alex.inet-tech.org.ua/cgi-bin/SELECT_objects.cpp.o', false);
     var id = checkAuth();
