@@ -352,12 +352,22 @@ thead tr th:hover {
     font-weight: normal;
     line-height: 1;
 }
+.fa:before {
+    content: "";
+  display:inline-block;
+  width:21px;
+    box-sizing: border-box;
+}
 #fa-sort-up .fa:before {
     content: "";
 	box-sizing: border-box;
 }
 #fa-sort-down .fa:before {
     content: "";
+    box-sizing: border-box;
+}
+.fa-unknown:before {
+    content: "";
     box-sizing: border-box;
 }
 #validationmessage, #validationmessage2{
