@@ -25,6 +25,9 @@ function removeAllChild(el) {
     el.appendChild(rt2);
 }
 function createOptions(el, arr1){
+    while(el.childNodes.length > 0){
+        el.removeChild(el.childNodes[el.childNodes.length-1]);
+    }
     for(var i=0; i<arr1.length; i++){
         var opt = document.createElement("option");
         opt.value=arr1[i];
@@ -295,7 +298,7 @@ window.onload = function () {
 
 
     //спеціальності
-    xhr.open('POST', 'http://alex.inet-tech.org.ua/cgi-bin/ajax.cpp.o', false);
+    xhr.open('POST', 'http://alex.inet-tech.org.ua/cgi-bin/ajaxNew.cpp.o', false);
     xhr.send('spec=0');
     var i, j;
     specialities = eval('(' + xhr.responseText + ')');
@@ -326,7 +329,7 @@ window.onload = function () {
     //області:
     var arr1;
 
-    xhr.open('POST', 'http://alex.inet-tech.org.ua/cgi-bin/ajax.cpp.o', false);
+    xhr.open('POST', 'http://alex.inet-tech.org.ua/cgi-bin/ajaxNew.cpp.o', false);
     xhr.send('reg=0');
     arr1 = eval('(' + xhr.responseText + ')');
     var obj = document.getElementById('option');
@@ -418,6 +421,9 @@ function checkAsAdded_input()
 
 function createOptionsSave(el, arr1, index)
 {
+    while(el.childNodes.length > 0){
+        el.removeChild(el.childNodes[el.childNodes.length-1]);
+    }
     for(var i=0; i<arr1.length; i++){
         var opt = document.createElement("option");
         opt.value=arr1[i];
@@ -440,7 +446,7 @@ function showNames(v){
     if(+v >= 1) {
         var arr;
         var xhr = new XMLHttpRequest();
-        xhr.open('POST', 'http://alex.inet-tech.org.ua/cgi-bin/ajax.cpp.o', false);
+        xhr.open('POST', 'http://alex.inet-tech.org.ua/cgi-bin/ajaxNew.cpp.o', false);
         xhr.send('city=' + v);
         arr = eval('(' + xhr.responseText + ')');
         var el = document.getElementById('option1');
@@ -466,7 +472,7 @@ function showNames1(v) {
         var arr;
         var el = document.getElementById('option2');
         var xhr = new XMLHttpRequest();
-        xhr.open('POST', 'http://alex.inet-tech.org.ua/cgi-bin/ajax.cpp.o', false);
+        xhr.open('POST', 'http://alex.inet-tech.org.ua/cgi-bin/ajaxNew.cpp.o', false);
         xhr.send('univer=' + v);
         arr = eval('(' + xhr.responseText + ')');
         removeAllChild_univ(el);
@@ -489,7 +495,7 @@ function showNames2(v) {
     if(+v >= 1) {
         var arr, arr1, el = document.getElementById('option3');
         var xhr = new XMLHttpRequest(), i;
-        xhr.open('POST', 'http://alex.inet-tech.org.ua/cgi-bin/ajax.cpp.o', false);
+        xhr.open('POST', 'http://alex.inet-tech.org.ua/cgi-bin/ajaxNew.cpp.o', false);
         xhr.send('fac=' + v);
         arr = eval('(' + xhr.responseText + ')');
         removeAllChild_faculty(el);
@@ -506,7 +512,7 @@ function showNames2(v) {
         var el2 = document.getElementById('option4');
         removeAllChild_spec(el2);
         for(i = 0; i < arr.length; i += 2){
-            xhr.open('POST', 'http://alex.inet-tech.org.ua/cgi-bin/ajax.cpp.o', false);
+            xhr.open('POST', 'http://alex.inet-tech.org.ua/cgi-bin/ajaxNew.cpp.o', false);
             xhr.send('spec=' + arr[i]);
             arr1 = eval('(' + xhr.responseText + ')');
             if(window.restoreData !== undefined && restoreData.Spec != '' && restoreVisible[4] == 0)
@@ -530,7 +536,7 @@ function showNames3(v) {
         var arr;
         var el = document.getElementById('option4');
         var xhr = new XMLHttpRequest();
-        xhr.open('POST', 'http://alex.inet-tech.org.ua/cgi-bin/ajax.cpp.o', false);
+        xhr.open('POST', 'http://alex.inet-tech.org.ua/cgi-bin/ajaxNew.cpp.o', false);
         xhr.send('spec=' + v);
         arr = eval('(' + xhr.responseText + ')');
         removeAllChild_spec(el);
@@ -552,18 +558,17 @@ function showNames3(v) {
             createOptions(el, arr);
         }
     }
-    else
-    if(document.getElementById('option2').value >=1){
+    else if(document.getElementById('option2').value >=1){
         var arr, arr1, el = document.getElementById('option3');
         var xhr = new XMLHttpRequest(), i;
-        xhr.open('POST', 'http://alex.inet-tech.org.ua/cgi-bin/ajax.cpp.o', false);
+        xhr.open('POST', 'http://alex.inet-tech.org.ua/cgi-bin/ajaxNew.cpp.o', false);
         xhr.send('fac=' + document.getElementById('option2').value);
         arr = eval('(' + xhr.responseText + ')');
 
         var el2 = document.getElementById('option4');
         removeAllChild_spec(el2);
         for(i = 0; i < arr.length; i += 2){
-            xhr.open('POST', 'http://alex.inet-tech.org.ua/cgi-bin/ajax.cpp.o', false);
+            xhr.open('POST', 'http://alex.inet-tech.org.ua/cgi-bin/ajaxNew.cpp.o', false);
             xhr.send('spec=' + arr[i]);
             arr1 = eval('(' + xhr.responseText + ')');
             if(window.restoreData !== undefined && restoreData.Spec != '')
