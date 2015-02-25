@@ -103,11 +103,12 @@ var signUp = function()
     xhr.send("mail="+mail+"&pass1="+pass1+"&pass2="+pass2);
     if(xhr.responseText == 228)
     {
-        showModalDynamic("<strong>Помилка!</strong> Данна электронна адреса вже використовуеться.", 'alert');
+        showSignUpAlert("<strong>Помилка!</strong> Данна электронна адреса вже використовуеться.");
         return false;
     }
     else
     {
+        hideModalSignUp();
         showModalDynamic("<strong>Дякуємо за реєстрацію</strong><div></div>Реєстрація успішно завершена.Протягом 5 хвилин на вашу електронну адресу прийде лист з посиланням для активації аккаунту.", 'success');
         return false;
     }

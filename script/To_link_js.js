@@ -317,11 +317,17 @@ window.onload = function () {
             el2.innerHTML='Прибрати фільтри';
         }
         show_hide('selected');
+        while(obj.childNodes.length > 1){
+            obj.removeChild(obj.childNodes[obj.childNodes.length-1]);
+        }
         createOptionsSave(obj, specialities, restoreData.Spec);
         if(restoreData.Spec == '')showNames(restoreData.reg);
     }
     else
+    {
         createOptions(obj, specialities);
+    }
+
 
     //області:
     var arr1;
@@ -331,7 +337,7 @@ window.onload = function () {
     arr1 = eval('(' + xhr.responseText + ')');
     var obj = document.getElementById('option');
     var flag = 0;
-    if(window.restoreData !== undefined && restoreData.reg != '')
+    if(window.restoreData !== undefined && restoreData.reg != '' || restoreData.Spec != '')
     {
         var el = document.getElementById('return-radio');
         el.checked = true;
@@ -408,7 +414,7 @@ function checkAsAdded_input()
     var numb = parseInt(arr[0]);
         for(var z = 1; z<=arr[0]; z++)
         {
-            if(document.getElementById('F').innerText == arr[z] && document.getElementById('S').innerText == arr[numb+z])
+            if(document.getElementById('F').innerHTML == arr[z] && document.getElementById('S').innerHTML == arr[numb+z])
             {
                 button_text.innerHTML = "Збережено";
                 button_text.className += ' disabled';
@@ -418,9 +424,6 @@ function checkAsAdded_input()
 
 function createOptionsSave(el, arr1, index)
 {
-    while(el.childNodes.length > 0){
-        el.removeChild(el.childNodes[el.childNodes.length-1]);
-    }
     for(var i=0; i<arr1.length; i++){
         var opt = document.createElement("option");
         opt.value=arr1[i];
@@ -460,9 +463,16 @@ function showNames(v){
 
     }
         var els = document.getElementById('option4');
-        if(els.value == '')createOptions(els, specialities);
+        if(els.value == '' && els.childNodes.length <=1)createOptions(els, specialities);
         else
-        createOptionsSave(els, specialities, els.value);
+        if(window.restoreData !== undefined && restoreData.Spec != '')
+        {
+            var t = els.value;
+            removeAllChild_spec(els);
+            if(t == '')createOptionsSave(els,specialities,restoreData.Spec);
+                else
+            createOptionsSave(els, specialities, t);
+        }
 }
 function showNames1(v) {
     if(+v >= 1) {
@@ -480,13 +490,18 @@ function showNames1(v) {
             createOptionsSave(el, arr, restoreData.Univer);
             if(restoreData.Fac == '')showNames2(restoreData.Univer);
         }
-        else
+        else{
             createOptions(el, arr);
+        }
     }
         var els = document.getElementById('option4');
-        if(els.value == '')createOptions(els, specialities);
+        if(els.value == '' && els.childNodes.length <=1)createOptions(els, specialities);
         else
-            createOptionsSave(els, specialities, els.value);
+        if(window.restoreData !== undefined && restoreData.Spec != ''){
+            removeAllChild_spec(els);
+            createOptionsSave(els, specialities, restoreData.Spec);
+        }
+
 }
 function showNames2(v) {
     if(+v >= 1) {
@@ -504,7 +519,7 @@ function showNames2(v) {
             if(restoreData.Spec == '')showNames3(restoreData.Fac);
         }
         else
-            createOptions(el, arr);
+            createOptions(el, arr);//
 
         var el2 = document.getElementById('option4');
         removeAllChild_spec(el2);
@@ -516,10 +531,15 @@ function showNames2(v) {
             {
                 restoreVisible[4] = 1;
                 show_hide('selected');
+                removeAllChild_spec(el2);
                 createOptionsSave(el2, arr1, restoreData.Spec);
             }
             else
+            {
+                removeAllChild_spec(el2);
                 createOptions(el2, arr1);
+            }
+
         }
     }
     else {

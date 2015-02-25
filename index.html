@@ -39,7 +39,7 @@
 
     <form id="form-enter" onsubmit="enter(); return false" name="auth2">
         <div class="modal" id="auth">
-            <div class="modal-dialog" style="width: 300px">
+            <div class="modal-dialog" style="width: 350px">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="hideModalSign()">×</button>
@@ -50,13 +50,14 @@
                             <!--<label for="login">email:</label>-->
                             <input placeholder="E-mail" id="login" type="email" class="form-control"/>
                         </div>
-                        <div class="input">
+                        <div class="input"><!--hideModalSign-->
                             <!--<label for="pass">Пароль:</label>-->
                             <input placeholder="Пароль" id="pass" type="password" maxlength="16" class="form-control"/>
                             <div class="alert alert-danger" id="validationmessage2" style="display: none; font-size: 12px; margin: 15px;"></div>
                         </div>
                     </div>
                     <div class="modal-footer">
+                        <a class="btn btn-link" style="float: left; font-size: 12px;" href="javascript:showModalSignUp(); hideModalSign();">зареєструватись</a>
                         <button type="button" class="btn btn-default" data-dismiss="modal" onclick="hideModalSign()">Відмінити</button>
                         <input class="btn btn-primary" type="submit" value="Вхід">
                     </div>
@@ -64,6 +65,38 @@
             </div>
         </div>
     </form>
+
+
+
+    <form action="" onsubmit="signUp(); return false;" name="auth">
+        <div class="modal" id="reg">
+            <div class="modal-dialog" style="width: 300px">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="hideModalSignUp()">×</button>
+                        <h4 class="modal-title">Реєстрація</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="input">
+                            <input placeholder="Валідний E-mail" class="form-control" id="mail" name="mail" required="required" type="email">
+                        </div>
+                        <div class="input">
+                            <input placeholder="Введіть пароль" class="form-control" id="password1" required="required" name="password1" type="password" oninput="validatePassword()">
+                        </div>
+                        <div class="input">
+                            <input placeholder="Підтвердіть пароль" class="form-control" id="password2" required="required" name="password2" type="password" oninput="validatePassword()">
+                        </div>
+                        <div class="alert alert-danger" id="validationmessage" style="display: none; font-size: 12px; margin: 15px;"></div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" onclick="hideModalSignUp()">Відмінити</button>
+                        <button type="submit" class="btn btn-primary"  id="button-register">Зареєструватися</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
 
     <div class="modal" id="dynamic">
         <div class="modal-dialog">

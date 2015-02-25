@@ -66,3 +66,13 @@ function hideSignInAlert()
     document.getElementById('validationmessage2').style.display = 'none';
     document.getElementById('validationmessage2').innerHTML = '';
 }
+function showSignUpAlert(text)
+{
+    document.getElementById('validationmessage').style.display = 'block';
+    document.getElementById('validationmessage').innerHTML = text;
+}
+function hideSignUpAlert()
+{
+    document.getElementById('validationmessage').style.display = 'none';
+    document.getElementById('validationmessage').innerHTML = '';
+}
