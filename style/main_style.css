@@ -363,3 +363,15 @@ thead tr th:hover {
 #validationmessage, #validationmessage2{
     text-align: center;
 }
+#AT-1 select{
+    background-color:white;
+    -webkit-appearance: none;
+    appearance: none;
+    -moz-appearance: none;
+}
+#sub1{
+    background-color:white;
+    -webkit-appearance: none;
+    appearance: none;
+    -moz-appearance: none;
+}
