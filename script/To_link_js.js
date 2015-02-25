@@ -25,9 +25,6 @@ function removeAllChild(el) {
     el.appendChild(rt2);
 }
 function createOptions(el, arr1){
-    while(el.childNodes.length > 0){
-        el.removeChild(el.childNodes[el.childNodes.length-1]);
-    }
     for(var i=0; i<arr1.length; i++){
         var opt = document.createElement("option");
         opt.value=arr1[i];

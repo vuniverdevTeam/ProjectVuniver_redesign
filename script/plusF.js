@@ -24,7 +24,7 @@ function lessfilters_addFacultSpecToCabinet(event)
         event.target.className = "btn btn-success disabled";
     }
     else {
-        showModalDynamic('<strong>Помилка!</strong><br/>Для того щоб мати можливість відслідковувати ВНЗ<br/><a href="javascript:showModalSign(); hideModalDynamic()">увійдіть</a> або <a href="javascript:showModalSignUp(); hideModalDynamic()">зареєструйтесь.</a>','alert')
+        showModalSign();
     }
 }
 
@@ -43,7 +43,7 @@ function fullfilters_addFacultSpecToCabinet()
         event.target.className = "btn btn-success disabled";
     }
     else {
-        showModalDynamic('<strong>Помилка!</strong><br/>Для того щоб мати можливість відслідковувати ВНЗ<br/><a href="javascript:showModalSign(); hideModalDynamic()">увійдіть</a> або <a href="javascript:showModalSignUp(); hideModalDynamic()">зареєструйтесь.</a>','alert')
+        showModalSign();
     }
 }
 
