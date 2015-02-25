@@ -153,10 +153,12 @@ window.onload = function() {
 
         td = document.createElement("td");
         td.appendChild(document.createTextNode(resObj.B + '%'));
+				if(resObj.check=='0')td.style.backgroundColor="#595454";
         tr.appendChild(td);
 
         td = document.createElement("td");
         td.appendChild(document.createTextNode(resObj.C + '%'));
+				if(resObj.check=='0')td.style.backgroundColor="#595454";
         tr.appendChild(td);
 
 				td = document.createElement("td");
@@ -194,7 +196,7 @@ window.onload = function() {
         var str = 'm1=' + user.mark[0];
         for(var x = 1; x < 5; x++)
             str += '&m' + (x+1) + '=' + user.mark[x];
-        str += '&sub1=' + user.sub[0] +  '&sub1=' + user.sub[0] +  '&sub1=' + user.sub[0];
+        str += '&sub1=' + user.sub[0] +  '&sub2=' + user.sub[1] +  '&sub3=' + user.sub[2];
         str += '&Fac=' + user.arr[i+1] + '&Spec=' + user.arr[i];
         i += 2;
 
@@ -284,5 +286,4 @@ function logout(){
 		document.cookie="auth=0; path=/; expires="+date.toUTCString();
     document.location.href = '../../../../Desktop/vuniver/index.html'
 }
-
 
