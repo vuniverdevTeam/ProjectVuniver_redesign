@@ -288,6 +288,19 @@
     </div>
 		<script src="http://alex.inet-tech.org.ua/VUNIVER/script/tablesorter/sort.js"></script>
     <script type = "text/javascript">
+        var table = document.getElementById("inp-table");
+        var len =  table.rows.length;
+        for(var i = 0;i <len; i++)
+        {
+            if(table.rows[i].cells[1].innerHTML == '-1.0%')
+            {
+                table.rows[i].cells[1].innerHTML = 'Н/Д';
+            }
+            if(table.rows[i].cells[2].innerHTML == '-1.0%')
+            {
+                table.rows[i].cells[2].innerHTML = 'Н/Д';
+            }
+        }
         document.getElementById('m3').onchange = function() {
             if(document.getElementById('m3').value != '') document.getElementById('sub3').required = 'required';
             else document.getElementById('sub3').removeAttribute('required');

@@ -1,4 +1,4 @@
-      var grid = document.getElementById('inp-table');
+﻿      var grid = document.getElementById('inp-table');
 
       grid.onclick = function(e) {
         var target = e && e.target || window.event.srcElement;
@@ -27,6 +27,10 @@
                 compare = function (rowA, rowB) {
                     var a = rowA.cells[colNum].innerHTML;
                     var b = rowB.cells[colNum].innerHTML;
+                    if(a == 'Н/Д')
+                        a = '300';
+                    else if(b == 'Н/Д')
+                        b = '300';
                     if (a.charAt(a.length - 1) == '%') {
                         a = a.substring(0, a.length - 1);
                     }
@@ -40,6 +44,10 @@
                 compare = function (rowA, rowB) {
                     var a = rowA.cells[colNum].innerHTML;
                     var b = rowB.cells[colNum].innerHTML;
+                    if(a == 'Н/Д')
+                        a = '-1';
+                    else if(b == 'Н/Д')
+                        b = '-1';
                     if (a.charAt(a.length - 1) == '%') {
                         a = a.substring(0, a.length - 1);
                     }
@@ -64,7 +72,16 @@
                       if (str2.charAt(0) == '"') {
                           str2 = str2.substr(1);
                       }
+						if(str1[0] == 'і')
+						{
+							return (str2[0] < 'и') ? -1 : 1; 
+						}
+						else if (str2[0] == 'і')
+						{
+							return (str1[0] > 'й') ? -1 : 1;
+						}
                       return str1 > str2 ? -1 : 1;
+					  
                   };
                   document.getElementById('fa-sort-down').id = 'fa-sort-up';
               }	else {
@@ -77,6 +94,14 @@
                       if (str2.charAt(0) == '"') {
                           str2 = str2.substr(1);
                       }
+					  if(str1[0] == 'і')
+						{
+							return (str2[0] < 'и') ? 1 : -1; 
+						}
+						else if (str2[0] == 'і')
+						{
+							return (str1[0] > 'й') ? 1 : -1;
+						}
                       return str1 > str2 ? 1 : -1;
                   };
                   if (document.getElementById('fa-sort-down') !== null)document.getElementById('fa-sort-down').removeAttribute('id');
