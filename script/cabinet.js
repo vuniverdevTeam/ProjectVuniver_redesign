@@ -136,6 +136,7 @@ window.onload = function() {
         var resObj = eval('(' + xhr2.responseText + ')');
         var tr = document.createElement("tr");
         var td = document.createElement("td");
+				var it;
         td.appendChild(document.createTextNode(i >> 1));
         tr.appendChild(td);
 
@@ -157,9 +158,12 @@ window.onload = function() {
             resObj.B = 'Н/Д';
             td.appendChild(document.createTextNode(resObj.B));
         }
-        else
-            td.appendChild(document.createTextNode(resObj.B + '%'));
-				if(resObj.check=='0')td.style.backgroundColor="#595454";
+        else if(resObj.check=='0'){it = document.createElement("i");
+								it.setAttribute('class', 'fa fa-unknown');
+								td.style.textAlign='center';
+								td.appendChild(it);}
+				else td.appendChild(document.createTextNode(resObj.B + '%'));
+				
 
         tr.appendChild(td);
 
@@ -169,8 +173,11 @@ window.onload = function() {
             resObj.C = 'Н/Д';
             td.appendChild(document.createTextNode(resObj.C));
         }
-        else
-            td.appendChild(document.createTextNode(resObj.C + '%'));
+        else if(resObj.check=='0'){it = document.createElement("i");
+								it.setAttribute('class', 'fa fa-unknown');
+								td.style.textAlign='center';
+								td.appendChild(it);}
+				else td.appendChild(document.createTextNode(resObj.C + '%'));
 
 				if(resObj.check=='0')td.style.backgroundColor="#595454";
 
@@ -303,4 +310,3 @@ function logout(){
 		document.cookie="auth=0; path=/; expires="+date.toUTCString();
     document.location.href = '../../../../Desktop/vuniver/index.html'
 }
-
