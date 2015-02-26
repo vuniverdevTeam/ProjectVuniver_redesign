@@ -243,9 +243,36 @@
             </div>
         </div></p>
         </div>
+<<<<<<< HEAD
         <div class="modal-footer">
             <!--<button type="button" class="btn btn-default" data-dismiss="modal" onclick="hideModalTry()">Назад</button>-->
             <button type="submit" class="btn btn-primary">Розрахувати</button>
+=======
+    </nav>
+    <div style="height: 50px"></div>
+        <!--<p>~C~</p>-->
+    <div id = "main">
+        <h3>Шанс вступу до:</h3>
+        <li class="noLink"><label id = "U">~U~</label></li>
+        <li class="noLink"><label id = "F">~F~</label></li>
+        <li class="noLink"><label id = "S">~S~</label></li>
+        <!--<li class="noLink"><label style="padding-top: 15px">Ваш вступний бал:~M~</label></li>-->
+				<span id="1"></span>~1~ <br/>
+				<span id="2"></span>~2~ <br/>
+				<span id="3"></span>~3~ <br/>
+				<span id="4"></span>~4~ <br/>
+				<span id="5"></span>~5~ <br/>
+				<input type="button" onclick="coeffCalc()" value="click"/>
+        <h3>БЮДЖЕТ</h3>
+        <div class="progress" style="width: 80%;margin: 0 auto; height: 50px;">
+            <div style="position: absolute;z-index: 50;width: 80%;font-size: 40px;" id = "budg">~B~</div>
+            <div class="progress-bar" style="width: ~B~ ;background-color: rgba(160, 168, 255, 0.77)"></div>
+        </div>
+        <h3>КОНТРАКТ</h3>
+        <div class="progress" style="width: 80%;margin: 0 auto; height: 50px;font-size: 40px;">
+            <div style="position: absolute;z-index: 50;width: 80%;" id = "contr">~C~</div>
+            <div class="progress-bar progress-bar-success" style="width: ~C~ ;background-color: rgba(126, 212, 255, 0.77)"></div>
+>>>>>>> ea31f9856fc3904b6e2d7dc6de80854ac33c3f62
         </div>
     </div>
 </form>
@@ -264,6 +291,7 @@
         <span id="5"><span class="label-coeff-name"></span>~5~</span><br/>
 
     </div>
+<<<<<<< HEAD
     <div></div>
     <input type="button" class="btn btn-default" onclick="coeffCalc()" value="Перерахувати"/>
     <h3>БЮДЖЕТ</h3>
@@ -303,6 +331,24 @@
         budg.innerHTML = "Н/Д";
     if(contr.innerHTML.indexOf("-1.0%") != -1)
         contr.innerHTML = "Н/Д";
+=======
+    <script type="text/javascript">
+				function coeffCalc(){
+					var str='http://alex.inet-tech.org.ua/cgi-bin/coeffCalc.cpp.o'+location.search.split('&coef')[0];
+					str+='&coeff1='+document.getElementById('coef1').value;
+					str+='&coeff2='+document.getElementById('coef2').value;
+					str+='&coeff3='+document.getElementById('coef3').value;
+					str+='&coeff4='+document.getElementById('coef4').value;
+					str+='&coeff5='+document.getElementById('coef5').value;
+					location=str;
+				}
+        var budg = document.getElementById("budg");
+        var contr = document.getElementById("contr");
+        if(budg.innerHTML.indexOf("-1.0%") != -1)
+            budg.innerHTML = "Н/Д";
+        if(contr.innerHTML.indexOf("-1.0%") != -1)
+            contr.innerHTML = "Н/Д";
+>>>>>>> ea31f9856fc3904b6e2d7dc6de80854ac33c3f62
 
     checkAsAdded_input();
     res = checkAuth();
