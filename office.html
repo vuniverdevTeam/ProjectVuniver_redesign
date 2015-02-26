@@ -16,6 +16,7 @@
     <title>ВУнивер</title>
     <link rel="icon" href="http://alex.inet-tech.org.ua/VUNIVER/favicon.ico" type="image/x-icon">
     <link rel="shortcut icon" href="http://alex.inet-tech.org.ua/VUNIVER/favicon.ico" type="image/x-icon">
+    <script type = "text/javascript" src = "http://alex.inet-tech.org.ua/VUNIVER/script/jquery-1.7.1.min.js"></script>
 
 </head>
 <body style="background-color: #fff" class="disabled">
@@ -288,8 +289,8 @@
 
         <div id="container"  onclick="hideDropdown()">
             <div style="text-align: center"><h2>Збережені ВНЗ</h2></div>
-            <div class = "table">
-                <table class="table-striped">
+            <div class = "table" >
+                <table class="table-striped" id = "inp-table">
                     <thead>
                     <tr>
                         <th rowspan="2" style="text-align: center; border: 2px solid rgb(221, 221, 221); padding-bottom: 25px;">№</th>
@@ -299,8 +300,8 @@
                         <th colspan="2" style="text-align: center; border: 2px solid rgb(221, 221, 221);">Ймовірність</th>
                     </tr>
                     <tr>
-                        <th class="budget" style="text-align: center; border: 2px solid rgb(221, 221, 221);">Бюджет</th>
-                        <th class="contract" style="text-align: center; border: 2px solid rgb(221, 221, 221);">Контракт</th>
+                        <th id = "b" class="budget" style="text-align: center; border: 2px solid rgb(221, 221, 221);">Бюджет</th>
+                        <th id = "c" class="contract" style="text-align: center; border: 2px solid rgb(221, 221, 221);">Контракт</th>
                     </tr>
                     </thead>
                     <tbody id="tbody">
@@ -321,6 +322,13 @@
             function backPage(){
                 history.back();
             }
+
+            $("#b").each(function(){
+                if(this.innerHTML == '-1.0%')
+                {
+                    this.innerHTML = 'Н/Д';
+                }
+            })
         </script>
 </body>
 </html>

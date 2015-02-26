@@ -19,273 +19,302 @@
     <link rel="shortcut icon" href="http://alex.inet-tech.org.ua/VUNIVER/favicon.ico" type="image/x-icon">
 </head>
 <body>
-    <div id="message" hidden="hidden">
-        <h2>Зачекайте, поки будуть готові результати</h2>
-        <h4>Середній час обчислення 8с</h4>
-        <div id="facebookG">
-            <div id="blockG_1" class="facebook_blockG">
-            </div>
-            <div id="blockG_2" class="facebook_blockG">
-            </div>
-            <div id="blockG_3" class="facebook_blockG">
+<div id="message" hidden="hidden">
+    <h2>Зачекайте, поки будуть готові результати</h2>
+    <h4>Середній час обчислення 8с</h4>
+    <div id="facebookG">
+        <div id="blockG_1" class="facebook_blockG">
+        </div>
+        <div id="blockG_2" class="facebook_blockG">
+        </div>
+        <div id="blockG_3" class="facebook_blockG">
+        </div>
+    </div>
+</div>
+<form action="" onsubmit="signUp(); return false;" name="auth">
+    <div class="modal" id="reg">
+        <div class="modal-dialog" style="width: 300px">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="hideModalSignUp()">×</button>
+                    <h4 class="modal-title">Реєстрація</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="input">
+                        <input placeholder="Валідний E-mail" class="form-control" id="mail" name="mail" required="required" type="email">
+                    </div>
+                    <div class="input">
+                        <input placeholder="Введіть пароль" class="form-control" id="password1" required="required" name="password1" type="password" oninput="validatePassword()">
+                    </div>
+                    <div class="input">
+                        <input placeholder="Підтвердіть пароль" class="form-control" id="password2" required="required" name="password2" type="password" oninput="validatePassword()">
+                    </div>
+                    <div class="alert alert-danger" id="validationmessage" style="display: none; font-size: 12px; margin: 15px;"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" onclick="hideModalSignUp()">Відмінити</button>
+                    <button type="submit" class="btn btn-primary"  id="button-register">Зареєструватися</button>
+                </div>
             </div>
         </div>
     </div>
-    <form action="" onsubmit="signUp(); return false;" name="auth">
-        <div class="modal" id="reg">
-            <div class="modal-dialog" style="width: 300px">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="hideModalSignUp()">×</button>
-                        <h4 class="modal-title">Реєстрація</h4>
-                    </div>
-                    <div class="modal-body">
-                        <div class="input">
-                            <input placeholder="Валідний E-mail" class="form-control" id="mail" name="mail" required="required" type="email">
-                        </div>
-                        <div class="input">
-                            <input placeholder="Введіть пароль" class="form-control" id="password1" required="required" name="password1" type="password" oninput="validatePassword()">
-                        </div>
-                        <div class="input">
-                            <input placeholder="Підтвердіть пароль" class="form-control" id="password2" required="required" name="password2" type="password" oninput="validatePassword()">
-                        </div>
-                        <div class="alert alert-danger" id="validationmessage" style="display: none; font-size: 12px; margin: 15px;"></div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal" onclick="hideModalSignUp()">Відмінити</button>
-                        <button type="submit" class="btn btn-primary"  id="button-register">Зареєструватися</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </form>
-
-    <form action="http://alex.inet-tech.org.ua/cgi-bin/inpNew.cpp.o" method="GET" onsubmit="hideModalTry(); document.getElementById('message').removeAttribute('hidden')">
-        <div class="modal" id="try">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="hideModalTry()">×</button>
-                        <h4 class="modal-title">Розрахунок ймовірності</h4>
-                    </div>
-                    <div class="modal-body">
-                        <p><div class="calculation">
-                        <div class="pricing-table">
-                            <h3>Введіть бали по ЗНО</h3>
-                            <ul class="Point">
-                                <li id="AT">
-                                    <div id="AT-1">
-                                        <select class="form-control input-sm">
-                                            <option selected="selected" disabled="disabled">Атестат</option>
-                                        </select>
-                                    </div>
-                                    <div id="AT-2">
-                                        <input class="form-control input-sm" type="number" name="mark5" id="m5" max="200" min="1" required="required" step="any" placeholder="100...200">
-                                    </div>
-                                </li>
-
-                                <li class="contein-subjects">
-                                    <div  class="inline">
-                                        <select class="form-control input-sm" class="section" size="1" id="sub1" onfocus="Retur('sub1')"></select>
-                                    </div>
-                                    <div  class="inline">
-                                        <input class="form-control input-sm" type="number" name="mark1" id="m1" max="200" min="100" required="required" step="any" placeholder="100...200">
-                                    </div>
-                                </li>
-                                <li class="contein-subjects">
-                                    <div  class="inline">
-                                        <select class="form-control input-sm" name="sub2" id="sub2" size="1" onfocus="Retur('sub2');" required="required" onchange="show_hide('apDiv1'); clearFinder();"></select>
-                                    </div>
-                                    <div class="inline">
-                                        <input class="form-control input-sm" type="number" name="mark2" id="m2" max="200" min="100" required="required" step="any" placeholder="100...200">
-                                    </div>
-                                </li>
-                                <li class="contein-subjects" id="apDiv1" visibility:="" hidden="">
-                                    <div  class="inline">
-                                        <!--<label for="sub3">3:</label>-->
-                                        <select class="form-control input-sm" name="sub3" id="sub3" size="1" onfocus="Retur('sub3'); " onchange="show_hide('apDiv2'); clearFinder();"></select>
-                                    </div>
-                                    <div class="inline">
-                                        <input class="form-control input-sm" type="number" name="mark3" id="m3" max="200" min="100" step="any" placeholder="100...200">
-                                    </div>
-                                    <!--<a class="but" id="plus2" onClick=" show_hide('apDiv2'); show_hideUn('plus2'); show_hideUn('minus1');"><div class="plus"></div></a>
-                                    <a class="but" id="minus1" onClick="show_hide('plus1'); show_hideUn('apDiv1');"><div class="minus" ></div></a>-->
-                                </li>
-                                <li class="contein-subjects" id="apDiv2" visibility:="" hidden="">
-                                    <div  class="inline">
-                                        <!--<label for="sub4">4:</label>-->
-                                        <select class="form-control input-sm" name="sub4" id="sub4" size="1" onfocus="Retur('sub4')"></select>
-                                    </div>
-                                    <div class="inline">
-                                        <input class="form-control input-sm" type="number" name="mark4" id="m4" max="200" min="100" step="any" placeholder="100...200">
-                                    </div>
-                                    <!--<a class="but" id="minus2" onClick="show_hideUn('apDiv2'); show_hide('apDiv1'); show_hide('plus2'); show_hide('minus1');"><div class="minus"></div></a>-->
-                                </li>
-
-                                <div>
-                                    <label id="Label" for="return-radio" style="color: rgb(99, 99, 99);">Додати фільтри</label><input style="visibility: hidden; font-size: 12px;" type="checkbox" id="return-radio" onclick="labelClick('Label')" \="">
-                                </div>
-                            </ul>
-                        </div>
-
-                        <div class="pricing-table" id="selected" visibility:="" hidden="" style="display: none;">
-                            <h3 id="moz-fix-h3"> Виберіть ВНЗ</h3>
-                            <ul>
-                                <li class="contein-subjects">
-                                    <!--<label style="width: 100px;" class="input-style" for="option">Область:</label>-->
-                                    <div>
-                                        <select class="form-control input-sm" id="option" class="level sel" name="reg" onchange=" clearForm(5); showNames(this.value)"><option selected="selected" value="">--виберіть область--</option></select>
-                                    </div>
-                                </li>
-                                <li class="contein-subjects">
-                                    <!--<label style="width: 100px;" class="input-style" for="option1">Місто:</label>-->
-                                    <div>
-                                        <select class="form-control input-sm" id="option1" class="sel" name="city" onchange=" clearForm(4); showNames1(this.value)"><option selected="selected" value="">--виберіть місто--</option></select>
-                                    </div>
-                                </li>
-                                <li class="contein-subjects">
-                                    <!--<label style="width: 100px;" class="input-style" for="option2">Університет:</label>-->
-                                    <div>
-                                        <select class="form-control input-sm" id="option2" class="sel" name="Univer" onchange=" clearForm(3); showNames2(this.value)"><option selected="selected" value="">--виберіть університет--</option></select>
-                                    </div>
-                                </li>
-                                <li class="contein-subjects">
-                                    <!--<label style="width: 100px;" class="input-style" for="option3">Факультет:</label>-->
-                                    <div>
-                                        <select class="form-control input-sm" id="option3" class="sel" name="Fac" onchange="clearForm(2); showNames3(this.value)"><option selected="selected" value="">--виберіть факультет--</option></select>
-                                    </div>
-                                </li>
-                                <li class="contein-subjects">
-                                    <!--<label style="width: 100px;" class="input-style" for="option4">Спеціальність:</label>-->
-                                    <div>
-                                        <select class="form-control input-sm" id="option4" class="sel" name="Spec"><option selected="selected" value="">--виберіть спеціальність--</option></select>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div></p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal" onclick="hideModalTry()">Назад</button>
-                        <button type="submit" class="btn btn-primary">Розрахувати</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </form>
-
-    <form id="form-enter" onsubmit="enter(); return false" name="auth2">
-        <div class="modal" id="auth">
-            <div class="modal-dialog" style="width: 350px">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="hideModalSign()">×</button>
-                        <h4 class="modal-title">Вхід</h4>
-                    </div>
-                    <div class="modal-body">
-                        <div class="input">
-                            <!--<label for="login">email:</label>-->
-                            <input placeholder="E-mail" id="login" type="email" class="form-control"/>
-                        </div>
-                        <div class="input">
-                            <!--<label for="pass">Пароль:</label>-->
-                            <input placeholder="Пароль" id="pass" type="password" maxlength="16" class="form-control"/>
-                            <div class="alert alert-danger" id="validationmessage2" style="display: none; font-size: 12px; margin: 15px;"></div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <a class="btn btn-link" style="float: left; font-size: 12px;" href="javascript:showModalSignUp(); hideModalSign();">зареєструватись</a>
-                        <button type="button" class="btn btn-default" data-dismiss="modal" onclick="hideModalSign()">Відмінити</button>
-                        <input class="btn btn-primary" type="submit" value="Вхід">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </form>
-    <div class="modal" id="dynamic">
-        <div class="modal-dialog">
+</form>
+<form id="form-enter" onsubmit="enter(); return false" name="auth2">
+    <div class="modal" id="auth">
+        <div class="modal-dialog" style="width: 350px">
             <div class="modal-content">
-                <div style="height: 30px"></div>
-                <div class="modal-body" >
-                    <div class="alert alert-dismissible alert-danger" id="alert-msg" style="display: none;text-align: center">
-                        <span id="dynamic-text-alert"></span>
-
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="hideModalSign()">×</button>
+                    <h4 class="modal-title">Вхід</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="input">
+                        <!--<label for="login">email:</label>-->
+                        <input placeholder="E-mail" id="login" type="email" class="form-control"/>
                     </div>
-                    <div class="alert alert-dismissible alert-success" id="success-msg" style="display: none;text-align: center">
-                        <span id="dynamic-text-success"></span>
-
+                    <div class="input">
+                        <!--<label for="pass">Пароль:</label>-->
+                        <input placeholder="Пароль" id="pass" type="password" maxlength="16" class="form-control"/>
+                        <div class="alert alert-danger" id="validationmessage2" style="display: none; font-size: 12px; margin: 15px;"></div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="hideModalDynamic()">OK</button>
+                    <a class="btn btn-link" style="float: left; font-size: 12px;" href="javascript:showModalSignUp(); hideModalSign();">зареєструватись</a>
+                    <button type="button" class="btn btn-default" data-dismiss="modal" onclick="hideModalSign()">Відмінити</button>
+                    <input class="btn btn-primary" type="submit" value="Вхід">
                 </div>
             </div>
         </div>
     </div>
-    <nav class="navbar navbar-default" style="position: fixed; width: 100%;">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="http://alex.inet-tech.org.ua/VUNIVER/index.html">VUNIVER</a>
+</form>
+<div class="modal" id="dynamic">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div style="height: 30px"></div>
+            <div class="modal-body" >
+                <div class="alert alert-dismissible alert-danger" id="alert-msg" style="display: none;text-align: center">
+                    <span id="dynamic-text-alert"></span>
+
+                </div>
+                <div class="alert alert-dismissible alert-success" id="success-msg" style="display: none;text-align: center">
+                    <span id="dynamic-text-success"></span>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="hideModalDynamic()">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+<nav class="navbar navbar-default" style="position: fixed; width: 100%;">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://alex.inet-tech.org.ua/VUNIVER/index.html">VUNIVER</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <!--<li><a href="javascript:showModalTry()">Розрахувати ймовірність</a></li>-->
+                <li><a href="http://alex.inet-tech.org.ua/VUNIVER/info.html">Інфо</a></li>
+
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right" style="z-index: 50;">
+                <li id="usr_menu" class="dropdown"><a href="javascript: dropdownToggle(document.getElementById('usr_menu'))" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="padding: 0px"><span id="name">Профіль</span><span class="caret" style="margin-right: 5px"></span></a>
+                    <ul id="drop-menu" class="dropdown-menu" role="menu">
+                        <li><a href="http://alex.inet-tech.org.ua/VUNIVER/office.html">Кабінет</a></li>
+                        <li class="divider"></li>
+                        <li><a onclick="logout();refreshSelf()">Вихід</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div style="height: 50px"></div>
+<!--<p>~C~</p>-->
+<form action="http://alex.inet-tech.org.ua/cgi-bin/inpNew.cpp.o" method="GET" onsubmit="hideModalTry(); document.getElementById('message').removeAttribute('hidden')">
+    <div class="modal-content" style="width: 360px;float: left; position: fixed;">
+        <div class="modal-header">
+            <!--<button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="hideModalTry()">×</button>-->
+            <h4 class="modal-title">Розрахунок ймовірності</h4>
+        </div>
+        <div class="modal-body">
+            <p><div class="calculation">
+            <div class="pricing-table">
+                <h3>Введіть бали по ЗНО</h3>
+                <ul class="Point">
+                    <li id="AT">
+                        <div id="AT-1">
+                            <select class="form-control input-sm">
+                                <option selected="selected" disabled="disabled">Атестат</option>
+                            </select>
+                        </div>
+                        <div id="AT-2">
+                            <input class="form-control input-sm" type="number" name="mark5" id="m5" max="200" min="1" required="required" step="any" placeholder="100...200">
+                        </div>
+                    </li>
+
+                    <li class="contein-subjects">
+                        <div  class="inline">
+                            <select class="form-control input-sm" class="section" size="1" id="sub1" onfocus="Retur('sub1')"></select>
+                        </div>
+                        <div  class="inline">
+                            <input class="form-control input-sm" type="number" name="mark1" id="m1" max="200" min="100" required="required" step="any" placeholder="100...200">
+                        </div>
+                    </li>
+                    <li class="contein-subjects">
+                        <div  class="inline">
+                            <select class="form-control input-sm" name="sub2" id="sub2" size="1" onfocus="Retur('sub2');" required="required" onchange="show_hide('apDiv1'); clearFinder();"></select>
+                        </div>
+                        <div class="inline">
+                            <input class="form-control input-sm" type="number" name="mark2" id="m2" max="200" min="100" required="required" step="any" placeholder="100...200">
+                        </div>
+                    </li>
+                    <li class="contein-subjects" id="apDiv1" visibility:="" hidden="">
+                        <div  class="inline">
+                            <!--<label for="sub3">3:</label>-->
+                            <select class="form-control input-sm" name="sub3" id="sub3" size="1" onfocus="Retur('sub3'); " onchange="show_hide('apDiv2'); clearFinder();"></select>
+                        </div>
+                        <div class="inline">
+                            <input class="form-control input-sm" type="number" name="mark3" id="m3" max="200" min="100" step="any" placeholder="100...200">
+                        </div>
+                        <!--<a class="but" id="plus2" onClick=" show_hide('apDiv2'); show_hideUn('plus2'); show_hideUn('minus1');"><div class="plus"></div></a>
+                        <a class="but" id="minus1" onClick="show_hide('plus1'); show_hideUn('apDiv1');"><div class="minus" ></div></a>-->
+                    </li>
+                    <li class="contein-subjects" id="apDiv2" visibility:="" hidden="">
+                        <div  class="inline">
+                            <!--<label for="sub4">4:</label>-->
+                            <select class="form-control input-sm" name="sub4" id="sub4" size="1" onfocus="Retur('sub4')"></select>
+                        </div>
+                        <div class="inline">
+                            <input class="form-control input-sm" type="number" name="mark4" id="m4" max="200" min="100" step="any" placeholder="100...200">
+                        </div>
+                        <!--<a class="but" id="minus2" onClick="show_hideUn('apDiv2'); show_hide('apDiv1'); show_hide('plus2'); show_hide('minus1');"><div class="minus"></div></a>-->
+                    </li>
+
+                    <div>
+                        <label id="Label" for="return-radio" style="color: rgb(99, 99, 99);">Додати фільтри</label><input style="visibility: hidden; font-size: 12px;" type="checkbox" id="return-radio" onclick="labelClick('Label')" \="">
+                    </div>
+                </ul>
             </div>
 
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li><a href="javascript:showModalTry()">Розрахувати ймовірність</a></li>
-                    <li><a href="http://alex.inet-tech.org.ua/VUNIVER/info.html">Інфо</a></li>
-
-                </ul>
-
-                <ul class="nav navbar-nav navbar-right" style="z-index: 50;">
-                    <li id="usr_menu" class="dropdown"><a href="javascript: dropdownToggle(document.getElementById('usr_menu'))" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="padding: 0px"><span id="name">Профіль</span><span class="caret" style="margin-right: 5px"></span></a>
-                        <ul id="drop-menu" class="dropdown-menu" role="menu">
-                            <li><a href="http://alex.inet-tech.org.ua/VUNIVER/office.html">Кабінет</a></li>
-                            <li class="divider"></li>
-                            <li><a onclick="logout();refreshSelf()">Вихід</a></li>
-                        </ul>
+            <div class="pricing-table" id="selected" visibility:="" hidden="" style="display: none;">
+                <h3 id="moz-fix-h3"> Виберіть ВНЗ</h3>
+                <ul>
+                    <li class="contein-subjects">
+                        <!--<label style="width: 100px;" class="input-style" for="option">Область:</label>-->
+                        <div>
+                            <select class="form-control input-sm" id="option" class="level sel" name="reg" onchange=" clearForm(5); showNames(this.value)"><option selected="selected" value="">--виберіть область--</option></select>
+                        </div>
+                    </li>
+                    <li class="contein-subjects">
+                        <!--<label style="width: 100px;" class="input-style" for="option1">Місто:</label>-->
+                        <div>
+                            <select class="form-control input-sm" id="option1" class="sel" name="city" onchange=" clearForm(4); showNames1(this.value)"><option selected="selected" value="">--виберіть місто--</option></select>
+                        </div>
+                    </li>
+                    <li class="contein-subjects">
+                        <!--<label style="width: 100px;" class="input-style" for="option2">Університет:</label>-->
+                        <div>
+                            <select class="form-control input-sm" id="option2" class="sel" name="Univer" onchange=" clearForm(3); showNames2(this.value)"><option selected="selected" value="">--виберіть університет--</option></select>
+                        </div>
+                    </li>
+                    <li class="contein-subjects">
+                        <!--<label style="width: 100px;" class="input-style" for="option3">Факультет:</label>-->
+                        <div>
+                            <select class="form-control input-sm" id="option3" class="sel" name="Fac" onchange="clearForm(2); showNames3(this.value)"><option selected="selected" value="">--виберіть факультет--</option></select>
+                        </div>
+                    </li>
+                    <li class="contein-subjects">
+                        <!--<label style="width: 100px;" class="input-style" for="option4">Спеціальність:</label>-->
+                        <div>
+                            <select class="form-control input-sm" id="option4" class="sel" name="Spec"><option selected="selected" value="">--виберіть спеціальність--</option></select>
+                        </div>
                     </li>
                 </ul>
             </div>
+        </div></p>
         </div>
-    </nav>
-    <div style="height: 50px"></div>
-        <!--<p>~C~</p>-->
-    <div id = "main">
-        <h3>Шанс вступу до:</h3>
-        <li class="noLink"><label id = "U">~U~</label></li>
-        <li class="noLink"><label id = "F">~F~</label></li>
-        <li class="noLink"><label id = "S">~S~</label></li>
-        <li class="noLink"><label style="padding-top: 15px">Ваш вступний бал: ~M~</label></li>
-        <h3>БЮДЖЕТ</h3>
-        <div class="progress" style="width: 80%;margin: 0 auto; height: 50px;">
-            <div style="position: absolute;z-index: 50;width: 80%;font-size: 40px;">~B~</div>
-            <div class="progress-bar" style="width: ~B~ ;background-color: rgba(160, 168, 255, 0.77)"></div>
+        <div class="modal-footer">
+            <!--<button type="button" class="btn btn-default" data-dismiss="modal" onclick="hideModalTry()">Назад</button>-->
+            <button type="submit" class="btn btn-primary">Розрахувати</button>
         </div>
-        <h3>КОНТРАКТ</h3>
-        <div class="progress" style="width: 80%;margin: 0 auto; height: 50px;font-size: 40px;">
-            <div style="position: absolute;z-index: 50;width: 80%;">~C~</div>
-            <div class="progress-bar progress-bar-success" style="width: ~C~ ;background-color: rgba(126, 212, 255, 0.77)"></div>
-        </div>
-
-        <button class="btn btn-success" id="save_button_input" onclick="fullfilters_addFacultSpecToCabinet()" style="margin-top: 20px">Зберегти в кабінет</button>
     </div>
-    <script type="text/javascript">
-        checkAsAdded_input();
-        res = checkAuth();
-        if (!res.isAuth)
-        {
-            document.getElementById('drop-menu').innerHTML= '<li><a href="javascript:showModalSign();hideDropdown()" id = "enter">Вхід</a></li><li class="divider"></li><li><a href="javascript:showModalSignUp();hideDropdown()">Реєстрація</a></li>';
-        }
-        else document.getElementById('name').innerHTML = res.data;
-        document.getElementById('drop-menu').style.width = document.getElementById('usr_menu').style.width;
-        function backPage(){
-            history.back();
-        }
-    </script>
+</form>
+<div id = "main" style="margin-left: 367px;">
+    <h3>Шанс вступу до:</h3>
+    <li class="noLink"><label id = "U">~U~</label></li>
+    <li class="noLink"><label id = "F">~F~</label></li>
+    <li class="noLink"><label id = "S">~S~</label></li>
+    <!--<li class="noLink"><label style="padding-top: 15px">Ваш вступний бал:~M~</label></li>-->
+    <h4>Коэффіціенти</h4>
+    <div class="coeff-container">
+        <span id="1"><span class="label-coeff-name"></span>~1~</span><br/>
+        <span id="2"><span class="label-coeff-name"></span>~2~</span><br/>
+        <span id="3"><span class="label-coeff-name"></span>~3~</span><br/>
+        <span id="4"><span class="label-coeff-name"></span>~4~</span><br/>
+        <span id="5"><span class="label-coeff-name"></span>~5~</span><br/>
+
+    </div>
+    <div></div>
+    <input type="button" class="btn btn-default" onclick="coeffCalc()" value="Перерахувати"/>
+    <h3>БЮДЖЕТ</h3>
+    <div class="progress" style="width: 80%;margin: 0 auto; height: 50px;">
+        <div style="position: absolute;z-index: 50;width: 59%;font-size: 40px;" id = "budg">~B~</div>
+        <div class="progress-bar" style="width: ~B~ ;background-color: rgba(160, 168, 255, 0.77)"></div>
+    </div>
+    <h3>КОНТРАКТ</h3>
+    <div class="progress" style="width: 80%;margin: 0 auto; height: 50px;font-size: 40px;">
+        <div style="position: absolute;z-index: 50;width: 59%;" id = "contr">~C~</div>
+        <div class="progress-bar progress-bar-success" style="width: ~C~ ;background-color: rgba(126, 212, 255, 0.77)"></div>
+    </div>
+
+    <button class="btn btn-success" id="save_button_input" onclick="fullfilters_addFacultSpecToCabinet()" style="margin-top: 20px">Зберегти в кабінет</button>
+</div>
+<script type="text/javascript">
+    function coeffCalc(){
+        var str='http://alex.inet-tech.org.ua/cgi-bin/coeffCalc.cpp.o'+location.search.split('&coef')[0];
+        str+='&coeff1='+document.getElementById('coef1').value;
+        str+='&coeff2='+document.getElementById('coef2').value;
+        str+='&coeff3='+document.getElementById('coef3').value;
+        str+='&coeff4='+document.getElementById('coef4').value;
+        str+='&coeff5='+document.getElementById('coef5').value;
+        location.replace(str);
+    }
+    var offset = 2;
+    document.getElementById('1').firstChild.innerHTML = 'Атестат'+': '+restoreData.marks[0];
+    document.getElementById('2').firstChild.innerHTML = 'Українська мова і література'+': '+restoreData.marks[1];
+    for(var counter = 3; counter < 6; counter++)
+    {
+        if (restoreData.subjs[counter-offset] != '') document.getElementById(counter).firstChild.innerHTML = arr[restoreData.subjs[counter-offset]]+': '+restoreData.marks[counter-1];
+        else document.getElementById(counter).style.display = 'none';
+    }
+    var budg = document.getElementById("budg");
+    var contr = document.getElementById("contr");
+    if(budg.innerHTML.indexOf("-1.0%") != -1)
+        budg.innerHTML = "Н/Д";
+    if(contr.innerHTML.indexOf("-1.0%") != -1)
+        contr.innerHTML = "Н/Д";
+
+    checkAsAdded_input();
+    res = checkAuth();
+    if (!res.isAuth)
+    {
+        document.getElementById('drop-menu').innerHTML= '<li><a href="javascript:showModalSign();hideDropdown()" id = "enter">Вхід</a></li><li class="divider"></li><li><a href="javascript:showModalSignUp();hideDropdown()">Реєстрація</a></li>';
+    }
+    else document.getElementById('name').innerHTML = res.data;
+    document.getElementById('drop-menu').style.width = document.getElementById('usr_menu').style.width;
+    function backPage(){
+        history.back();
+    }
+</script>
 </body>
 </html>
