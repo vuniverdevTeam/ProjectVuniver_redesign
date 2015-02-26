@@ -786,3 +786,22 @@ function refreshSelf()
     document.location = document.URL;
 }
 
+function undefinedMarks()
+{
+    var table = document.getElementsByTagName(table);
+    var len =  table.rows.length;
+    for(var i = 0;i <len; i++)
+    {
+        if(table.rows[i].cells[1].innerHTML == '-1.0%')
+        {
+            table.rows[i].cells[1].innerHTML = 'Н/Д';
+        }
+        if(table.rows[i].cells[2].innerHTML == '-1.0%')
+        {
+            table.rows[i].cells[2].innerHTML = 'Н/Д';
+        }
+    }
+}
+document.onkeydown = function(event){
+					if(event.keyCode==9) return false;
+}
