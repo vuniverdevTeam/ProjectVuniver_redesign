@@ -785,3 +785,4 @@ function refreshSelf()
 {
     document.location = document.URL;
 }
+

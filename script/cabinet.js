@@ -152,18 +152,34 @@ window.onload = function() {
         tr.appendChild(td);
 
         td = document.createElement("td");
-        td.appendChild(document.createTextNode(resObj.B + '%'));
+        if(resObj.B == '-1.0')
+        {
+            resObj.B = 'Н/Д';
+            td.appendChild(document.createTextNode(resObj.B));
+        }
+        else
+            td.appendChild(document.createTextNode(resObj.B + '%'));
 				if(resObj.check=='0')td.style.backgroundColor="#595454";
+
         tr.appendChild(td);
 
         td = document.createElement("td");
-        td.appendChild(document.createTextNode(resObj.C + '%'));
+        if(resObj.C == '-1.0')
+        {
+            resObj.C = 'Н/Д';
+            td.appendChild(document.createTextNode(resObj.C));
+        }
+        else
+            td.appendChild(document.createTextNode(resObj.C + '%'));
+
 				if(resObj.check=='0')td.style.backgroundColor="#595454";
+
         tr.appendChild(td);
 
 				td = document.createElement("td");
                 td.className = "del btn btn-danger";
                 td.style.cursor = "pointer";
+
 
 
         td.onclick = function(event)
@@ -202,6 +218,7 @@ window.onload = function() {
 
         xhr2.send(str);
         Savesubject();
+
 
     };
     xhr.open('POST', 'http://alex.inet-tech.org.ua/cgi-bin/cabinet.cpp.o', true);
