@@ -310,3 +310,6 @@ function logout(){
 		document.cookie="auth=0; path=/; expires="+date.toUTCString();
     document.location.href = '../../../../Desktop/vuniver/index.html'
 }
+document.onkeydown = function(event){
+					if(event.keyCode==9) return false;
+}
